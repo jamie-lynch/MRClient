@@ -1,11 +1,14 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 1.5
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This file contains a number of helper functions
 """
 
-from PySide import QtCore, QtGui
-from os import path, makedirs, getcwd
-import ctypes.wintypes
+from PySide import QtCore
+from os import path, getcwd
+
 
 def convert_checkstate(checkstate):
     """Function which returns a boolean based on the inputted checkstate"""
@@ -14,9 +17,8 @@ def convert_checkstate(checkstate):
     else:
         return False
 
-def get_resources():
-    """Function to get and if necessary make resources folder"""
-    resources = path.join(getcwd(), "resources")
-    #resources = r"C:\Users\Jamie\Documents\The Big Match\TBM_CasparCG_Client\clientwindow\resources"
-    return resources
 
+def get_resources():
+    """Function which returns the path of the resources directory"""
+    resources = path.join(getcwd(), "resources")
+    return resources

@@ -1,32 +1,27 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 1.5
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This file contains a number of helper functions around data
 """
 
 from os import path
 import requests
-import urllib
 from clientwindow.tools.general import get_resources
 from clientwindow.tools.settings import get_settings
 import json
 import traceback
-import sys
+
 
 def get_json(comms=None):
     """Function to get current JSON file"""
+
+    # get path to the resources directory
     resources = get_resources()
 
+    # try getting the data, handle any errors
     try:
-        game_data_url = "http://bigmatch.jamielynch.net/data/lsutv001/data.json"
-        game_data = requests.get(game_data_url).json()
-
-        shortlist_url = "http://twitterdev.jcrnet.co.uk/shortlisted_tweets.json"
-        shortlist_data = requests.get(shortlist_url).json()
-
-        game_data['tweets'] = {}
-        game_data['tweets']['shortlist'] = shortlist_data
-        #get_twitter_images(game_data)
-
         settings = get_settings()
         standings_table_data = {}
         for table_id, table in settings['tables']['standings'].items():
@@ -46,15 +41,7 @@ def get_json(comms=None):
 
         print(game_data['straps'])
 
-        # video data
-        if comms:
-            if comms.casparcg:
-                videos = comms.get_video_list()
-                game_data['videos'] = videos
-            else:
-                game_data['videos'] = local_data['videos']
-        else:
-            game_data['videos'] = local_data['videos']
+
 
         store_json(game_data)
     except:
@@ -64,13 +51,16 @@ def get_json(comms=None):
             game_data = json.load(fp)
     return game_data
 
+
 def get_local_data():
-    """Function to get data only available locally"""
+    """Function to read the get data only available locally"""
+
     resources = get_resources()
 
     with open(path.join(resources, 'local_data'), 'r') as fp:
         local_data = json.load(fp)
     return local_data
+
 
 def store_local_data(client):
     """Function to store the sections of data only available locally"""
@@ -94,68 +84,27 @@ def store_local_data(client):
         traceback.print_exc()
     return
 
-def get_twitter_images(game_data):
-    """Function to store twitter media locally"""
-    resources = get_resources()
+def get_video_data(comms):
+    """Function to get the list of vts available from Caspar"""
 
-    for num, tweet in enumerate(game_data['tweets']['shortlist']):
 
-        tweet = tweet['tweet']['tweet_data']
-        try:
-            urllib.request.urlretrieve(
-                tweet['avatar'],
-                path.join(
-                    resources,
-                    'twitter_avatars',
-                    path.split(tweet['avatar'])[1]
-                )
-            )
-        except urllib.error.HTTPError:
-            print("Failed to get image from {}".format(tweet['avatar']))
+    if comms:
+        if comms.casparcg:
+            videos = comms.get_video_list()
+        else:
+            game_data['videos'] = local_data['videos']
+    else:
+        game_data['videos'] = local_data['videos']
 
-        if tweet['media_present'] == "1":
-            try:
-                urllib.request.urlretrieve(
-                    tweet['media_url'],
-                    path.join(
-                        resources,
-                        'twitter_media',
-                        path.split(tweet['media_url'])[1]
-                    )
-                )
-            except urllib.error.HTTPError:
-                print("Failed to get image from {}".format(tweet['media_url']))
-
-    tweet = game_data['tweets']['current']['tweet_data']
-    try:
-        urllib.request.urlretrieve(
-            tweet['avatar'],
-            path.join(
-                resources,
-                'twitter_avatars',
-                path.split(tweet['avatar'])[1]
-            )
-        )
-    except urllib.error.HTTPError:
-        print("Failed to get image from {}".format(tweet['avatar']))
-
-    if tweet['media_present'] == "1":
-        try:
-            urllib.request.urlretrieve(
-                tweet['media_url'],
-                path.join(
-                    resources,
-                    'twitter_media',
-                    path.split(tweet['media_url'])[1]
-                )
-            )
-        except urllib.error.HTTPError:
-            print("Failed to get image from {}".format(tweet['media_url']))
 
 def store_json(data):
-    """Function to store data to disk"""
+    """Function to write data dictionary to JSON file"""
+
+    # get the path to the resources directory
     resources = get_resources()
-    with open(path.join(resources, 'data'), 'w') as fp:
+
+    # store the file as data.json
+    with open(path.join(resources, 'data.json'), 'w') as fp:
         json.dump(data, fp, sort_keys=True, indent=4)
     return
 

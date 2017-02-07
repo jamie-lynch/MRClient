@@ -1,229 +1,150 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 1.5
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This file defines the mainwindow class
 """
 
-import sys
+
 from PySide import QtGui, QtCore
-from clientwindow.groups import names, \
-                                lineup, \
-                                time, \
-                                score, \
-                                stats, \
-                                twitter, \
-                                events, \
-                                videos, \
-                                rundown, \
-                                tables, \
-                                production
+from clientwindow import tools
+from clientwindow.CasparCGComms import casparcg_amcp as caspar_comms
+from clientwindow.groups import videos, rundown, tables, production
 from clientwindow.menubar import ClientMenu
-from clientwindow import tools, caspar_comms
-from os import path
 
 
 class ClientWindow(QtGui.QMainWindow):
-        """top level class defining the mainwindow"""
+    """Class which defines the mainwindow for the MRClient"""
 
-        settings = tools.get_settings()
-        connected = tools.Connected()
+    # creates an instance of the CasparCG connect signal class
+    connected = tools.Connected()
 
-        def __init__(self, splash_window, parent=None):
-                """init for the ClientWindow class"""
-                super(ClientWindow, self).__init__(parent)
-                self.connected.signal.connect(self.print_connected)
+    def __init__(self, splash_window, parent=None):
+        """Function which initialises the class"""
 
-                self.startup(splash_window)
+        # call the parent __init__ function
+        super(ClientWindow, self).__init__(parent)
 
-        def startup(self, splash_window):
-                """Function to carry out all startup procedures"""
-                # create splash window
-                self.splash = splash_window
-                # initialise caspar comms class
-                self.comms = caspar_comms.CasparComms()
-                # get json data
-                self.data = tools.get_json(comms=self.comms)
+        # call the function to begin startup
+        self.startup(splash_window)
 
-                self.splash.change_message()
-                # get client settings
-                self.settings = tools.get_settings()
+        # Set window to be full size and central
+        self.setWindowState(QtCore.Qt.WindowMaximized)
 
-                self.splash.change_message()
-                # add font to database to show emojis
-                self.font_database = QtGui.QFontDatabase()
-                self.font_database.addApplicationFont(
-                        path.join(
-                                self.settings['resources'],
-                                'OpenSansEmoji.ttf'
-                        )
-                )
+        # set title
+        self.setWindowTitle('The Big Match CasparCG Client')
 
-                self.splash.change_message()
-                # start building the thing
-                self.init_ui()
+    def startup(self, splash_window):
+        """Function to carry out all startup procedures"""
 
-                # attempt to connect to caspar
-                try:
-                        self.attempt_startup_connect()
-                except:
-                        pass
+        # create reference to the splash window
+        self.splash = splash_window
 
-                self.splash.change_message()
+        # create instance of CasparAMCP class
+        self.comms = caspar_comms.CasparAMCP()
 
-        def init_ui(self):
-                """setups the top level window with the required parts"""
+        # get json data
+        self.data = tools.get_json(comms=self.comms)
+        self.splash.change_message()
 
-                # create central widget
-                self.central = QtGui.QWidget()
-                self.setCentralWidget(self.central)
+        # get client settings
+        self.settings = tools.get_settings()
+        self.splash.change_message()
 
-                # layout for central widget
-                self.vbox = QtGui.QVBoxLayout()
-                self.central.setLayout(self.vbox)
+        # call the init_ui function to build the ui elements
+        self.init_ui()
+        self.splash.change_message()
 
-                # tab widget
-                self.tab_widget = QtGui.QTabWidget()
-                self.vbox.addWidget(self.tab_widget)
+        # attempt to connect to caspar
+        self.attempt_startup_connect()
 
-                # refresh button
-                self.refresh_button = QtGui.QPushButton('Refresh')
-                self.refresh_button.clicked.connect(self.refresh_live_data)
-                self.vbox.addWidget(self.refresh_button)
+    def init_ui(self):
+        """setups the top level window with the required parts"""
 
-                # shit the bed
-                self.kill_button = QtGui.QPushButton("PANIC!!!")
-                self.kill_button.clicked.connect(self.comms.kill_switch)
-                self.vbox.addWidget(self.kill_button)
+        # create central widget
+        central = QtGui.QWidget()
+        self.setCentralWidget(central)
 
-                # get and add elements
-                self.elements, self.ref = self.generate_data_elements(comms = self.comms)
-                for num, element_name in enumerate(self.ref):
-                        self.tab_widget.insertTab(num, self.elements[element_name]["element"], element_name.capitalize())
+        # layout for central widget
+        vbox = QtGui.QVBoxLayout()
+        central.setLayout(vbox)
 
-                for num, element_name in enumerate(self.ref):
-                        if not self.settings['show'][element_name]:
-                                if self.tab_widget.currentIndex() == num:
-                                        if num == 0:
-                                                self.tab_widget.setCurrentIndex(1)
-                                        else:
-                                                self.tab_widget.setCurrentIndex(num-1)
-                                self.tab_widget.setTabEnabled(num, False)
+        # tab widget
+        self.tab_widget = QtGui.QTabWidget()
+        vbox.addWidget(self.tab_widget)
 
-                # add menu
-                self.menubar = ClientMenu(comms=self.comms, main = self, parent=self)
-                self.setMenuBar(self.menubar)
+        # refresh button
+        refresh_button = QtGui.QPushButton('Refresh')
+        refresh_button.clicked.connect(self.refresh_video_list)
+        self.vbox.addWidget(refresh_button)
 
-                # status bar
-                self.status_bar = QtGui.QStatusBar()
-                self.status = QtGui.QLabel("")
-                self.status_bar.addPermanentWidget(self.status)
-                if self.comms.casparcg:
-                        self.status.setText("Connected")
-                else:
-                        self.status.setText("Disconnected")
-                self.setStatusBar(self.status_bar)
+        # shit the bed
+        kill_button = QtGui.QPushButton("PANIC!!!")
+        kill_button.clicked.connect(self.comms.kill_switch)
+        self.vbox.addWidget(kill_button)
 
-                # Set window to be full size and central
-                self.setWindowState(QtCore.Qt.WindowMaximized)
+        # creates the rundown element and tries to build it from file
+        self.rundown = rundown.RundownWidget(main=self)
+        self.rundown.build_from_file()
 
-                # set title
-                self.setWindowTitle('The Big Match CasparCG Client')
+        # create a dictionary of elements
+        self.elements = {
+            "production": {"element": production.ProductionWidget(main=self, data=self.data), "index": 0},
+            "vts": {"element": videos.VideoWidget(main=self, data=self.data), "index": 1},
+            "tables": {"element": tables.TablesWidget(main=self), "index": 2},
+            "rundown": {"element": self.rundown, "index": 3}
+        }
 
-        def generate_data_elements(self, comms):
-                """Function which returns the required elements to the grid manager"""
+        # add each element to the tab widget
+        for num, element_name in enumerate(self.elements.keys()):
+            self.tab_widget.insertTab(num, self.elements[element_name]["element"], element_name.capitalize())
 
-                data = self.data
+        # add menu
+        menu_bar = ClientMenu(comms=self.comms, main = self, parent=self)
+        self.setMenuBar(menu_bar)
 
-                # create list for elements
-                elements = {}
+        # status bar
+        self.status_bar = QtGui.QStatusBar()
+        self.status = QtGui.QLabel("Disconnected")
+        self.status_bar.addPermanentWidget(self.status)
+        self.setStatusBar(self.status_bar)
 
-                if self.settings['mode'] == "live":
+    def refresh_video_list(self):
+        """Function which passes the refresh command onto the video element"""
+        self.element['vts'].refresh_data()
 
-                        # appends name list with required settings
-                        elements["names"] = {"element":(names.NameWidget(main=self, data=data)), "index":0, "visable":self.settings['show']['names']}
-                        elements["lineup"] = {"element":(lineup.LineupWidget(main=self, data=data)), "index":1, "visable":self.settings['show']['lineup']}
-                        elements["time"] = {"element":(time.TimeWidget(main=self, data=data)), "index":2, "visable":self.settings['show']['time']}
-                        elements["score"] = {"element":(score.ScoreWidget(main=self, data=data)), "index":3, "visable":self.settings['show']['score']}
-                        elements["stats"] = {"element":(stats.StatWidget(main=self, data=data)), "index":4, "visable":self.settings['show']['stats']}
-                        elements["events"] = {"element":(events.EventWidget(main=self, data=data)), "index":5, "visable":self.settings['show']['events']}
-                        elements["twitter"] = {"element":(twitter.TwitterWidget(main=self, data=data)), "index":6, "visable":self.settings['show']['twitter']}
-                        elements["vts"] = {"element": videos.VideoWidget(main=self, data=data), "index":7, "visable":self.settings['show']['vts']}
+    def attempt_startup_connect(self):
+        """Function which attempts to connect to Caspar on startup"""
+        if not self.comms.casparcg:
+            response = self.comms.caspar_connect(self.settings['caspar']['address'], self.settings['caspar']['port'])
+            print(response)
+        else:
+            return
 
-                        ref = ["names", "lineup", "time", "score", "stats", "events", "twitter", "vts"]
+        if "Failed" not in response:
+            self.status.setText("Connected")
+            self.connected.signal.emit()
 
-                else:
+    def closeEvent(self, event, direct=False):
+        """Function which re-implements the built in close function to add extra features"""
 
-                        # appends name list with required settings
-                        elements["production"] = {"element": production.ProductionWidget(main=self, data=data), "index": 0, "visable": True}
-                        elements["twitter"] = {"element": twitter.TwitterWidget(main=self, data=data), "index": 1, "visable": self.settings['show']['twitter']}
-                        elements["vts"] = {"element": videos.VideoWidget(main=self, data=data), "index": 2, "visable": self.settings['show']['vts']}
-                        elements["tables"] = {"element": tables.TablesWidget(main=self), "index": 3, "visable": self.settings['show']['tables']}
-                        elements["rundown"] = {"element": rundown.RundownWidget(main=self), "index": 4, "visable": self.settings['show']['rundown']}
+        # if the close function is called programmatically then just do it
+        if direct:
+            self.comms.caspar_disconnect()
+            event.accept()
+            return
 
-                        self.rundown = elements['rundown']['element']
-                        self.rundown.build_from_file()
+        # check if they really want to quit
+        quit_msg = "Are you sure you want to quit?"
+        reply = QtGui.QMessageBox.question(self, 'Close',
+                                           quit_msg, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
 
-                        ref = ["production", "twitter", "vts", "tables", "rundown"]
-
-                return elements, ref
-
-        def refresh_live_data(self):
-                """ Function which calls refresh functions of each data section"""
-
-                # get the data
-                data = tools.get_json(comms=self.comms)
-
-                # call refresh_data function of each element
-                for key in self.elements.keys():
-                        self.elements[key]['element'].refresh_data(data = data)
-
-        def attempt_startup_connect(self):
-                """Function which attempts to connect to Caspar on startup"""
-                if not self.comms.casparcg:
-                        response = self.comms.caspar_connect(self.settings['caspar']['address'], self.settings['caspar']['port'])
-                        print(response)
-                if "Failed" not in response:
-                        self.status.setText("Connected")
-                        self.connected.signal.emit()
-
-        def print_connected(self):
-            """"Function to print when the connected signal is received"""
-            print("I've just connected to CasparCG")
-
-        def closeEvent(self, event, direct=False):
-                """Reused close event"""
-
-                if direct:
-                        self.comms.caspar_disconnect()
-                        event.accept()
-                        return
-
-                quit_msg = "Are you sure you want to quit?"
-                reply = QtGui.QMessageBox.question(self, 'Close',
-                                                   quit_msg, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
-
-                if reply == QtGui.QMessageBox.Yes:
-                        if self.comms.casparcg:
-                                self.comms.caspar_disconnect()
-                        tools.store_local_data(self)
-                        event.accept()
-                else:
-                        event.ignore()
-
-        def update_window(self):
-                """Function which updates the window when settings are changed"""
-                for num, element_name in enumerate(self.ref):
-                        if not self.settings['show'][element_name]:
-                                if self.tab_widget.isTabEnabled(num):
-                                        if self.tab_widget.currentIndex() == num:
-                                                if num == 0:
-                                                        self.tab_widget.setCurrentIndex(1)
-                                                else:
-                                                        self.tab_widget.setCurrentIndex(num - 1)
-                                        self.tab_widget.setTabEnabled(num, False)
-                        else:
-                                if not self.tab_widget.isTabEnabled(num):
-                                        self.tab_widget.setTabEnabled(num, True)
-
-                # update templates
-                for section in self.ref:
-                        self.elements[section]['element'].refresh_data(data=tools.get_json(comms=self.comms))
+        # if they do then close, if not then abort closure
+        if reply == QtGui.QMessageBox.Yes:
+            if self.comms.casparcg:
+                    self.comms.caspar_disconnect()
+            tools.store_local_data(self)
+            event.accept()
+        else:
+            event.ignore()

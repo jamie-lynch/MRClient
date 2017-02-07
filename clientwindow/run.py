@@ -1,41 +1,40 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 1.5
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This is the run file for the whole tool
 """
 
 import sys
-
 from PySide import QtGui
-
-from clientwindow import ClientWindow
-from clientwindow import splash, choose_mode, tools
-from clientwindow.login import LoginWindow
+from clientwindow import ClientWindow, splash
 
 
-def main(login=True):
+def main():
+    """Function to run the MRClient software"""
 
+    # create application
     app = QtGui.QApplication(sys.argv)
 
-    if login:
-
-        login = LoginWindow()
-
-        if login.exec_() != QtGui.QDialog.Accepted:
-            pass
-
+    # create a splash window
     splash_window = splash.ClientSplash(app=app)
-    settings = tools.get_settings()
 
-    choose = choose_mode.ChooseMode(settings=settings)
-
-    if not choose.exec_():
-            return
-
+    # change the splash message
     splash_window.change_message()
+
+    # create an instance of the mainwindow
     client = ClientWindow(splash_window)
+
+    # close the splash window
     splash_window.finish(client)
+
+    # show the main window
     client.show()
+
+    # handle close
     sys.exit(app.exec_())
 
-main(login=False)
-
+# if the file is run from top-level call the main functions
+if __name__ == "__main__":
+    main()

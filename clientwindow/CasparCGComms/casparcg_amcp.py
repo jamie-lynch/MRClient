@@ -1,6 +1,12 @@
-# Jack Connor-Richards - October 2016
-# CasparCG communications class to be used with The Big Match CasparCG Custom Client
+# Jack Connor-Richards - 15th December 2016 - v0.7.0
+# CasparCG AMCP communications class to be used with The Big Match CasparCG Custom Client
 # written by Jamie Lynch and Jack Connor-Richards for LSU Media
+
+# Version History:
+#
+# v0.7.0:
+# (JCR) Class name changed to CasparAMCP and added to package CasparCGComms
+#
 
 import socket
 import os.path
@@ -8,26 +14,23 @@ import logging
 import logging.handlers as handlers
 
 
-class CasparComms(object):
+class CasparAMCP(object):
 
     logger = None
     casparcg = None
+    connected = False
     playing_templates = {}
-    playing_vts = {
-        1: None,
-        2: None
-    }
 
     def __init__(self):
         global logger
         logger = self.init_logging()
-        logger.info("CasparComms | Jack Connor-Richards/Jamie Lynch | Version 0.6.1 - 22nd October 2016")
+        logger.info("CasparComms | Jack Connor-Richards/Jamie Lynch | Version 0.7.0 - 15th December 2016")
         logger.info("CasparComms Class initialised")
 
     def init_logging(self):
         global logger
 
-        logging_dir = "C:\ProgramData\CasparComms\logs"
+        logging_dir = "C:\\Users\\Public\\CasparComms\\logs"
 
         logger = logging.getLogger("CasparComms")
         logger.setLevel(logging.DEBUG)
@@ -52,14 +55,21 @@ class CasparComms(object):
         if self.casparcg is None:
             try:
                 self.casparcg = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.casparcg.settimeout(5)
                 self.casparcg.connect((address, int(port)))
                 logger.info("Connected to CasparCG Server at " + str(address) + ":" + str(port))
                 self.connected = True
+                self.casparcg.settimeout(None)
                 return "Connected to CasparCG"
+            except socket.timeout:
+                self.casparcg = None
+                logger.error("Failed to connect to CasparCG Server in a timely fashion")
+                return "Failed to connect to CasparCG Server in a timely fashion"
             except socket.error as e:
                 self.casparcg = None
                 logger.error("Failed to connect to CasparCG Server with the error " + str(e))
                 return "Failed to connect to CasparCG Server with the error " + str(e)
+
         else:
             logger.warning("Already connected to CasparCG Server")
             return "Already connected to CasparCG Server"
@@ -77,7 +87,6 @@ class CasparComms(object):
             return 0
 
     def send_command(self, command):
-
         try:
             logger.info("Sending command: " + command)
             self.casparcg.send((command + "\r\n").encode("UTF-8"))
@@ -174,7 +183,7 @@ class CasparComms(object):
         return "Failed"
 
     def play_template(self, name, channel, layer, parameters=""):
-        command = 'CG ' + str(channel) + '-' + str(layer) + ' ADD 10 ' + name + ' \"1\" \"<templateData>'
+        command = 'CG ' + str(channel) + '-' + str(layer) + ' ADD 10 ' + name + ' \"0\" \"<templateData>'
         # params,count = self.string_split(parameters)
         delimited = parameters.split("|")
         count = len(delimited)
@@ -183,12 +192,32 @@ class CasparComms(object):
         command += "</templateData>\""
         try:
             logger.info("Sending command: " + command)
-            self.casparcg.send((command + '\r\n').encode("UTF-8"))
-            received = self.casparcg.recv(1024).decode("UTF-8")
-            if self.process_return_data(received) == 1:
-                self.playing_templates[str(channel) + "-" + str(layer)] = str(name)
-            logger.info("Received from CasparCG: " + received)
-            return received
+            if self.casparcg:
+                self.casparcg.send((command + '\r\n').encode("UTF-8"))
+                received = self.casparcg.recv(1024).decode("UTF-8")
+                if self.process_return_data(received) == 1:
+                    self.playing_templates[str(channel) + "-" + str(layer)] = str(name)
+                logger.info("Received from CasparCG: " + received)
+                return received
+            else:
+                logger.error("Not connected to CasparCG")
+                return "Not connected to CasparCG"
+        except socket.error:
+            logger.error("Play template command failed")
+            return "Play template command failed"
+
+    def actually_play_template(self, channel, layer):
+        command = 'CG ' + str(channel) + '-' + str(layer) + ' PLAY 10'
+        try:
+            logger.info("Sending command: " + command)
+            if self.casparcg:
+                self.casparcg.send((command + '\r\n').encode("UTF-8"))
+                received = self.casparcg.recv(1024).decode("UTF-8")
+                logger.info("Received from CasparCG: " + received)
+                return received
+            else:
+                logger.error("Not connected to CasparCG")
+                return "Not connected to CasparCG"
         except socket.error:
             logger.error("Play template command failed")
             return "Play template command failed"
@@ -203,10 +232,14 @@ class CasparComms(object):
         command += "</templateData>\""
         try:
             logger.info("Sending command: " + command)
-            self.casparcg.send((command + '\r\n').encode("UTF-8"))
-            received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
-            return received
+            if self.casparcg:
+                self.casparcg.send((command + '\r\n').encode("UTF-8"))
+                received = self.casparcg.recv(1024).decode("UTF-8")
+                logger.info("Received from CasparCG: " + received)
+                return received
+            else:
+                logger.error("Not connected to CasparCG")
+                return "Not connected to CasparCG"
         except socket.error:
             logger.error("Update command failed")
             return "Update command failed"
@@ -215,10 +248,14 @@ class CasparComms(object):
         command = 'CG '+ str(channel) + '-' + str(layer) + ' INVOKE 10 \"' + str(method) + '\"'
         try:
             logger.info("Sending command: " + command)
-            self.casparcg.send((command + '\r\n').encode("UTF-8"))
-            received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
-            return received
+            if self.casparcg:
+                self.casparcg.send((command + '\r\n').encode("UTF-8"))
+                received = self.casparcg.recv(1024).decode("UTF-8")
+                logger.info("Received from CasparCG: " + received)
+                return received
+            else:
+                logger.error("Not connected to CasparCG")
+                return "Not connected to CasparCG"
         except socket.error:
             logger.error("Invoke command failed")
             return "Invoke command failed"
@@ -232,12 +269,16 @@ class CasparComms(object):
             return "Already stopped OK"
         try:
             logger.info("Sending command: " + command)
-            self.casparcg.send((command + '\r\n').encode("UTF-8"))
-            received = self.casparcg.recv(1024).decode("UTF-8")
-            if self.process_return_data(received) == 1:
-                del self.playing_templates[str(channel) + '-' + str(layer)]
-            logger.info("Received from CasparCG: " + received)
-            return received
+            if self.casparcg:
+                self.casparcg.send((command + '\r\n').encode("UTF-8"))
+                received = self.casparcg.recv(1024).decode("UTF-8")
+                if self.process_return_data(received) == 1:
+                    del self.playing_templates[str(channel) + '-' + str(layer)]
+                logger.info("Received from CasparCG: " + received)
+                return received
+            else:
+                logger.error("Not connected to CasparCG")
+                return "Not connected to CasparCG"
         except socket.error:
             logger.error("Stop command failed")
             return "Stop command failed"
@@ -282,26 +323,6 @@ class CasparComms(object):
         except socket.error:
             logger.error("CLS command failed")
             return "CLS command failed"
-
-    def clear_channel(self, channel):
-        """Function to clear the inputted channel in caspar"""
-        command = "CLEAR " + str(channel)
-        try:
-            logger.info("Sending command: " + command)
-            self.casparcg.send((command + '\r\n').encode("UTF-8"))
-            received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
-
-            to_delete = []
-            for key, val in self.playing_templates.items():
-                if key.split("-")[0] == str(channel):
-                    to_delete.append(key)
-
-            for key in to_delete:
-                del self.playing_templates[key]
-
-        except socket.error:
-            logger.error("Clear command failed")
 
     def kill_switch(self):
         for i in range(1, 5):

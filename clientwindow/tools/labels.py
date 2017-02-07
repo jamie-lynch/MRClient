@@ -1,26 +1,32 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 1.5
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This file contains a number of custom labels
 """
 
 from PySide import QtGui
 
-class QSectionLabel(QtGui.QLabel):
-    """Section label with stylesheet"""
+
+class QHeadingOne(QtGui.QLabel):
+    """Class based on QLabel to create <h1> heading"""
 
     def __init__(self, parent=None):
-        super(QSectionLabel, self).__init__(parent)
-        self.setStyleSheet('QSectionLabel{font: bold 15px}')
+        super(QHeadingOne, self).__init__(parent)
+        self.setStyleSheet('QHeadingLabel{font: bold 15px}')
 
-class QHeadingLabel(QtGui.QLabel):
-    """Section label with stylesheet"""
+
+class QHeadingThree(QtGui.QLabel):
+    """Class based on QLabel to create <h3> heading"""
 
     def __init__(self, parent=None):
-        super(QHeadingLabel, self).__init__(parent)
-        self.setStyleSheet('QHeadingLabel{font: bold}')
+        super(QHeadingThree, self).__init__(parent)
+        self.setStyleSheet('QSectionLabel{font: bold}')
+
 
 class QVTTextLabel(QtGui.QLabel):
-    """Section label with stylesheet"""
+    """Class based on QLabel to create text which changes colour when VT plays"""
 
     def __init__(self, parent=None):
         super(QVTTextLabel, self).__init__(parent)
