@@ -1,0 +1,169 @@
+{
+    "caspar": {
+        "address": "127.0.0.1",
+        "port": 5250,
+        "video_directory": "home"
+    },
+    "data": {
+        "location": ""
+    },
+    "lineup": {
+        "custom": true
+    },
+    "mode": "roundup",
+    "resources": "C:\\Users\\Jamie\\Documents\\The Big Match\\TBM_CasparCG_Client\\resources",
+    "show": {
+        "lineup": true,
+        "names": true,
+        "production": true,
+        "rundown": true,
+        "score": true,
+        "stats": true,
+        "tables": true,
+        "twitter": true,
+        "vts": true
+    },
+    "tables": {
+        "standings": {
+            "1": {
+                "gender": "Choose gender...",
+                "level": "Choose team...",
+                "sport": "Overall",
+                "type": "BUCS",
+                "url": "http://bigmatch.jcrnet.uk/tabletojson/bucs_table.json"
+            }
+        }
+    },
+    "templates": {
+        "events": [
+            {
+                "channel": 0,
+                "data": [],
+                "filename": "filename",
+                "layer": 0,
+                "name": "name",
+                "section": "events",
+                "type": "single"
+            }
+        ],
+        "lineup": [
+            {
+                "channel": 0,
+                "data": [],
+                "filename": "filename",
+                "layer": 0,
+                "name": "name",
+                "section": "lineup",
+                "type": "single"
+            }
+        ],
+        "names": [
+            {
+                "channel": "1",
+                "data": [
+                    "teams"
+                ],
+                "filename": "PALTest/PALTEST",
+                "layer": "10",
+                "name": "teams",
+                "section": "names",
+                "type": "single"
+            },
+            {
+                "channel": "1",
+                "data": [
+                    "names"
+                ],
+                "filename": "PALTest/PALTEST",
+                "layer": "10",
+                "name": "PALTest/PALTEST",
+                "section": "names",
+                "type": "single"
+            }
+        ],
+        "score": [],
+        "standard": {
+            "events": {
+                "channel": 0,
+                "filename": "individual_event",
+                "layer": 1,
+                "show": true
+            },
+            "lineup": {
+                "channel": 2,
+                "filename": "individual_lineup",
+                "layer": 3,
+                "show": true
+            },
+            "standings_table": {
+                "channel": 1,
+                "filename": "TBM_PointsTable_10Row/TBM_PointsTable_10Row",
+                "layer": 10,
+                "name": "Standings Table",
+                "show": true
+            },
+            "stats": {
+                "channel": 4,
+                "filename": "individual_stats",
+                "layer": 5,
+                "show": true
+            },
+            "strap_name_left": {
+                "channel": 1,
+                "filename": "TBM_StrapLeft/TBM_StrapLeft",
+                "layer": 10,
+                "name": "Lower Strap Left",
+                "show": true
+            },
+            "strap_name_right": {
+                "channel": 1,
+                "filename": "TBM_StrapRight/TBM_StrapRight",
+                "layer": 10,
+                "name": "Lower Strap Right",
+                "show": true
+            }
+        },
+        "stats": [
+            {
+                "channel": "10",
+                "data": [],
+                "filename": "filename",
+                "layer": "0",
+                "name": "name",
+                "section": "stats",
+                "type": "single"
+            }
+        ],
+        "time": [
+            {
+                "channel": 0,
+                "data": [],
+                "filename": "filename",
+                "layer": 0,
+                "name": "name",
+                "section": "time",
+                "type": "double"
+            }
+        ],
+        "twitter": [
+            {
+                "channel": 0,
+                "data": [
+                    "twitter"
+                ],
+                "filename": "",
+                "layer": 0,
+                "name": "Lower Third",
+                "section": "twitter",
+                "type": "single"
+            }
+        ],
+        "vts": []
+    },
+    "vt_gfx": {
+        "Strap Left": {
+            "filename": "TBM_StrapLeft/TBM_StrapLeft",
+            "name": "Strap Left"
+        }
+    }
+}
