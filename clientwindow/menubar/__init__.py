@@ -1,111 +1,85 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 1.5
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This package creates the top level menu bar
+It also holds the all of the extra windows created from this menu
 """
 
 from PySide import QtGui
-from clientwindow.menubar.settings import ClientSettings
 from clientwindow.menubar.caspar import CasparConnection
 from clientwindow.menubar.help import ErrorReport, AboutClient
-from clientwindow.menubar.rundown import SaveRundown, LoadRundown
 import webbrowser
 
-class ClientMenu(QtGui.QMenuBar):
-    """Custom menubar for Clientwindow"""
 
-    def __init__(self, comms, main, parent=None):
-        """Initialise function of ClientMenu class"""
+class ClientMenu(QtGui.QMenuBar):
+    """Class to create a custom menu for the MRClient"""
+
+    def __init__(self, main, parent=None):
+        """Function to initialise the class"""
+
+        # class the parent __init__ function
         super(ClientMenu, self).__init__(parent)
-        self.comms = comms
-        self.settings = main.settings
+
+        # add main attribute as attributes for convenience
         self.main = main
+        self.comms = main.comms
+        self.settings = main.settings
+
+        # create the UI elements
         self.init_ui(parent)
 
+    def init_ui(self):
+        """Build the UI elements"""
 
-    def init_ui(self, parent):
-        """Builds Menu Bar"""
+        # Create the file menu and corresponding actions
+        file_menu = self.addMenu('&File')
 
+        # create an exit action
+        exit_action = QtGui.QAction("Exit", self)
+        exit_action.triggered.connect(self.main.close)
+        file_menu.addAction(exit_action)
 
-        # FILE
+        # create the caspar menu and corresponding actions
+        caspar_menu = self.addMenu('&Caspar')
 
-        # actions
-        settingsAction = QtGui.QAction("Settings", self)
-        settingsAction.triggered.connect(self.open_settings)
+        # create the settings action
+        caspar_settings_action = QtGui.QAction("Settings", self)
+        caspar_settings_action.triggered.connect(lambda: self.open_settings(focus=2))
+        caspar_menu.addAction(caspar_settings_action)
 
-        exitAction = QtGui.QAction("Exit", self)
-        exitAction.triggered.connect(self.main.close)
+        # create the connection action
+        connection_action = QtGui.QAction("Connection", self)
+        connection_action.triggered.connect(self.open_connection_dialog)
+        caspar_menu.addAction(connection_action)
 
-        #menubutton
-        fileMenu = self.addMenu('&File')
-        fileMenu.addAction(settingsAction)
-        fileMenu.addSeparator()
-        fileMenu.addAction(exitAction)
+        # Create the help menu and corresponding actions
+        help_menu = self.addMenu('&Help')
 
-        # CASPAR
+        # create the documentation action
+        help_action = QtGui.QAction("Documentation", self)
+        help_action.triggered.connect(lambda: webbrowser.open('http://bigmatch.jamielynch.net/client'))
+        help_menu.addAction(help_action)
 
-        # actions
-        settingsAction = QtGui.QAction("Settings", self)
-        settingsAction.triggered.connect(lambda: self.open_settings(focus=2))
+        # create the report action
+        report_action = QtGui.QAction("Report Bug", self)
+        report_action.triggered.connect(self.send_error_report)
+        help_menu.addAction(report_action)
 
-        connectionAction = QtGui.QAction("Connection", self)
-        connectionAction.triggered.connect(self.open_connection_dialog)
-
-        # menubutton
-        casparMenu = self.addMenu('&Caspar')
-        casparMenu.addAction(settingsAction)
-        casparMenu.addAction(connectionAction)
-
-        # VIEW
-
-
-        # HELP
-
-        helpAction = QtGui.QAction("Documentation", self)
-        helpAction.triggered.connect(lambda: webbrowser.open('http://bigmatch.jamielynch.net/client'))
-
-        reportAction = QtGui.QAction("Report Bug", self)
-        reportAction.triggered.connect(self.send_error_report)
-
-        aboutAction = QtGui.QAction("About", self)
-        aboutAction.triggered.connect(self.open_about_dialog)
-
-        helpMenu = self.addMenu('&Help')
-        helpMenu.addAction(helpAction)
-        helpMenu.addAction(reportAction)
-        helpMenu.addAction(aboutAction)
-
-        # POODOWN
-
-        saveAction = QtGui.QAction("Save Rundown", self)
-        saveAction.triggered.connect(self.save_rundown)
-
-        loadAction = QtGui.QAction("About", self)
-        loadAction.triggered.connect(self.load_rundown)
-
-        rundownMenu = self.addMenu('&Rundown')
-        rundownMenu.addAction(saveAction)
-        rundownMenu.addAction(loadAction)
-
-    def open_settings(self, focus=0):
-        """functions which loads the settings window and handles responses"""
-        response = ClientSettings(self.main, parent=self, focus=focus)
+        # create the about action
+        about_action = QtGui.QAction("About", self)
+        about_action.triggered.connect(self.open_about_dialog)
+        help_menu.addAction(about_action)
 
     def open_connection_dialog(self):
         """Function to open the caspar connection dialog"""
-        response = CasparConnection(comms=self.comms, main=self.main)
+        CasparConnection(comms=self.comms, main=self.main)
 
     def send_error_report(self):
         """Function to open error report window and send"""
-        response = ErrorReport(parent=self)
+        ErrorReport(parent=self)
 
     def open_about_dialog(self):
         """Function to open the caspar connection dialog"""
-        response = AboutClient(main=self.main, parent=self)
-
-    def save_rundown(self):
-        """Function to save rundown"""
-        pass
-
-    def load_rundown(self):
-        """Function to load rundown"""
-        pass
+        AboutClient(main=self.main, parent=self)

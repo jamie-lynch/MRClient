@@ -101,7 +101,7 @@ class ClientWindow(QtGui.QMainWindow):
             self.tab_widget.insertTab(num, self.elements[element_name]["element"], element_name.capitalize())
 
         # add menu
-        menu_bar = ClientMenu(comms=self.comms, main = self, parent=self)
+        menu_bar = ClientMenu(main=self)
         self.setMenuBar(menu_bar)
 
         # status bar
