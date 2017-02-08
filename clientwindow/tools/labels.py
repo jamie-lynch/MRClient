@@ -14,7 +14,7 @@ class QHeadingOne(QtGui.QLabel):
 
     def __init__(self, parent=None):
         super(QHeadingOne, self).__init__(parent)
-        self.setStyleSheet('QHeadingLabel{font: bold 15px}')
+        self.setStyleSheet('QHeadingOne{font: bold 15px}')
 
 
 class QHeadingThree(QtGui.QLabel):
@@ -22,7 +22,7 @@ class QHeadingThree(QtGui.QLabel):
 
     def __init__(self, parent=None):
         super(QHeadingThree, self).__init__(parent)
-        self.setStyleSheet('QSectionLabel{font: bold}')
+        self.setStyleSheet('QHeadingThree{font: bold}')
 
 
 class QVTTextLabel(QtGui.QLabel):

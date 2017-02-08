@@ -4,7 +4,7 @@ written by Jamie Lynch & Jack Connor-Richards for LSU Media
 """
 
 from PySide import QtGui, QtCore
-from clientwindow.tools import QHeadingLabel, QSectionLabel
+from clientwindow.tools import QHeadingThree
 
 
 class VideoGraphics(QtGui.QDialog):
@@ -34,7 +34,7 @@ class VideoGraphics(QtGui.QDialog):
         grid.addWidget(length_label, 1, 1)
 
         # GFX
-        grid.addWidget(QHeadingLabel("Graphics"), 2, 0)
+        grid.addWidget(QHeadingThree("Graphics"), 2, 0)
         add_graphic_button = QtGui.QPushButton("Add Graphic")
         add_graphic_button.clicked.connect(self.add_graphic)
         grid.addWidget(add_graphic_button, 2, 1)

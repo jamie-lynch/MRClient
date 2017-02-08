@@ -5,7 +5,6 @@ written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 from PySide import QtGui, QtCore
 from clientwindow import tools
-from clientwindow.tools import QSectionLabel, QHeadingLabel
 
 
 class StandingsTablesSection(QtGui.QWidget):

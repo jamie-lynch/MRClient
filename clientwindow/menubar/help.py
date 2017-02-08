@@ -165,11 +165,15 @@ class AboutClient(QtGui.QDialog):
         resources = tools.get_resources()
 
         # get the path to the image
-        image_url = path.join(resources, 'images', 'about.png')
+        image_url = path.join(resources, 'about.png')
 
         # set the image as the background
         tile = QtGui.QPixmap(image_url)
         tile.scaledToHeight(self.height())
         painter = QtGui.QPainter(self)
-        painter.drawPixmap(self.rect(), self.tile)
+        painter.drawPixmap(self.rect(), tile)
         super(AboutClient, self).paintEvent(event)
+
+    def close(self, e):
+        """Function to try closing the window"""
+        self.reject()

@@ -28,7 +28,7 @@ class ClientMenu(QtGui.QMenuBar):
         self.settings = main.settings
 
         # create the UI elements
-        self.init_ui(parent)
+        self.init_ui()
 
     def init_ui(self):
         """Build the UI elements"""
@@ -43,11 +43,6 @@ class ClientMenu(QtGui.QMenuBar):
 
         # create the caspar menu and corresponding actions
         caspar_menu = self.addMenu('&Caspar')
-
-        # create the settings action
-        caspar_settings_action = QtGui.QAction("Settings", self)
-        caspar_settings_action.triggered.connect(lambda: self.open_settings(focus=2))
-        caspar_menu.addAction(caspar_settings_action)
 
         # create the connection action
         connection_action = QtGui.QAction("Connection", self)
@@ -74,7 +69,7 @@ class ClientMenu(QtGui.QMenuBar):
 
     def open_connection_dialog(self):
         """Function to open the caspar connection dialog"""
-        CasparConnection(comms=self.comms, main=self.main)
+        CasparConnection(main=self.main)
 
     def send_error_report(self):
         """Function to open error report window and send"""

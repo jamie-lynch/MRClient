@@ -20,5 +20,5 @@ def convert_checkstate(checkstate):
 
 def get_resources():
     """Function which returns the path of the resources directory"""
-    resources = path.join(getcwd(), "resources")
+    resources = path.join(getcwd(), "clientwindow", "resources")
     return resources

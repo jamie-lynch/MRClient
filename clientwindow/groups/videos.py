@@ -4,12 +4,10 @@ written by Jamie Lynch & Jack Connor-Richards for LSU Media
 """
 
 from PySide import QtGui, QtCore
-from os import path
-from clientwindow.tools import Connected, QSectionLabel, QHeadingLabel, QVTTextLabel
+from clientwindow.tools import QHeadingOne, QVTTextLabel
 from clientwindow import tools
 import time
 import threading
-import traceback, sys
 
 
 class VideoWidget(QtGui.QWidget):
@@ -24,7 +22,7 @@ class VideoWidget(QtGui.QWidget):
         self.main = main
 
         self.main_vbox = QtGui.QVBoxLayout()
-        self.main_vbox.addWidget(QSectionLabel("Videos"))
+        self.main_vbox.addWidget(QHeadingOne("Videos"))
         self.setLayout(self.main_vbox)
 
         self.main.connected.signal.connect(self.refresh_data)

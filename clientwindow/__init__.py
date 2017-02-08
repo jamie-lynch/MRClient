@@ -77,12 +77,12 @@ class ClientWindow(QtGui.QMainWindow):
         # refresh button
         refresh_button = QtGui.QPushButton('Refresh')
         refresh_button.clicked.connect(self.refresh_video_list)
-        self.vbox.addWidget(refresh_button)
+        vbox.addWidget(refresh_button)
 
         # shit the bed
         kill_button = QtGui.QPushButton("PANIC!!!")
         kill_button.clicked.connect(self.comms.kill_switch)
-        self.vbox.addWidget(kill_button)
+        vbox.addWidget(kill_button)
 
         # creates the rundown element and tries to build it from file
         self.rundown = rundown.RundownWidget(main=self)
@@ -91,9 +91,9 @@ class ClientWindow(QtGui.QMainWindow):
         # create a dictionary of elements
         self.elements = {
             "production": {"element": production.ProductionWidget(main=self, data=self.data), "index": 0},
-            "vts": {"element": videos.VideoWidget(main=self, data=self.data), "index": 1},
-            "tables": {"element": tables.TablesWidget(main=self), "index": 2},
-            "rundown": {"element": self.rundown, "index": 3}
+            # "vts": {"element": videos.VideoWidget(main=self, data=self.data), "index": 1},
+            # "tables": {"element": tables.TablesWidget(main=self), "index": 2},
+            # "rundown": {"element": self.rundown, "index": 3}
         }
 
         # add each element to the tab widget

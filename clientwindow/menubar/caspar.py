@@ -25,7 +25,7 @@ class CasparConnection(QtGui.QDialog):
         self.settings = main.settings
 
         # Create the UI elements
-        self.init_ui(parent)
+        self.init_ui()
 
         # removes question mark thing
         self.setWindowFlags(self.windowFlags()

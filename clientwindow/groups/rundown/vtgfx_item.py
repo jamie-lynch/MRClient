@@ -4,8 +4,8 @@ written by Jamie Lynch & Jack Connor-Richards for LSU Media
 """
 
 from PySide import QtGui, QtCore
-from clientwindow.tools import QHeadingLabel, \
-        QSectionLabel, \
+from clientwindow.tools import QHeadingThree, \
+        QHeadingOne, \
         QVTTextLabel
 import time
 import threading

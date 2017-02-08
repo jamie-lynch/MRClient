@@ -3,10 +3,9 @@ The Big Match graphics client
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 """
 
-from PySide import QtGui
-from clientwindow import tools
-from clientwindow.tools import QSectionLabel, QHeadingLabel
+from clientwindow.tools import QHeadingOne
 from clientwindow.groups.tables.standings import *
+
 
 class TablesWidget(QtGui.QWidget):
     """Widget for University name graphics"""
@@ -29,7 +28,7 @@ class TablesWidget(QtGui.QWidget):
         self.setLayout(vbox)
 
         # Standings Section
-        vbox.addWidget(QSectionLabel("Standings"))
+        vbox.addWidget(QHeadingOne("Standings"))
         standings_tables = StandingsTablesSection(tables_section=self)
         vbox.addWidget(standings_tables)
 

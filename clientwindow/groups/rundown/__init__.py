@@ -3,9 +3,8 @@ The Big Match graphics client
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 """
 
-from PySide import QtGui, QtCore
 from clientwindow import tools
-from clientwindow.tools import QSectionLabel, QHeadingLabel, QVTTextLabel
+from clientwindow.tools import QHeadingOne
 from clientwindow.groups.rundown.vt_gfx import *
 from clientwindow.groups.rundown.vtgfx_item import *
 import threading
@@ -42,7 +41,7 @@ class RundownWidget(QtGui.QWidget):
         main_vbox = QtGui.QVBoxLayout()
         self.setLayout(main_vbox)
 
-        main_vbox.addWidget(QSectionLabel("Rundown"))
+        main_vbox.addWidget(QHeadingOne("Rundown"))
 
         scroll_area = QtGui.QScrollArea()
 

@@ -5,59 +5,34 @@
         "video_directory": "home"
     },
     "templates": {
-		"centrescore": {
-			"channel": 3,
-			"filename": "BigMatch/TBM_CentreScore/TBM_CentreScore",
-			"layer": 10,
-			"name": "CentreScore",
-			"show": true
-		},
-		"standings_table10": {
-			"channel": 3,
-			"filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
-			"layer": 1,
-			"name": "Standings Table10",
-			"show": true
-		},
-		"standings_table6": {
-			"channel": 3,
-			"filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
-			"layer": 2,
-			"name": "Standings Table6",
-			"show": true
-		},
-		"strap_left": {
-			"channel": 3,
-			"filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-			"layer": 8,
-			"name": "Lower Strap Left",
-			"parameters": "StrapUpper=hello|StrapLower=world",
-			"show": true
-		},
-		"topscore": {
-			"channel": 3,
-			"filename": "BigMatch/TBM_TopLeft_NoTimer/TBM_TopLeft_NoTimer",
-			"layer": 11,
-			"name": "TopScore",
-			"show": true
-		}
-    },
-    "vt_gfx": {
-        "CentreScore": {
+        "centrescore": {
             "channel": 3,
             "filename": "BigMatch/TBM_CentreScore/TBM_CentreScore",
             "layer": 25,
-            "name": "CentreScore",
+            "name": "Centre Score",
             "parameters": [
                 "team_left",
                 "team_right",
                 "score",
                 "Infobar_info_text",
                 "show_infobar"
-            ],
-            "show": true
+            ]
         },
-        "Strap Left": {
+        "standings_table10": {
+            "channel": 3,
+            "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
+            "layer": 1,
+            "name": "Standings Table10",
+            "parameters": []
+        },
+        "standings_table6": {
+            "channel": 3,
+            "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
+            "layer": 2,
+            "name": "Standings Table6",
+            "parameters": []
+        },
+        "strapleft": {
             "channel": 3,
             "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
             "layer": 30,
@@ -67,7 +42,7 @@
                 "StrapLower"
             ]
         },
-        "TopScore": {
+        "topscore": {
             "channel": 3,
             "filename": "BigMatch/TBM_TopLeft_NoTimer/TBM_TopLeft_NoTimer",
             "layer": 25,
@@ -78,8 +53,7 @@
                 "topleft_score",
                 "team1_colour",
                 "team2_colour"
-            ],
-            "show": true
+            ]
         }
     }
 }
