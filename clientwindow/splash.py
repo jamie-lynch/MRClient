@@ -40,7 +40,7 @@ class ClientSplash(QtGui.QSplashScreen):
         super(ClientSplash, self).__init__()
 
         # set background image
-        self.setPixmap(QtGui.QPixmap(path.join(tools.get_resources(), 'images', 'splash.png')))
+        self.setPixmap(QtGui.QPixmap(path.join(tools.get_resources(), 'splash.png')))
 
         # set transparency and frameless
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint | QtCore.Qt.FramelessWindowHint)

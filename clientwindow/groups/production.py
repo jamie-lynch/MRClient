@@ -48,8 +48,9 @@ class ProductionWidget(QtGui.QWidget):
         self.graphics = {}
 
         # add the three graphics sections
+        self.sections_list = ['strapleft', 'centrescore', 'topscore']
         self.sections = []
-        for num, section in enumerate(['strapleft', 'centrescore', 'topscore']):
+        for num, section in enumerate(self.sections_list):
             self.graphics[section] = []
             self.sections.append(GFXSection(main=self.main, production=self, template=section))
             self.vbox.addWidget(self.sections[num])
@@ -61,45 +62,18 @@ class ProductionWidget(QtGui.QWidget):
         scroll_widget.setLayout(self.vbox)
         hbox.addWidget(scroll)
 
-    def get_local_data(self):
-        """Function to collect all local data"""
-
-        """
-        self.graphicss = {}
-
-        self.graphicss['straps'] = []
-        for strap in self.names:
-            temp = {}
-            temp['StrapUpper'] = strap.name_edit.text()
-            temp['StrapLower'] = strap.label.text()
-            self.graphicss['straps'].append(temp)
-
-        self.graphicss['centrescore'] = []
-        for score in self.centrescore_section.centre_scores:
-            temp = {}
-            temp['team_left'] = score.team1_edit.text()
-            temp['team_right'] = score.team2_edit.text()
-            temp['score'] = score.score_edit.text()
-            if score.infobar_edit.text():
-                temp['show_infobar'] = 1
-                temp['Infobar_info_text'] = score.infobar_edit.text()
-            else:
-                temp['show_infobar'] = 0
-                temp['Infobar_info_text'] = ""
-            self.graphics['centrescore'].append(temp)
-
-        self.graphics['topscore'] = []
-        for score in self.topscore_section.top_scores:
-            temp = {}
-            temp['topleft_team1'] = score.team1_edit.text()
-            temp['topleft_team2'] = score.team2_edit.text()
-            temp['topleft_score'] = score.score_edit.text()
-            temp['topleft_team1_colour'] = score.colour1_edit.text()
-            temp['topleft_team2_colour'] = score.colour2_edit.text()
-            self.graphics['topscore'].append(temp)
-
-        return self.graphics
-        """
+    def write_to_data(self):
+        """Function to convert the graphics dictionary to the data required for a python dictionary"""
+        for section in self.sections_list:
+            self.main.data[section] = []
+            for graphic in self.graphics[section]:
+                temp = {
+                    'channel': graphic.channel_edit.text(),
+                    'layer': graphic.layer_edit.text(),
+                    'parameters': {key: val.text() for key, val in graphic.parameters.items()}
+                }
+                self.main.data[section].append(temp)
+        tools.store_data(self.main)
 
 
 class GFXSection(QtGui.QWidget):
@@ -110,6 +84,8 @@ class GFXSection(QtGui.QWidget):
 
         # call the parent __init__ function
         super(GFXSection, self).__init__(parent)
+
+        print('adding {} section'.format(template))
 
         # set values for convenience
         self.main = main
@@ -137,9 +113,9 @@ class GFXSection(QtGui.QWidget):
 
         # add all of the items from last time the software was running
         for item in self.main.data[template]:
-            self.add_row(item)
+            self.add_row(data=item, save=False)
 
-    def add_row(self, data=None):
+    def add_row(self, data=None, save=True):
         """Function to add new row to coming up section"""
 
         # create a new template row
@@ -153,7 +129,8 @@ class GFXSection(QtGui.QWidget):
         self.production.graphics[self.template].append(new)
 
         # save the local data
-        tools.store_local_data(self.main)
+        if save:
+            self.production.write_to_data()
 
     def remove_widget(self, widget):
         """Function to remove data row"""
@@ -168,7 +145,7 @@ class GFXSection(QtGui.QWidget):
         widget.deleteLater()
 
         # save the local data in case it all shits the bed
-        tools.store_local_data(self.main)
+        self.production.write_to_data()
 
 
 class TemplateRow(QtGui.QWidget):
@@ -180,15 +157,21 @@ class TemplateRow(QtGui.QWidget):
         # call the parent __init__ function
         super(TemplateRow, self).__init__(parent)
 
+        print('adding {} row'.format(template))
+
         # set values for convenience
         self.main = main
         self.production = production
         self.gfx_section = gfx_section
         self.comms = main.comms
         self.template = template
+        self.data = data
 
         # create tuple to keep reference to channel and layer when graphics fired
         self.fire_channel_and_layer = None, None
+
+        # build UI elements
+        self.initUI()
 
     def initUI(self):
         """Function to create UI elements"""
@@ -198,25 +181,44 @@ class TemplateRow(QtGui.QWidget):
         self.setLayout(grid)
 
         # add edits for parameters
-        parameters = {key: 0 for key in self.main.settings['templates'][self.template]['parameters']}
+        self.parameters_list = self.main.settings['templates'][self.template]['parameters']
+        self.parameters = {key: 0 for key in self.main.settings['templates'][self.template]['parameters']}
 
-        for num, key in enumerate(parameters.keys()):
+        for num, key in enumerate(self.parameters_list):
 
             # for even numbers
-            if num % 2:
+            if not num % 2:
                 grid.addWidget(QtGui.QLabel(key), num//2, 0)
-                parameters[key] = QtGui.QLineEdit()
-                grid.addWidget(parameters[key], num//2, 1)
+                self.parameters[key] = QtGui.QLineEdit()
+                grid.addWidget(self.parameters[key], num//2, 1)
+            # for odd numbers
             else:
                 grid.addWidget(QtGui.QLabel(key), num//2, 2)
-                parameters[key] = QtGui.QLineEdit()
-                grid.addWidget(parameters[key], num // 2, 1)
+                self.parameters[key] = QtGui.QLineEdit()
+                grid.addWidget(self.parameters[key], num // 2, 3)
+
+            # add the text if data exists
+            if self.data:
+                self.parameters[key].setText(self.data['parameters'][key])
+
+            # set the data to update if the line edit is changes
+            self.parameters[key].editingFinished.connect(self.production.write_to_data)
 
         # add channel and layer edits
         grid.addWidget(QtGui.QLabel('Channel'), 0, 4)
         grid.addWidget(QtGui.QLabel('Layer'), 1, 4)
         self.channel_edit = QtGui.QLineEdit()
+        if self.data:
+            self.channel_edit.setText(self.data['channel'])
+        else:
+            self.channel_edit.setText(str(self.main.settings['templates'][self.template]['channel']))
+        self.channel_edit.editingFinished.connect(self.production.write_to_data)
         self.layer_edit = QtGui.QLineEdit()
+        if self.data:
+            self.layer_edit.setText(self.data['layer'])
+        else:
+            self.layer_edit.setText(str(self.main.settings['templates'][self.template]['layer']))
+        self.layer_edit.editingFinished.connect(self.production.write_to_data)
         grid.addWidget(self.channel_edit, 0, 5)
         grid.addWidget(self.layer_edit, 1, 5)
 
@@ -238,7 +240,7 @@ class TemplateRow(QtGui.QWidget):
         self.remove_button.clicked.connect(lambda: self.gfx_section.remove_widget(self))
         grid.addWidget(self.remove_button, 1, 7)
 
-        self.fire_buttons = [self.fire_button]
+        self.fire_buttons = [self.fire_button, self.update_button]
         self.set_enabled_disabled()
 
     def update_graphic(self):
@@ -247,7 +249,7 @@ class TemplateRow(QtGui.QWidget):
             name=self.main.settings['templates'][self.template]['filename'],
             channel=self.fire_channel_and_layer[0],
             layer=self.fire_channel_and_layer[1],
-            parameters=''
+            parameters=self.get_parameters()
         )
         print(response)
 
@@ -259,7 +261,7 @@ class TemplateRow(QtGui.QWidget):
                 name=self.main.settings['templates'][self.template]['filename'],
                 channel=self.channel_edit.text(),
                 layer=self.layer_edit.text(),
-                parameters=''
+                parameters=self.get_parameters()
             )
             print(response)
 
@@ -283,16 +285,19 @@ class TemplateRow(QtGui.QWidget):
         """Function to add graphic to rundown"""
 
         # create a settings dictionary to allow it to be added
-        settings = {}
-        settings['channel'] = self.channel_edit.text()
-        settings['layer'] = self.layer_edit.text()
-        settings['filename'] = self.main.settings['templates'][self.template]['filename']
-        settings['name'] = ''
-        settings['type'] = "graphic"
-        parameters = ''
+        settings = {
+            'channel': self.channel_edit.text(),
+            'layer': self.layer_edit.text(),
+            'filename': self.main.settings['templates'][self.template]['filename'],
+            'name': self.get_name(),
+            'type': "graphic",
+            'parameters': self.get_parameters()
+        }
+
+        print(settings)
 
         # add to rundown
-        self.main.rundown.add_row(settings=settings, parameters=parameters)
+        self.main.rundown.add_row(settings=settings, parameters=self.get_parameters())
 
     def set_enabled_disabled(self):
         """Function to set fire buttons as enabled or disabled"""
@@ -305,30 +310,13 @@ class TemplateRow(QtGui.QWidget):
 
     def get_parameters(self):
         """Function to get the parameters"""
-        parameters = {}
-        parameters['topleft_team1'] = self.team1_edit.text()
-        parameters['topleft_team2'] = self.team2_edit.text()
-        parameters['topleft_score'] = self.score_edit.text()
-        parameters['team1_colour'] = self.colour1_edit.text()
-        parameters['team2_colour'] = self.colour2_edit.text()
-
+        parameters = {key: val.text() for key, val in self.parameters.items()}
         parameters = ['{}={}'.format(key, val) for key, val in parameters.items()]
         parameters = '|'.join(parameters)
         return parameters
 
     def get_name(self):
         """Function to build a name for the rundown"""
-        parameters = {}
-        parameters['team_left'] = self.team1_edit.text()
-        parameters['team_right'] = self.team2_edit.text()
-        parameters['score'] = self.score_edit.text()
-        try:
-            return "Top: {} {} {}".format(parameters['team_left'][0], parameters['score'],
-                                          parameters['team_right'][0])
-        except IndexError:
-            return "Top"
-
-
-
-
+        return self.template + ' ' + self.parameters[
+            self.main.settings['templates'][self.template]['rundownname']].text()
 

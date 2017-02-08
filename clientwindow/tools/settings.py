@@ -18,7 +18,7 @@ def get_settings():
     resources = get_resources()
 
     # open the settings file
-    with open(path.join(resources, 'settings'), 'r') as fp:
+    with open(path.join(resources, 'settings.json'), 'r') as fp:
         settings = json.load(fp)
 
     return settings
@@ -31,5 +31,5 @@ def store_settings(settings):
     resources = get_resources()
 
     # write as a json file
-    with open(path.join(resources, 'settings'), 'w') as fp:
+    with open(path.join(resources, 'settings.json'), 'w') as fp:
         json.dump(settings, fp, sort_keys=True, indent=4)

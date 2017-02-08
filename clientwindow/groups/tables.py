@@ -1,10 +1,48 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 1.5
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This file defines the table tab widget
 """
 
-from PySide import QtGui, QtCore
+from PySide import QtGui
 from clientwindow import tools
+
+
+class TablesWidget(QtGui.QWidget):
+    """Class to define the TablesWidget"""
+
+    def __init__(self, main, data=None, parent=None):
+        """Function to initialise the class"""
+
+        # call the parent __init__ function
+        super(TablesWidget, self).__init__(parent)
+
+        # set the tab title
+        self.title = "Tables"
+
+        # set values for convenience
+        self.main = main
+        self.comms = main.comms
+
+        # build the UI elements
+        self.init_ui()
+
+    def init_ui(self):
+        """Function to create the UI elements"""
+
+        # create and set layout
+        vbox = QtGui.QGridLayout()
+        self.setLayout(vbox)
+
+        # add the standings sections
+        vbox.addWidget(tools.QHeadingOne("Standings"))
+        standings_tables = StandingsTablesSection(tables_section=self)
+        vbox.addWidget(standings_tables)
+
+        # spacer
+        vbox.addItem(QtGui.QSpacerItem(1, 1, vData=QtGui.QSizePolicy.Expanding))
 
 
 class StandingsTablesSection(QtGui.QWidget):
@@ -126,6 +164,7 @@ class StandingsTablesSection(QtGui.QWidget):
         tools.store_settings(self.tables_section.main.settings)
         self.vbox.removeWidget(widget)
         widget.deleteLater()
+
 
 class StandingsTableDataRow(QtGui.QWidget):
     """Widget containing all data for a table row"""
@@ -281,11 +320,12 @@ class StandingsTableDataRow(QtGui.QWidget):
                 self.fire_status = 'Fire'
                 self.fire_button.setText('Fire')
 
+
 class AddNewStandingsTable(QtGui.QDialog):
-    """Custom dialog window to add new table"""
+    """Class which defines a custom dialog window to define a new table graphic"""
 
     def __init__(self, standings_table_section, parent=None):
-        """Function to initialise table"""
+        """Function to initialise the class"""
 
         super(AddNewStandingsTable, self).__init__(parent)
 
@@ -466,3 +506,7 @@ class AddNewStandingsTable(QtGui.QDialog):
         print(response)
         if response:
             self.accept()
+
+
+
+

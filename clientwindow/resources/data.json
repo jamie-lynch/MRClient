@@ -1,5 +1,17 @@
 {
-    "centrescore": [],
+    "centrescore": [
+        {
+            "channel": "3",
+            "layer": "25",
+            "parameters": {
+                "Infobar_info_text": "Half Time",
+                "score": "1 - 1",
+                "show_infobar": "1",
+                "team_left": "Loughborough",
+                "team_right": "Nottingham"
+            }
+        }
+    ],
     "rundown": {
         "11": {
             "button_wdiget": null,
@@ -76,6 +88,30 @@
                 }
             }
         },
+        "26": {
+            "button_wdiget": null,
+            "parameters": "StrapUpper=Ed Radford|StrapLower=LSU Media",
+            "settings": {
+                "channel": "1",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "20",
+                "name": "strapleft Ed Radford",
+                "parameters": "StrapUpper=Ed Radford|StrapLower=LSU Media",
+                "type": "graphic"
+            }
+        },
+        "33": {
+            "button_wdiget": null,
+            "parameters": "StrapLower=LSU Media|StrapUpper=Ed Radford",
+            "settings": {
+                "channel": "1",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "20",
+                "name": "strapleft Ed Radford",
+                "parameters": "StrapLower=LSU Media|StrapUpper=Ed Radford",
+                "type": "graphic"
+            }
+        },
         "9": {
             "button_wdiget": null,
             "parameters": null,
@@ -98,13 +134,27 @@
             "1": "20",
             "2": "15",
             "3": "9",
-            "4": "19"
+            "4": "19",
+            "5": "26",
+            "6": "33"
         }
     },
     "strapleft": [
         {
-            "StrapLower": "world",
-            "StrapUpper": "hello"
+            "channel": "1",
+            "layer": "20",
+            "parameters": {
+                "StrapLower": "LSU Media",
+                "StrapUpper": "Ed Radford"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": ""
+            }
         }
     ],
     "tables": {
@@ -1393,7 +1443,19 @@
             }
         }
     },
-    "topscore": [],
+    "topscore": [
+        {
+            "channel": "3",
+            "layer": "25",
+            "parameters": {
+                "team1_colour": "#FF0000",
+                "team2_colour": "#00FF00",
+                "topleft_score": "1 - 1",
+                "topleft_team1": "LBO",
+                "topleft_team2": "NOT"
+            }
+        }
+    ],
     "videos": {
         "1": {
             "date_modified": "20130619224440",

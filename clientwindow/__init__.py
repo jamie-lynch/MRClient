@@ -45,7 +45,7 @@ class ClientWindow(QtGui.QMainWindow):
         self.comms = caspar_comms.CasparAMCP()
 
         # get json data
-        self.data = tools.get_json(comms=self.comms)
+        self.data = tools.get_startup_data()
         self.splash.change_message()
 
         # get client settings
@@ -92,7 +92,7 @@ class ClientWindow(QtGui.QMainWindow):
         self.elements = {
             "production": {"element": production.ProductionWidget(main=self, data=self.data), "index": 0},
             # "vts": {"element": videos.VideoWidget(main=self, data=self.data), "index": 1},
-            # "tables": {"element": tables.TablesWidget(main=self), "index": 2},
+            "tables": {"element": tables.TablesWidget(main=self), "index": 2},
             # "rundown": {"element": self.rundown, "index": 3}
         }
 
@@ -112,7 +112,7 @@ class ClientWindow(QtGui.QMainWindow):
 
     def refresh_video_list(self):
         """Function which passes the refresh command onto the video element"""
-        self.element['vts'].refresh_data()
+        self.elements['vts'].refresh_data()
 
     def attempt_startup_connect(self):
         """Function which attempts to connect to Caspar on startup"""
@@ -144,7 +144,8 @@ class ClientWindow(QtGui.QMainWindow):
         if reply == QtGui.QMessageBox.Yes:
             if self.comms.casparcg:
                     self.comms.caspar_disconnect()
-            tools.store_local_data(self)
+            tools.store_data(self)
+            tools.store_settings(self.settings)
             event.accept()
         else:
             event.ignore()

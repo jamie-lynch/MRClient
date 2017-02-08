@@ -11,4 +11,3 @@ from clientwindow.tools.labels import *
 from clientwindow.tools.settings import *
 from clientwindow.tools.caspar import *
 from clientwindow.tools.general import *
-from clientwindow.tools.templates import *

@@ -16,21 +16,24 @@
                 "score",
                 "Infobar_info_text",
                 "show_infobar"
-            ]
+            ],
+            "rundownname": "score"
         },
         "standings_table10": {
             "channel": 3,
             "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
             "layer": 1,
             "name": "Standings Table10",
-            "parameters": []
+            "parameters": [],
+            "rundownname": ""
         },
         "standings_table6": {
             "channel": 3,
             "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
             "layer": 2,
             "name": "Standings Table6",
-            "parameters": []
+            "parameters": [],
+            "rundownname": ""
         },
         "strapleft": {
             "channel": 3,
@@ -40,7 +43,8 @@
             "parameters": [
                 "StrapUpper",
                 "StrapLower"
-            ]
+            ],
+            "rundownname": "StrapUpper"
         },
         "topscore": {
             "channel": 3,
@@ -53,7 +57,8 @@
                 "topleft_score",
                 "team1_colour",
                 "team2_colour"
-            ]
+            ],
+            "rundownname": "topleft_score"
         }
     }
 }
