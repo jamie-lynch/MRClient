@@ -11,7 +11,7 @@ from clientwindow.tools import QHeadingOne
 class ProductionWidget(QtGui.QWidget):
     """Widget for University name graphics"""
 
-    def __init__(self, main, parent=None, data=None):
+    def __init__(self, main, parent=None):
         """init function fro NameWidget"""
 
         # call the parent __init__ function
@@ -167,6 +167,9 @@ class TemplateRow(QtGui.QWidget):
         self.template = template
         self.data = data
 
+        # connect to the connected signal to un-freeze buttons when caspar is connected
+        self.main.connected.signal.connect(self.set_enabled_disabled)
+
         # create tuple to keep reference to channel and layer when graphics fired
         self.fire_channel_and_layer = None, None
 
@@ -243,16 +246,6 @@ class TemplateRow(QtGui.QWidget):
         self.fire_buttons = [self.fire_button, self.update_button]
         self.set_enabled_disabled()
 
-    def update_graphic(self):
-        """Function to update graphic"""
-        response = self.main.comms.template(
-            name=self.main.settings['templates'][self.template]['filename'],
-            channel=self.fire_channel_and_layer[0],
-            layer=self.fire_channel_and_layer[1],
-            parameters=self.get_parameters()
-        )
-        print(response)
-
     def fire_graphic(self):
         """Function to fire graphic"""
 
@@ -281,6 +274,16 @@ class TemplateRow(QtGui.QWidget):
                 self.fire_status = 'Fire'
                 self.fire_button.setText('Fire')
 
+    def update_graphic(self):
+        """Function to update graphic"""
+        response = self.main.comms.template(
+            name=self.main.settings['templates'][self.template]['filename'],
+            channel=self.fire_channel_and_layer[0],
+            layer=self.fire_channel_and_layer[1],
+            parameters=self.get_parameters()
+        )
+        print(response)
+
     def add_graphic(self):
         """Function to add graphic to rundown"""
 
@@ -293,8 +296,6 @@ class TemplateRow(QtGui.QWidget):
             'type': "graphic",
             'parameters': self.get_parameters()
         }
-
-        print(settings)
 
         # add to rundown
         self.main.rundown.add_row(settings=settings, parameters=self.get_parameters())
@@ -319,4 +320,3 @@ class TemplateRow(QtGui.QWidget):
         """Function to build a name for the rundown"""
         return self.template + ' ' + self.parameters[
             self.main.settings['templates'][self.template]['rundownname']].text()
-

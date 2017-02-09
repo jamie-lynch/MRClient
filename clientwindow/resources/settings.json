@@ -19,7 +19,7 @@
             ],
             "rundownname": "score"
         },
-        "standings_table10": {
+        "standingstable10": {
             "channel": 3,
             "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
             "layer": 1,
@@ -27,7 +27,7 @@
             "parameters": [],
             "rundownname": ""
         },
-        "standings_table6": {
+        "standingstable6": {
             "channel": 3,
             "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
             "layer": 2,

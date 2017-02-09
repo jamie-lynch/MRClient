@@ -52,7 +52,7 @@ def get_table_data(url):
         table_data_url = url
         table_data = requests.get(table_data_url).json()
 
-    except ValueError:
+    except requests.exceptions.ConnectionError:
         table_data = None
 
     return table_data

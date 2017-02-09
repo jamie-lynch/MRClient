@@ -33,7 +33,7 @@ class ClientWindow(QtGui.QMainWindow):
         self.setWindowState(QtCore.Qt.WindowMaximized)
 
         # set title
-        self.setWindowTitle('The Big Match CasparCG Client')
+        self.setWindowTitle('Match Report CasparCG Client')
 
     def startup(self, splash_window):
         """Function to carry out all startup procedures"""
@@ -80,7 +80,7 @@ class ClientWindow(QtGui.QMainWindow):
         vbox.addWidget(refresh_button)
 
         # shit the bed
-        kill_button = QtGui.QPushButton("PANIC!!!")
+        kill_button = QtGui.QPushButton("Clear All")
         kill_button.clicked.connect(self.comms.kill_switch)
         vbox.addWidget(kill_button)
 
@@ -90,7 +90,7 @@ class ClientWindow(QtGui.QMainWindow):
 
         # create a dictionary of elements
         self.elements = {
-            "production": {"element": production.ProductionWidget(main=self, data=self.data), "index": 0},
+            "production": {"element": production.ProductionWidget(main=self), "index": 0},
             # "vts": {"element": videos.VideoWidget(main=self, data=self.data), "index": 1},
             "tables": {"element": tables.TablesWidget(main=self), "index": 2},
             # "rundown": {"element": self.rundown, "index": 3}
@@ -98,7 +98,11 @@ class ClientWindow(QtGui.QMainWindow):
 
         # add each element to the tab widget
         for num, element_name in enumerate(self.elements.keys()):
-            self.tab_widget.insertTab(num, self.elements[element_name]["element"], element_name.capitalize())
+            self.tab_widget.insertTab(
+                self.elements[element_name]['index'],
+                self.elements[element_name]["element"],
+                element_name.capitalize()
+            )
 
         # add menu
         menu_bar = ClientMenu(main=self)
