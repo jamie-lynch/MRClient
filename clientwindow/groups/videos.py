@@ -13,92 +13,116 @@ import threading
 class VideoWidget(QtGui.QWidget):
     """Widget for VT Playback"""
 
-    def __init__(self, main, parent=None, data=None):
-        """init function fro NameWidget"""
+    def __init__(self, main, parent=None):
+        """Function to initialise the class"""
+
+        # call to the __init__ if the parent function
         super(VideoWidget, self).__init__(parent)
 
+        # set the widget title
         self.title = "Video"
-        self.comms = main.comms
+
+        # set for convenience
         self.main = main
+        self.comms = main.comms
 
-        self.main_vbox = QtGui.QVBoxLayout()
-        self.main_vbox.addWidget(QHeadingOne("Videos"))
-        self.setLayout(self.main_vbox)
-
+        # connect to the connected signal so that data is refreshed
         self.main.connected.signal.connect(self.refresh_data)
-        self.init_ui(data)
 
-    def init_ui(self, data=None):
-        """ sets base content of widget """
-        if not data:
-            data = tools.get_json(comms=self.comms)
+        # Build the UI elements
+        self.init_ui()
 
-        # create layout
+    def init_ui(self):
+        """Create the UI elements"""
+
+        # create the main layout
+        main_vbox = QtGui.QVBoxLayout()
+        main_vbox.addWidget(QHeadingOne("Videos"))
+        self.setLayout(main_vbox)
+
+        # create layout to go in the scroll area
         self.vbox = QtGui.QVBoxLayout()
         self.vbox.setAlignment(QtCore.Qt.AlignTop)
 
         # create scroll area and add all the things
-        self.scroll_area = QtGui.QScrollArea()
-        scroll_widget = QtGui.QWidget()
+        scroll_area = QtGui.QScrollArea()
+        scroll_widget = QtGui.QListWidget()
         scroll_widget.setLayout(self.vbox)
-        self.scroll_area.setWidget(scroll_widget)
-        self.scroll_area.setWidgetResizable(True)
-        self.main_vbox.addWidget(self.scroll_area)
+        scroll_area.setWidget(scroll_widget)
+        scroll_area.setWidgetResizable(True)
+        main_vbox.addWidget(self.scroll_area)
 
-        self.videos = data['videos']
+        # create a list widget to hold the video items
+        self.list_widget = QtGui.QListWidget()
+        self.vbox.addWidget(self.list_widget)
 
-        for num, video in data['videos'].items():
-            try:
-                new = VideoItem(data=video, comms=self.comms, main=self.main)
-                self.vbox.addWidget(new)
-            except ZeroDivisionError:
-                pass
+        # get the video list
+        tools.get_video_data(self.main)
 
-    def refresh_data(self, data=None):
+        # add each of the videos from the list
+        for num in sorted(self.main.data['videos'].keys()):
+            self.add_video_item(self.main.data['videos'][num])
+
+    def refresh_data(self):
         """Function ro refresh video list"""
-        # remove scroll area
-        try:
-            self.main_vbox.removeWidget(self.scroll_area)
-            self.scroll_area.deleteLater()
-        except AttributeError:
-            pass
-        finally:
-            self.init_ui()
+        # clear the list widget
+        self.list_widget.clear()
 
-class VideoItem(QtGui.QFrame):
+        # get the video list
+        tools.get_video_data(self.main)
+
+        # add each of the videos from the list
+        for num in sorted(self.main.data['videos'].keys()):
+            self.add_video_item(self.main.data['videos'][num])
+
+    def add_video_item(self, item):
+        """Function to add one item to the list widget"""
+        new = VideoItem(main=self.main, data=item)
+        self.list_widget.addItem(new)
+
+
+class VideoItem(QtGui.QListWidgetItem):
     """Class containing info for one video/still item"""
 
-    channel_launched = None
-    paused = False
-    playing = False
-    ready = True
-
-    def __init__(self, data, comms, main, parent=None):
+    def __init__(self, main, data, parent=None):
         """Function to initialise VideoWidget class"""
+
+        # Call the parent __init__ function
         super(VideoItem, self).__init__(parent)
 
+        # set for convenience
+        self.data = data
+        self.main = main
+
+        # create the UI elements
+        self.initUI()
+
+        # self.setFrameStyle(QtGui.QFrame.Box)
+
+    def initUI(self):
+        """Function to create the UI elements"""
+
+        # create the layout
         grid = QtGui.QGridLayout()
         self.setLayout(grid)
 
-        self.data = data
-        self.main = main
-        self.comms = comms
+        # add the type and name details
+        grid.addWidget(QtGui.QLabel(self.data['type']), 0, 0)
+        grid.addWidget(QtGui.QLabel(self.data['name']), 1, 0)
 
-        self.setFrameStyle(QtGui.QFrame.Box)
+        # add channel elements
+        grid.addWidget(QtGui.QLabel("Channel"), 0, 1)
+        self.channel_edit = QtGui.QLineEdit(str(self.get_channel()))
+        self.channel_edit.textChanged.connect(self.check_channel)
+        grid.addWidget(self.channel_select, 0, 2)
 
-        self.threads = []
-
-        # details
-
-        self.name = QtGui.QLabel(data['name'])
-        grid.addWidget(self.name, 0, 0, 1, 2)
-
-        # type
-        type = QtGui.QLabel(data['type'])
-        grid.addWidget(type, 1, 0)
+        # add the loop label and checkbox
+        grid.addWidget(QtGui.QLabel("Loop?"), 1, 1)
+        self.loop_select = QtGui.QCheckBox()
+        grid.addWidget(self.loop_select, 1, 2)
 
         # length
-        grid.addWidget(QtGui.QLabel("Length"), 1, 3)
+        grid.addWidget(QtGui.QLabel("Length"), 0, 3)
         self.data['length'], self.data['frames'], self.data['frame_rate'] = self.get_length_from_frames()
         length = QtGui.QLabel(self.data['length'])
         grid.addWidget(length, 1, 4)
@@ -109,19 +133,8 @@ class VideoItem(QtGui.QFrame):
         self.time = QVTTextLabel(self.data['remaining_time'])
         grid.addWidget(self.time, 1, 6)
 
-        channel_label = QtGui.QLabel("Channel")
-        grid.addWidget(channel_label, 0, 2)
 
-        channel = self.get_channel()
-        self.channel_select = QtGui.QLineEdit(str(self.get_channel()))
-        self.channel_select.textChanged.connect(self.check_channel)
-        grid.addWidget(self.channel_select, 0, 3, 1, 4)
 
-        loop_label = QtGui.QLabel("Loop")
-        grid.addWidget(loop_label, 1, 1)
-
-        self.loop_select = QtGui.QCheckBox()
-        grid.addWidget(self.loop_select, 1, 2)
 
 
         # buttons
@@ -162,39 +175,37 @@ class VideoItem(QtGui.QFrame):
 
     def check_channel(self):
         """Function to check channel set to something sensible"""
-        channel = self.channel_select.text()
-        print(channel)
-        print(self.data['type'])
-        if self.data['type'] == "AUDIO":
-            if channel != "4":
-                self.channel_select.setText("4")
-                error = QtGui.QErrorMessage()
-                error.showMessage("Audio track must be on channel 4")
-                error.exec_()
-                return
-        elif self.data['type'] == "MOVIE":
-            if channel not in ["1","2"]:
-                self.channel_select.setText("1")
-                error = QtGui.QErrorMessage()
-                error.showMessage("Movie/Still track must be on channels 1 or 2")
-                error.exec_()
-                return
-        elif self.data['type'] == "STILL":
-            if channel not in ["1", "2"]:
-                self.channel_select.setText("1")
-                error = QtGui.QErrorMessage()
-                error.showMessage("Movie/Still track must be on channels 1 or 2")
-                error.exec_()
-                return
 
+        # set the message and channel number
+        msg = None
+        channel = self.channel_edit.text()
+
+        # do some checks
+        if self.data['type'] == "AUDIO" and channel != "4":
+                self.channel_select.setText("4")
+                msg = "Audio track must be on channel 4"
+
+        elif self.data['type'] == "MOVIE" and channel not in ["1","2"]:
+                self.channel_select.setText("1")
+                msg = "Movie/Still track must be on channels 1 or 2"
+
+        elif self.data['type'] == "STILL" and channel not in ["1", "2"]:
+                self.channel_select.setText("1")
+                msg = "Movie/Still track must be on channels 1 or 2"
+
+        # if there's an error then report it
+        if msg:
+            error = QtGui.QErrorMessage(msg)
+            error.showMessage()
+            error.exec_()
 
     def set_enabled_disabled(self):
         """Function to set whether the buttons are enabled or disabled"""
         if self.comms.casparcg:
-            for button in self.buttons:
+            for button in self.fire_buttons:
                 button.setEnabled(True)
         else:
-            for button in self.buttons:
+            for button in self.fire_buttons:
                 button.setDisabled(True)
 
     def load_vt(self):

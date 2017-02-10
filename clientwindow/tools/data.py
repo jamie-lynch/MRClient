@@ -38,11 +38,10 @@ def store_data(main):
     return
 
 
-def get_video_data(main, comms=None):
+def get_video_data(main):
     """Function to get the list of vts available from Caspar"""
-    if comms:
-        if comms.casparcg:
-            main.data['videos'] = comms.get_video_list()
+    if main.comms.casparcg:
+        main.data['videos'] = main.comms.get_video_list()
 
 
 def get_table_data(url):

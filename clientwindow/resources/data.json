@@ -124,6 +124,18 @@
                 "type": "graphic"
             }
         },
+        "50": {
+            "button_wdiget": null,
+            "parameters": "table_row_1_stat_1=1|table_row_10_team_name=|table_row_5_points=0|table_row_1_stat_4=0|table_row_3_stat_5=4|gender=womens|table_header_stat_3_title=D|table_row_7_stat_4=|table_row_10_stat_3=|table_row_1_stat_5=4|table_row_3_stat_3=0|table_header_subtitle=Midlands 1A|table_row_9_team_name=|table_row_6_stat_3=0|table_row_4_points=0|table_row_4_stat_5=-2|table_row_5_team_name=Derby 1st|table_row_5_stat_1=1|table_row_7_stat_1=|table_row_5_position=5|sport=badminton|table_row_4_stat_1=1|table_row_7_stat_2=|table_row_2_stat_4=0|table_row_2_team_name=Warwick 1st|table_row_4_stat_4=1|team=2|table_row_8_points=|table_row_9_points=|table_header_stat_1_title=P|table_row_8_stat_5=|table_row_7_stat_5=|table_row_8_stat_3=|title=BUCS Badminton 2016-17|table_row_5_stat_4=1|table_row_10_stat_2=|table_row_4_team_name=Nottingham 2nd|table_row_6_stat_2=0|table_row_6_team_name=East Anglia 1st|table_row_2_stat_2=1|table_row_7_position=|table_row_4_stat_2=0|table_row_9_stat_2=|type=BUCS|table_row_2_stat_1=1|table_row_5_stat_3=0|table_row_1_position=1|table_row_9_position=|table_header_stat_4_title=L|table_row_2_position=2|table_row_1_team_name=Loughborough 2nd|table_row_10_stat_4=|table_row_1_points=3|table_row_2_points=3|table_row_7_stat_3=|table_header_points_title=Pts|table_row_10_stat_1=|table_row_2_stat_5=4|table_row_1_stat_2=1|table_row_3_points=3|table_row_10_points=|table_row_6_points=0|table_header_stat_5_title=GD|table_header_stat_2_title=W|table_row_3_team_name=Oxford 1st|table_row_5_stat_5=-4|table_row_6_stat_1=1|table_row_3_stat_4=0|table_row_9_stat_1=|table_row_2_stat_3=0|table_row_7_team_name=|table_row_8_stat_1=|table_row_4_position=4|table_row_10_position=|table_row_8_stat_2=|table_row_3_stat_2=1|table_row_9_stat_4=|table_row_5_stat_2=0|table_row_7_points=|table_row_3_position=3|table_row_6_position=6|table_row_1_stat_3=0|table_row_3_stat_1=1|table_row_8_stat_4=|table_row_9_stat_3=|table_row_9_stat_5=|table_row_6_stat_5=-4|table_row_4_stat_3=0|table_row_6_stat_4=1|table_row_8_team_name=|table_row_10_stat_5=|table_row_8_position=",
+            "settings": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
+                "layer": "5",
+                "name": "BUCSBadmintonW2",
+                "parameters": "table_row_1_stat_1=1|table_row_10_team_name=|table_row_5_points=0|table_row_1_stat_4=0|table_row_3_stat_5=4|gender=womens|table_header_stat_3_title=D|table_row_7_stat_4=|table_row_10_stat_3=|table_row_1_stat_5=4|table_row_3_stat_3=0|table_header_subtitle=Midlands 1A|table_row_9_team_name=|table_row_6_stat_3=0|table_row_4_points=0|table_row_4_stat_5=-2|table_row_5_team_name=Derby 1st|table_row_5_stat_1=1|table_row_7_stat_1=|table_row_5_position=5|sport=badminton|table_row_4_stat_1=1|table_row_7_stat_2=|table_row_2_stat_4=0|table_row_2_team_name=Warwick 1st|table_row_4_stat_4=1|team=2|table_row_8_points=|table_row_9_points=|table_header_stat_1_title=P|table_row_8_stat_5=|table_row_7_stat_5=|table_row_8_stat_3=|title=BUCS Badminton 2016-17|table_row_5_stat_4=1|table_row_10_stat_2=|table_row_4_team_name=Nottingham 2nd|table_row_6_stat_2=0|table_row_6_team_name=East Anglia 1st|table_row_2_stat_2=1|table_row_7_position=|table_row_4_stat_2=0|table_row_9_stat_2=|type=BUCS|table_row_2_stat_1=1|table_row_5_stat_3=0|table_row_1_position=1|table_row_9_position=|table_header_stat_4_title=L|table_row_2_position=2|table_row_1_team_name=Loughborough 2nd|table_row_10_stat_4=|table_row_1_points=3|table_row_2_points=3|table_row_7_stat_3=|table_header_points_title=Pts|table_row_10_stat_1=|table_row_2_stat_5=4|table_row_1_stat_2=1|table_row_3_points=3|table_row_10_points=|table_row_6_points=0|table_header_stat_5_title=GD|table_header_stat_2_title=W|table_row_3_team_name=Oxford 1st|table_row_5_stat_5=-4|table_row_6_stat_1=1|table_row_3_stat_4=0|table_row_9_stat_1=|table_row_2_stat_3=0|table_row_7_team_name=|table_row_8_stat_1=|table_row_4_position=4|table_row_10_position=|table_row_8_stat_2=|table_row_3_stat_2=1|table_row_9_stat_4=|table_row_5_stat_2=0|table_row_7_points=|table_row_3_position=3|table_row_6_position=6|table_row_1_stat_3=0|table_row_3_stat_1=1|table_row_8_stat_4=|table_row_9_stat_3=|table_row_9_stat_5=|table_row_6_stat_5=-4|table_row_4_stat_3=0|table_row_6_stat_4=1|table_row_8_team_name=|table_row_10_stat_5=|table_row_8_position=",
+                "type": "graphic"
+            }
+        },
         "9": {
             "button_wdiget": null,
             "parameters": null,
@@ -149,7 +161,8 @@
             "4": "19",
             "5": "26",
             "6": "33",
-            "7": "41"
+            "7": "41",
+            "8": "50"
         }
     },
     "standingstable": [

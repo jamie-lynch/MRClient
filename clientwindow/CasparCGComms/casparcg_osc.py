@@ -1,5 +1,5 @@
 # Jack Connor-Richards - 15th December 2016 - v0.1.0
-# CasparCG OSC class to be used with The Big Match CasparCG Custom Client
+# CasparCG OSC class to be used with The Match Report CasparCG Custom Client
 # written by Jamie Lynch and Jack Connor-Richards for LSU Media
 
 # Version History:

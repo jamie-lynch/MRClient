@@ -10,6 +10,7 @@ This file defines the mainwindow class
 from PySide import QtGui, QtCore
 from clientwindow import tools
 from clientwindow.CasparCGComms import casparcg_amcp as caspar_comms
+from clientwindow.CasparCGComms.osc_example import OSCReceiver
 from clientwindow.groups import videos, rundown, tables, production
 from clientwindow.menubar import ClientMenu
 
