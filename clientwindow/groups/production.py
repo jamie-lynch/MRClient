@@ -3,7 +3,7 @@ The Big Match graphics client
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 """
 
-from PySide import QtGui
+from PySide import QtGui, QtCore
 from clientwindow import tools
 from clientwindow.tools import QHeadingOne
 
@@ -191,13 +191,21 @@ class TemplateRow(QtGui.QWidget):
 
             # for even numbers
             if not num % 2:
-                grid.addWidget(QtGui.QLabel(key), num//2, 0)
+                heading = QtGui.QLabel(key)
+                heading.setFixedWidth(120)
+                heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
+                grid.addWidget(heading, num//2, 0)
                 self.parameters[key] = QtGui.QLineEdit()
+                self.parameters[key].setFixedWidth(160)
                 grid.addWidget(self.parameters[key], num//2, 1)
             # for odd numbers
             else:
-                grid.addWidget(QtGui.QLabel(key), num//2, 2)
+                heading = QtGui.QLabel(key)
+                heading.setFixedWidth(120)
+                heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
+                grid.addWidget(heading, num//2, 2)
                 self.parameters[key] = QtGui.QLineEdit()
+                self.parameters[key].setFixedWidth(160)
                 grid.addWidget(self.parameters[key], num // 2, 3)
 
             # add the text if data exists
@@ -208,15 +216,26 @@ class TemplateRow(QtGui.QWidget):
             self.parameters[key].editingFinished.connect(self.production.write_to_data)
 
         # add channel and layer edits
-        grid.addWidget(QtGui.QLabel('Channel'), 0, 4)
-        grid.addWidget(QtGui.QLabel('Layer'), 1, 4)
+        channel = QtGui.QLabel('Channel')
+        channel.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        channel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
+        grid.addWidget(channel, 0, 4)
+
+        layer = QtGui.QLabel('Layer')
+        layer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        layer.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        grid.addWidget(layer, 1, 4)
+
         self.channel_edit = QtGui.QLineEdit()
+        self.channel_edit.setFixedWidth(60)
         if self.data:
             self.channel_edit.setText(self.data['channel'])
         else:
             self.channel_edit.setText(str(self.main.settings['templates'][self.template]['channel']))
         self.channel_edit.editingFinished.connect(self.production.write_to_data)
+
         self.layer_edit = QtGui.QLineEdit()
+        self.layer_edit.setFixedWidth(60)
         if self.data:
             self.layer_edit.setText(self.data['layer'])
         else:

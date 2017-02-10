@@ -6,7 +6,7 @@ written by Jamie Lynch & Jack Connor-Richards for LSU Media
 from PySide import QtGui, QtCore
 from clientwindow.tools import QHeadingThree, \
         QHeadingOne, \
-        QVTTextLabel
+        QVTLabel
 import time
 import threading
 
@@ -188,6 +188,9 @@ class VTGFXRundownItem(QtGui.QFrame):
 class VTRundownItem(QtGui.QWidget):
     """Class to show data and control buttons for VT item in rundown"""
 
+    playing_signal = QtCore.Signal(object)
+    stopped_signal = QtCore.Signal(object)
+
     def __init__(self, vt_data, vtgfx_item, parent=None):
         """Function to initialise VTRundownItem"""
         super(VTRundownItem, self).__init__(parent)
@@ -228,12 +231,11 @@ class VTRundownItem(QtGui.QWidget):
         # current time
         grid.addWidget(QtGui.QLabel("Remaining"), 1, 5)
         self.data['remaining_time'] = self.data['length']
-        self.time = QVTTextLabel(self.data['remaining_time'])
+        self.time = QVTLabel(self, self.data['remaining_time'])
         grid.addWidget(self.time, 1, 6)
 
         channel_label = QtGui.QLabel("Channel")
         grid.addWidget(channel_label, 0, 2)
-
 
         self.channel_select = QtGui.QLineEdit(str(self.settings['channel']))
         self.channel_select.textChanged.connect(self.check_channel)

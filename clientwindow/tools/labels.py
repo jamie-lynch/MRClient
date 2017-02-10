@@ -6,7 +6,7 @@ written by Jamie Lynch & Jack Connor-Richards for LSU Media
 This file contains a number of custom labels
 """
 
-from PySide import QtGui
+from PySide import QtGui, QtCore
 
 
 class QHeadingOne(QtGui.QLabel):
@@ -25,16 +25,28 @@ class QHeadingThree(QtGui.QLabel):
         self.setStyleSheet('QHeadingThree{font: bold}')
 
 
-class QVTTextLabel(QtGui.QLabel):
+class QVTLabel(QtGui.QLabel):
     """Class based on QLabel to create text which changes colour when VT plays"""
 
-    def __init__(self, parent=None):
-        super(QVTTextLabel, self).__init__(parent)
+    def __init__(self, videoitem, text, parent=None):
+        super(QVTLabel, self).__init__(text, parent)
 
-    def set_playing_style(self):
+        self.videoitem = videoitem
+        self.videoitem.playing_signal.connect(self.set_playing_style)
+        self.videoitem.stopped_signal.connect(self.set_stopped_style)
+
+    @QtCore.Slot(object)
+    def set_playing_style(self, videoitem):
         """Function to set the style to the playing format"""
-        self.setStyleSheet('QVTTextLabel{color: red}')
+        if self.videoitem == videoitem:
+            self.setStyleSheet('QVTLabel{color: white}')
 
-    def set_stopped_style(self):
+    @QtCore.Slot(object)
+    def set_stopped_style(self, videoitem):
         """Function to set the style to standard"""
-        self.setStyleSheet('QVTTextLabel{color: black}')
+        if self.videoitem == videoitem:
+            self.setStyleSheet('QVTLabel{color: black}')
+
+
+
+

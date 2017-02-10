@@ -378,8 +378,8 @@
             "channel": "3",
             "layer": "30",
             "parameters": {
-                "StrapLower": "",
-                "StrapUpper": ""
+                "StrapLower": "world",
+                "StrapUpper": "hello"
             }
         }
     ],
@@ -402,9 +402,8 @@
             "file_size": "5119595",
             "frame_rate": 1.0,
             "frames": 215.0,
-            "length": "0:03:35:0",
+            "length": "00:03:35:00",
             "name": "01-KELLY_CLARKSON-MISS_INDEPENDENT",
-            "remaining_time": "0:03:35:0",
             "type": "AUDIO"
         },
         "2": {
@@ -412,9 +411,8 @@
             "file_size": "6445960",
             "frame_rate": 25.0,
             "frames": 268.0,
-            "length": "0:00:10:18",
+            "length": "00:00:10:18",
             "name": "AMB",
-            "remaining_time": "0:00:10:18",
             "type": "MOVIE"
         },
         "3": {
@@ -422,9 +420,8 @@
             "file_size": "6159792",
             "frame_rate": 25.0,
             "frames": 264.0,
-            "length": "0:00:10:14",
+            "length": "00:00:10:14",
             "name": "CG1080I50",
-            "remaining_time": "0:00:10:14",
             "type": "MOVIE"
         },
         "4": {
@@ -432,9 +429,8 @@
             "file_size": "10298115",
             "frame_rate": 25.0,
             "frames": 260.0,
-            "length": "0:00:10:10",
+            "length": "00:00:10:10",
             "name": "CG1080I50_A",
-            "remaining_time": "0:00:10:10",
             "type": "MOVIE"
         },
         "5": {
@@ -442,9 +438,8 @@
             "file_size": "16694084",
             "frame_rate": 25.0,
             "frames": 445.0,
-            "length": "0:00:17:20",
+            "length": "00:00:17:20",
             "name": "GO1080P 25",
-            "remaining_time": "0:00:17:20",
             "type": "MOVIE"
         },
         "6": {
@@ -452,9 +447,8 @@
             "file_size": "16694084",
             "frame_rate": 25.0,
             "frames": 445.0,
-            "length": "0:00:17:20",
+            "length": "00:00:17:20",
             "name": "GO1080P25",
-            "remaining_time": "0:00:17:20",
             "type": "MOVIE"
         },
         "7": {
@@ -462,9 +456,8 @@
             "file_size": "6220854",
             "frame_rate": 1,
             "frames": 1.0,
-            "length": "0:00:01:0",
+            "length": "00:00:01:00",
             "name": "SPLIT",
-            "remaining_time": "0:00:01:0",
             "type": "STILL"
         },
         "8": {
@@ -472,9 +465,8 @@
             "file_size": "1268784",
             "frame_rate": 25.0,
             "frames": 31.0,
-            "length": "0:00:01:6",
+            "length": "00:00:01:06",
             "name": "WIPE",
-            "remaining_time": "0:00:01:6",
             "type": "MOVIE"
         }
     }

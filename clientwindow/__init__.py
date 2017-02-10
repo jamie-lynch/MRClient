@@ -10,7 +10,7 @@ This file defines the mainwindow class
 from PySide import QtGui, QtCore
 from clientwindow import tools
 from clientwindow.CasparCGComms import casparcg_amcp as caspar_comms
-from clientwindow.CasparCGComms.osc_example import OSCReceiver
+from clientwindow.CasparCGComms.osc_receiver import OSCReceiver
 from clientwindow.groups import videos, rundown, tables, production
 from clientwindow.menubar import ClientMenu
 
@@ -44,6 +44,9 @@ class ClientWindow(QtGui.QMainWindow):
 
         # create instance of CasparAMCP class
         self.comms = caspar_comms.CasparAMCP()
+
+        # create an osc reviever
+        self.osc = OSCReceiver()
 
         # get json data
         self.data = tools.get_startup_data()
@@ -89,18 +92,20 @@ class ClientWindow(QtGui.QMainWindow):
         self.rundown = rundown.RundownWidget(main=self)
         self.rundown.build_from_file()
 
+        # set element list
+        elements = ['production', 'tables', 'vts']
+
         # create a dictionary of elements
         self.elements = {
             "production": {"element": production.ProductionWidget(main=self), "index": 0},
-            # "vts": {"element": videos.VideoWidget(main=self, data=self.data), "index": 1},
+            "vts": {"element": videos.VideoWidget(main=self), "index": 1},
             "tables": {"element": tables.TablesWidget(main=self), "index": 2},
-            # "rundown": {"element": self.rundown, "index": 3}
+            "rundown": {"element": self.rundown, "index": 3}
         }
 
         # add each element to the tab widget
-        for num, element_name in enumerate(self.elements.keys()):
-            self.tab_widget.insertTab(
-                self.elements[element_name]['index'],
+        for num, element_name in enumerate(elements):
+            self.tab_widget.addTab(
                 self.elements[element_name]["element"],
                 element_name.capitalize()
             )
@@ -117,7 +122,7 @@ class ClientWindow(QtGui.QMainWindow):
 
     def refresh_video_list(self):
         """Function which passes the refresh command onto the video element"""
-        self.elements['vts'].refresh_data()
+        self.elements['vts']['element'].refresh_data()
 
     def attempt_startup_connect(self):
         """Function which attempts to connect to Caspar on startup"""

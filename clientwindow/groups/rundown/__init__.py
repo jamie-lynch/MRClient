@@ -163,6 +163,9 @@ class RundownWidget(QtGui.QWidget):
 class RundownItem(QtGui.QFrame):
     """Item containing all data for a rundown item"""
 
+    playing_signal = QtCore.Signal(object)
+    stopped_signal = QtCore.Signal(object)
+
     def __init__(self, settings, button_widget, parameters, main, curr_id, parent=None):
         """Function to intialise RundownItem"""
         super(RundownItem, self).__init__(parent)
@@ -195,6 +198,8 @@ class RundownItem(QtGui.QFrame):
 
         self.setFixedHeight(100)
         self.set_enabled_disabled()
+
+
 
     def set_background_colour(self):
         """Function to set the correct background colour"""
@@ -230,7 +235,7 @@ class RundownItem(QtGui.QFrame):
         # current time
         grid.addWidget(QtGui.QLabel("Remaining"), 1, 5)
         self.data['remaining_time'] = self.data['length']
-        self.time = QVTTextLabel(self.data['remaining_time'])
+        self.time = QVTLabel(self, self.data['remaining_time'])
         grid.addWidget(self.time, 1, 6)
 
         channel_label = QtGui.QLabel("Channel")

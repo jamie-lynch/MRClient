@@ -201,9 +201,18 @@ class StandingsTableDataRow(QtGui.QWidget):
         grid.addWidget(tools.QHeadingThree('Sport: '), 1, 0)
         grid.addWidget(tools.QHeadingThree('Gender: '), 0, 2)
         grid.addWidget(tools.QHeadingThree('Team: '), 1, 2)
-        grid.addWidget(QtGui.QLabel(self.tablesettings['league']), 0, 1)
+
+        league = QtGui.QLabel(self.tablesettings['league'])
+        league.setFixedWidth(100)
+        grid.addWidget(league, 0, 1)
+
+        sport = QtGui.QLabel(self.tablesettings['sport'])
+        sport.setFixedWidth(100)
+
         grid.addWidget(QtGui.QLabel(self.tablesettings['sport']), 1, 1)
-        grid.addWidget(QtGui.QLabel(self.tablesettings['gender']), 0, 3)
+        gender = QtGui.QLabel(self.tablesettings['gender'])
+        grid.addWidget(gender, 0, 3)
+        gender.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         grid.addWidget(QtGui.QLabel(self.tablesettings['team']), 1, 3)
 
         # add channel and layer edits
@@ -212,9 +221,11 @@ class StandingsTableDataRow(QtGui.QWidget):
         self.channel_edit = QtGui.QLineEdit()
         self.channel_edit.setText(str(self.tablesettings['channel']))
         self.channel_edit.editingFinished.connect(self.tables_section.write_to_data)
+        self.channel_edit.setFixedWidth(60)
         self.layer_edit = QtGui.QLineEdit()
         self.layer_edit.setText(str(self.tablesettings['layer']))
         self.layer_edit.editingFinished.connect(self.tables_section.write_to_data)
+        self.layer_edit.setFixedWidth(60)
         grid.addWidget(self.channel_edit, 0, 5)
         grid.addWidget(self.layer_edit, 1, 5)
 
