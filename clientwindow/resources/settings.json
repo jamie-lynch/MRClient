@@ -60,5 +60,10 @@
             ],
             "rundownname": "topleft_score"
         }
-    }
+    },
+    "vt_templates": [
+        "strapleft",
+        "centrescore",
+        "topscore"
+    ]
 }

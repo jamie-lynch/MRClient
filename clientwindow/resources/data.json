@@ -4,165 +4,120 @@
             "channel": "3",
             "layer": "25",
             "parameters": {
-                "Infobar_info_text": "Half Time",
-                "score": "1 - 1",
-                "show_infobar": "1",
-                "team_left": "Loughborough",
-                "team_right": "Nottingham"
+                "Infobar_info_text": "",
+                "score": "",
+                "show_infobar": "",
+                "team_left": "",
+                "team_right": ""
             }
         }
     ],
     "rundown": {
-        "11": {
-            "button_wdiget": null,
-            "parameters": null,
-            "settings": {
-                "channel": 1,
-                "date_modified": "20160911230222",
-                "file_size": "1268784",
-                "filename": "WIPE",
-                "frame_rate": 25.0,
-                "frames": 31.0,
-                "length": "0:00:01:6",
-                "name": "WIPE",
-                "remaining_time": "0:00:01:6",
-                "type": "vt",
-                "vt_type": "MOVIE"
-            }
-        },
-        "15": {
-            "button_wdiget": null,
-            "parameters": "StrapLower=world|StrapUpper=hello",
-            "settings": {
-                "channel": 3,
+        "items": {
+            "78": {
+                "channel": "3",
                 "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": 8,
-                "name": "hello",
+                "layer": "30",
+                "name": "3",
+                "parameters": "StrapLower=|StrapUpper=3",
+                "template": "strapleft",
                 "type": "graphic"
-            }
-        },
-        "19": {
-            "button_wdiget": null,
-            "parameters": "table_row_6_stat_4=|table_row_1_stat_5=|table_row_1_stat_1=|table_row_5_stat_1=|table_row_4_stat_1=|table_row_4_stat_3=|table_row_4_team_name=University of Edinburgh|table_row_10_team_name=University of Stirling|table_row_1_stat_3=|table_row_8_points=1547|table_row_8_stat_2=|table_row_9_team_name=Northumbria University|table_row_5_stat_2=|table_row_3_stat_3=|table_row_3_position=3|table_row_1_position=1|table_header_stat_4_title=|table_header_stat_1_title=|table_row_7_stat_3=|table_row_8_team_name=University of Bristol|table_row_10_stat_4=|table_row_9_stat_1=|table_row_2_stat_3=|table_row_9_points=1534|table_row_6_stat_3=|table_row_1_stat_2=|table_row_7_points=1547.5|table_row_9_position=9|table_row_2_team_name=Durham University|table_row_8_stat_4=|table_row_1_team_name=Loughborough University|table_header_stat_2_tiz tle=|table_row_5_points=1959|table_row_8_stat_5=|table_row_9_stat_2=|table_row_2_position=2|table_row_7_stat_2=|table_row_1_points=2479.5|table_row_4_stat_2=|table_row_6_position=6|table_row_8_stat_3=|table_row_10_stat_3=|table_row_7_stat_5=|table_row_4_stat_5=|table_row_2_stat_2=|table_row_2_stat_1=|table_row_6_stat_5=|table_row_10_points=1494|table_row_6_stat_2=|table_header_stat_5_title=|table_row_2_points=2437|table_row_6_points=1760|table_row_3_stat_5=|title=BUCS 2016-17 Championship|table_row_3_stat_2=|table_row_9_stat_3=|table_row_5_stat_4=|table_row_5_position=5|table_row_1_stat_4=|table_row_10_stat_5=|table_header_points_title=Points|table_row_2_stat_5=|table_row_5_stat_3=|table_row_3_stat_4=|table_row_9_stat_5=|table_row_7_position=7|table_row_10_position=10|table_row_3_points=2075|table_row_4_position=4|table_row_10_stat_1=|table_row_2_stat_4=|table_row_5_team_name=University of Exeter|table_row_7_team_name=University of Birmingham|table_row_5_stat_5=|table_row_9_stat_4=|table_header_subtitle=Overall Standings|table_row_3_stat_1=|table_row_8_position=8|table_row_7_stat_1=|table_row_3_team_name=University of Nottingham|table_row_7_stat_4=|table_row_6_stat_1=|table_row_6_team_name=University of Bath|table_header_stat_3_title=|table_row_10_stat_2=|table_row_4_stat_4=|table_row_4_points=2017|table_row_8_stat_1=",
-            "settings": {
-                "channel": 3,
-                "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
-                "layer": 1,
-                "name": "BUCSOverallCChoose team...",
+            },
+            "79": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "1",
+                "parameters": "StrapLower=|StrapUpper=1",
+                "template": "strapleft",
                 "type": "graphic"
-            }
-        },
-        "20": {
-            "button_wdiget": null,
-            "parameters": null,
-            "settings": {
-                "build": true,
+            },
+            "80": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "2",
+                "parameters": "StrapLower=|StrapUpper=2",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "81": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "4",
+                "parameters": "StrapLower=|StrapUpper=4",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "82": {
+                "channel": 1,
+                "date_modified": "20160911230218",
+                "file_size": "6159792",
+                "filename": "CG1080I50",
+                "frame_rate": 25.0,
+                "frames": 264.0,
                 "graphics": [
                     {
                         "channel": 1,
-                        "endtime": "00:00:05:00",
+                        "end": "00:00:10:00",
                         "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                        "label": "strap",
                         "layer": "10",
-                        "name": "Strap Left",
-                        "parameters": {
-                            "StrapLower": "world",
-                            "StrapUpper": "hellow"
-                        },
-                        "starttime": "00:00:00:00"
+                        "name": "strap hellp",
+                        "parameters": "StrapUpper=hello|StrapLower=world",
+                        "start": "00:00:00:00",
+                        "template": "strapleft"
                     }
                 ],
-                "type": "vtwithgfx",
-                "vt_data": {
-                    "channel": 1,
-                    "date_modified": "20160911230220",
-                    "file_size": "10298115",
-                    "filename": "CG1080I50_A",
-                    "frame_rate": 25.0,
-                    "frames": 260.0,
-                    "length": "0:00:10:10",
-                    "name": "CG1080I50_A",
-                    "remaining_time": "0:00:10:10",
-                    "type": "vtwithgfx",
-                    "vt_type": "MOVIE"
-                }
-            }
-        },
-        "26": {
-            "button_wdiget": null,
-            "parameters": "StrapUpper=Ed Radford|StrapLower=LSU Media",
-            "settings": {
-                "channel": "1",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "20",
-                "name": "strapleft Ed Radford",
-                "parameters": "StrapUpper=Ed Radford|StrapLower=LSU Media",
-                "type": "graphic"
-            }
-        },
-        "33": {
-            "button_wdiget": null,
-            "parameters": "StrapLower=LSU Media|StrapUpper=Ed Radford",
-            "settings": {
-                "channel": "1",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "20",
-                "name": "strapleft Ed Radford",
-                "parameters": "StrapLower=LSU Media|StrapUpper=Ed Radford",
-                "type": "graphic"
-            }
-        },
-        "41": {
-            "button_wdiget": null,
-            "parameters": "table_row_2_stat_3=|table_row_7_points=1885.33|table_row_10_position=10|table_row_3_stat_4=|table_row_1_team_name=Loughborough University|table_row_10_stat_2=|table_row_4_points=2445|table_row_4_stat_3=|title=BUCS 2016-17 Championship|table_header_stat_5_title=|table_row_8_stat_2=|table_row_3_points=2683|table_row_2_stat_1=|table_row_6_stat_1=|table_row_9_stat_5=|table_row_6_points=1987.5|table_row_4_stat_2=|table_row_2_team_name=Durham University|table_row_5_team_name=University of Exeter|table_row_3_position=3|table_row_6_stat_4=|table_row_3_stat_3=|table_row_2_points=2825|table_row_5_points=2261|table_row_7_team_name=University of Birmingham|table_row_4_team_name=University of Edinburgh|table_row_9_position=9|table_row_1_stat_2=|table_row_3_stat_5=|table_row_1_points=3130.5|table_row_4_stat_1=|table_row_5_stat_1=|table_row_1_stat_4=|table_row_8_points=1788|table_row_10_points=1523|table_header_stat_2_tiz tle=|table_row_2_stat_5=|table_row_6_stat_3=|table_header_subtitle=Overall Standings|table_row_10_stat_4=|table_row_6_team_name=University of Bath|table_row_1_position=1|table_header_stat_1_title=|table_row_3_stat_2=|table_row_8_position=8|table_row_10_stat_1=|table_row_2_stat_4=|table_row_1_stat_3=|table_row_2_position=2|table_row_9_stat_3=|table_row_7_stat_2=|table_row_9_points=1741.5|table_row_1_stat_1=|table_row_10_stat_5=|table_row_8_stat_1=|table_row_5_stat_2=|table_row_9_stat_4=|table_row_9_stat_2=|table_row_8_stat_5=|table_row_10_team_name=University of Stirling|table_row_9_stat_1=|table_row_7_stat_5=|table_row_5_stat_4=|table_row_2_stat_2=|table_row_3_stat_1=|table_row_5_stat_5=|table_row_7_stat_4=|table_row_4_position=4|table_row_4_stat_5=|table_header_stat_4_title=|table_row_3_team_name=University of Nottingham|table_row_6_stat_2=|table_row_1_stat_5=|table_row_7_stat_1=|table_row_7_stat_3=|table_row_4_stat_4=|table_row_9_team_name=Northumbria University|table_row_8_stat_3=|table_row_8_team_name=University of Bristol|table_row_5_stat_3=|table_row_5_position=5|table_header_points_title=Points|table_row_6_stat_5=|table_row_8_stat_4=|table_row_6_position=6|table_row_10_stat_3=|table_row_7_position=7|table_header_stat_3_title=",
-            "settings": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
-                "layer": "1",
-                "name": "BUCSOverallCChoose team...",
-                "parameters": "table_row_2_stat_3=|table_row_7_points=1885.33|table_row_10_position=10|table_row_3_stat_4=|table_row_1_team_name=Loughborough University|table_row_10_stat_2=|table_row_4_points=2445|table_row_4_stat_3=|title=BUCS 2016-17 Championship|table_header_stat_5_title=|table_row_8_stat_2=|table_row_3_points=2683|table_row_2_stat_1=|table_row_6_stat_1=|table_row_9_stat_5=|table_row_6_points=1987.5|table_row_4_stat_2=|table_row_2_team_name=Durham University|table_row_5_team_name=University of Exeter|table_row_3_position=3|table_row_6_stat_4=|table_row_3_stat_3=|table_row_2_points=2825|table_row_5_points=2261|table_row_7_team_name=University of Birmingham|table_row_4_team_name=University of Edinburgh|table_row_9_position=9|table_row_1_stat_2=|table_row_3_stat_5=|table_row_1_points=3130.5|table_row_4_stat_1=|table_row_5_stat_1=|table_row_1_stat_4=|table_row_8_points=1788|table_row_10_points=1523|table_header_stat_2_tiz tle=|table_row_2_stat_5=|table_row_6_stat_3=|table_header_subtitle=Overall Standings|table_row_10_stat_4=|table_row_6_team_name=University of Bath|table_row_1_position=1|table_header_stat_1_title=|table_row_3_stat_2=|table_row_8_position=8|table_row_10_stat_1=|table_row_2_stat_4=|table_row_1_stat_3=|table_row_2_position=2|table_row_9_stat_3=|table_row_7_stat_2=|table_row_9_points=1741.5|table_row_1_stat_1=|table_row_10_stat_5=|table_row_8_stat_1=|table_row_5_stat_2=|table_row_9_stat_4=|table_row_9_stat_2=|table_row_8_stat_5=|table_row_10_team_name=University of Stirling|table_row_9_stat_1=|table_row_7_stat_5=|table_row_5_stat_4=|table_row_2_stat_2=|table_row_3_stat_1=|table_row_5_stat_5=|table_row_7_stat_4=|table_row_4_position=4|table_row_4_stat_5=|table_header_stat_4_title=|table_row_3_team_name=University of Nottingham|table_row_6_stat_2=|table_row_1_stat_5=|table_row_7_stat_1=|table_row_7_stat_3=|table_row_4_stat_4=|table_row_9_team_name=Northumbria University|table_row_8_stat_3=|table_row_8_team_name=University of Bristol|table_row_5_stat_3=|table_row_5_position=5|table_header_points_title=Points|table_row_6_stat_5=|table_row_8_stat_4=|table_row_6_position=6|table_row_10_stat_3=|table_row_7_position=7|table_header_stat_3_title=",
-                "type": "graphic"
-            }
-        },
-        "50": {
-            "button_wdiget": null,
-            "parameters": "table_row_1_stat_1=1|table_row_10_team_name=|table_row_5_points=0|table_row_1_stat_4=0|table_row_3_stat_5=4|gender=womens|table_header_stat_3_title=D|table_row_7_stat_4=|table_row_10_stat_3=|table_row_1_stat_5=4|table_row_3_stat_3=0|table_header_subtitle=Midlands 1A|table_row_9_team_name=|table_row_6_stat_3=0|table_row_4_points=0|table_row_4_stat_5=-2|table_row_5_team_name=Derby 1st|table_row_5_stat_1=1|table_row_7_stat_1=|table_row_5_position=5|sport=badminton|table_row_4_stat_1=1|table_row_7_stat_2=|table_row_2_stat_4=0|table_row_2_team_name=Warwick 1st|table_row_4_stat_4=1|team=2|table_row_8_points=|table_row_9_points=|table_header_stat_1_title=P|table_row_8_stat_5=|table_row_7_stat_5=|table_row_8_stat_3=|title=BUCS Badminton 2016-17|table_row_5_stat_4=1|table_row_10_stat_2=|table_row_4_team_name=Nottingham 2nd|table_row_6_stat_2=0|table_row_6_team_name=East Anglia 1st|table_row_2_stat_2=1|table_row_7_position=|table_row_4_stat_2=0|table_row_9_stat_2=|type=BUCS|table_row_2_stat_1=1|table_row_5_stat_3=0|table_row_1_position=1|table_row_9_position=|table_header_stat_4_title=L|table_row_2_position=2|table_row_1_team_name=Loughborough 2nd|table_row_10_stat_4=|table_row_1_points=3|table_row_2_points=3|table_row_7_stat_3=|table_header_points_title=Pts|table_row_10_stat_1=|table_row_2_stat_5=4|table_row_1_stat_2=1|table_row_3_points=3|table_row_10_points=|table_row_6_points=0|table_header_stat_5_title=GD|table_header_stat_2_title=W|table_row_3_team_name=Oxford 1st|table_row_5_stat_5=-4|table_row_6_stat_1=1|table_row_3_stat_4=0|table_row_9_stat_1=|table_row_2_stat_3=0|table_row_7_team_name=|table_row_8_stat_1=|table_row_4_position=4|table_row_10_position=|table_row_8_stat_2=|table_row_3_stat_2=1|table_row_9_stat_4=|table_row_5_stat_2=0|table_row_7_points=|table_row_3_position=3|table_row_6_position=6|table_row_1_stat_3=0|table_row_3_stat_1=1|table_row_8_stat_4=|table_row_9_stat_3=|table_row_9_stat_5=|table_row_6_stat_5=-4|table_row_4_stat_3=0|table_row_6_stat_4=1|table_row_8_team_name=|table_row_10_stat_5=|table_row_8_position=",
-            "settings": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
-                "layer": "5",
-                "name": "BUCSBadmintonW2",
-                "parameters": "table_row_1_stat_1=1|table_row_10_team_name=|table_row_5_points=0|table_row_1_stat_4=0|table_row_3_stat_5=4|gender=womens|table_header_stat_3_title=D|table_row_7_stat_4=|table_row_10_stat_3=|table_row_1_stat_5=4|table_row_3_stat_3=0|table_header_subtitle=Midlands 1A|table_row_9_team_name=|table_row_6_stat_3=0|table_row_4_points=0|table_row_4_stat_5=-2|table_row_5_team_name=Derby 1st|table_row_5_stat_1=1|table_row_7_stat_1=|table_row_5_position=5|sport=badminton|table_row_4_stat_1=1|table_row_7_stat_2=|table_row_2_stat_4=0|table_row_2_team_name=Warwick 1st|table_row_4_stat_4=1|team=2|table_row_8_points=|table_row_9_points=|table_header_stat_1_title=P|table_row_8_stat_5=|table_row_7_stat_5=|table_row_8_stat_3=|title=BUCS Badminton 2016-17|table_row_5_stat_4=1|table_row_10_stat_2=|table_row_4_team_name=Nottingham 2nd|table_row_6_stat_2=0|table_row_6_team_name=East Anglia 1st|table_row_2_stat_2=1|table_row_7_position=|table_row_4_stat_2=0|table_row_9_stat_2=|type=BUCS|table_row_2_stat_1=1|table_row_5_stat_3=0|table_row_1_position=1|table_row_9_position=|table_header_stat_4_title=L|table_row_2_position=2|table_row_1_team_name=Loughborough 2nd|table_row_10_stat_4=|table_row_1_points=3|table_row_2_points=3|table_row_7_stat_3=|table_header_points_title=Pts|table_row_10_stat_1=|table_row_2_stat_5=4|table_row_1_stat_2=1|table_row_3_points=3|table_row_10_points=|table_row_6_points=0|table_header_stat_5_title=GD|table_header_stat_2_title=W|table_row_3_team_name=Oxford 1st|table_row_5_stat_5=-4|table_row_6_stat_1=1|table_row_3_stat_4=0|table_row_9_stat_1=|table_row_2_stat_3=0|table_row_7_team_name=|table_row_8_stat_1=|table_row_4_position=4|table_row_10_position=|table_row_8_stat_2=|table_row_3_stat_2=1|table_row_9_stat_4=|table_row_5_stat_2=0|table_row_7_points=|table_row_3_position=3|table_row_6_position=6|table_row_1_stat_3=0|table_row_3_stat_1=1|table_row_8_stat_4=|table_row_9_stat_3=|table_row_9_stat_5=|table_row_6_stat_5=-4|table_row_4_stat_3=0|table_row_6_stat_4=1|table_row_8_team_name=|table_row_10_stat_5=|table_row_8_position=",
-                "type": "graphic"
-            }
-        },
-        "9": {
-            "button_wdiget": null,
-            "parameters": null,
-            "settings": {
+                "layer": 0,
+                "length": "00:00:10:14",
+                "name": "CG1080I50",
+                "template": "MOVIE",
+                "type": "vtgfx"
+            },
+            "85": {
                 "channel": 1,
                 "date_modified": "20160911230218",
-                "file_size": "6445960",
-                "filename": "AMB",
+                "file_size": "6159792",
+                "filename": "CG1080I50",
                 "frame_rate": 25.0,
-                "frames": 268.0,
-                "length": "0:00:10:18",
-                "name": "AMB",
-                "remaining_time": "0:00:10:18",
-                "type": "vt",
-                "vt_type": "MOVIE"
+                "frames": 264.0,
+                "graphics": [
+                    {
+                        "channel": 1,
+                        "end": "",
+                        "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                        "layer": "10",
+                        "name": "hello",
+                        "parameters": "StrapLower=world|StrapUpper=hello",
+                        "start": "00:00:00:00",
+                        "template": "strapleft"
+                    },
+                    {
+                        "channel": 1,
+                        "end": "",
+                        "filename": "BigMatch/TBM_CentreScore/TBM_CentreScore",
+                        "layer": "10",
+                        "name": "world",
+                        "parameters": "team_right=NOT|Infobar_info_text=asd|score=1 - 1|show_infobar=1|team_left=LBO",
+                        "start": "00:00:00:00",
+                        "template": "centrescore"
+                    }
+                ],
+                "layer": 0,
+                "length": "00:00:10:14",
+                "name": "CG1080I50",
+                "template": "MOVIE",
+                "type": "vtgfx"
             }
         },
         "positions": {
-            "0": "11",
-            "1": "20",
-            "2": "15",
-            "3": "9",
-            "4": "19",
-            "5": "26",
-            "6": "33",
-            "7": "41",
-            "8": "50"
+            "0": "78",
+            "1": "79",
+            "2": "80",
+            "3": "81",
+            "4": "82",
+            "5": "85"
         }
     },
     "standingstable": [
@@ -260,117 +215,12 @@
             },
             "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
             "gender": "Choose gender...",
-            "layer": "5",
+            "layer": "1",
             "league": "BUCS",
             "rows": "10",
             "sport": "Overall",
             "team": "Choose team...",
             "url": "http://bigmatch.jcrnet.uk/tabletojson/bucs_table.json"
-        },
-        {
-            "channel": "3",
-            "data": {
-                "gender": "womens",
-                "sport": "badminton",
-                "table_header_points_title": "Pts",
-                "table_header_stat_1_title": "P",
-                "table_header_stat_2_title": "W",
-                "table_header_stat_3_title": "D",
-                "table_header_stat_4_title": "L",
-                "table_header_stat_5_title": "GD",
-                "table_header_subtitle": "Midlands 1A",
-                "table_row_10_points": "",
-                "table_row_10_position": "",
-                "table_row_10_stat_1": "",
-                "table_row_10_stat_2": "",
-                "table_row_10_stat_3": "",
-                "table_row_10_stat_4": "",
-                "table_row_10_stat_5": "",
-                "table_row_10_team_name": "",
-                "table_row_1_points": "3",
-                "table_row_1_position": "1",
-                "table_row_1_stat_1": "1",
-                "table_row_1_stat_2": "1",
-                "table_row_1_stat_3": "0",
-                "table_row_1_stat_4": "0",
-                "table_row_1_stat_5": "4",
-                "table_row_1_team_name": "Loughborough 2nd",
-                "table_row_2_points": "3",
-                "table_row_2_position": "2",
-                "table_row_2_stat_1": "1",
-                "table_row_2_stat_2": "1",
-                "table_row_2_stat_3": "0",
-                "table_row_2_stat_4": "0",
-                "table_row_2_stat_5": "4",
-                "table_row_2_team_name": "Warwick 1st",
-                "table_row_3_points": "3",
-                "table_row_3_position": "3",
-                "table_row_3_stat_1": "1",
-                "table_row_3_stat_2": "1",
-                "table_row_3_stat_3": "0",
-                "table_row_3_stat_4": "0",
-                "table_row_3_stat_5": "4",
-                "table_row_3_team_name": "Oxford 1st",
-                "table_row_4_points": "0",
-                "table_row_4_position": "4",
-                "table_row_4_stat_1": "1",
-                "table_row_4_stat_2": "0",
-                "table_row_4_stat_3": "0",
-                "table_row_4_stat_4": "1",
-                "table_row_4_stat_5": "-2",
-                "table_row_4_team_name": "Nottingham 2nd",
-                "table_row_5_points": "0",
-                "table_row_5_position": "5",
-                "table_row_5_stat_1": "1",
-                "table_row_5_stat_2": "0",
-                "table_row_5_stat_3": "0",
-                "table_row_5_stat_4": "1",
-                "table_row_5_stat_5": "-4",
-                "table_row_5_team_name": "Derby 1st",
-                "table_row_6_points": "0",
-                "table_row_6_position": "6",
-                "table_row_6_stat_1": "1",
-                "table_row_6_stat_2": "0",
-                "table_row_6_stat_3": "0",
-                "table_row_6_stat_4": "1",
-                "table_row_6_stat_5": "-4",
-                "table_row_6_team_name": "East Anglia 1st",
-                "table_row_7_points": "",
-                "table_row_7_position": "",
-                "table_row_7_stat_1": "",
-                "table_row_7_stat_2": "",
-                "table_row_7_stat_3": "",
-                "table_row_7_stat_4": "",
-                "table_row_7_stat_5": "",
-                "table_row_7_team_name": "",
-                "table_row_8_points": "",
-                "table_row_8_position": "",
-                "table_row_8_stat_1": "",
-                "table_row_8_stat_2": "",
-                "table_row_8_stat_3": "",
-                "table_row_8_stat_4": "",
-                "table_row_8_stat_5": "",
-                "table_row_8_team_name": "",
-                "table_row_9_points": "",
-                "table_row_9_position": "",
-                "table_row_9_stat_1": "",
-                "table_row_9_stat_2": "",
-                "table_row_9_stat_3": "",
-                "table_row_9_stat_4": "",
-                "table_row_9_stat_5": "",
-                "table_row_9_team_name": "",
-                "team": "2",
-                "title": "BUCS Badminton 2016-17",
-                "type": "BUCS"
-            },
-            "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
-            "gender": "womens",
-            "layer": "5",
-            "league": "BUCS",
-            "rows": "10",
-            "sport": "Badminton",
-            "team": "2",
-            "url": "http://bigmatch.jamielynch.net/client/tabledata/data/BUCS_badminton_womens_2.json"
         }
     ],
     "strapleft": [
@@ -378,8 +228,8 @@
             "channel": "3",
             "layer": "30",
             "parameters": {
-                "StrapLower": "world",
-                "StrapUpper": "hello"
+                "StrapLower": "",
+                "StrapUpper": "4"
             }
         }
     ],
@@ -388,11 +238,11 @@
             "channel": "3",
             "layer": "25",
             "parameters": {
-                "team1_colour": "#FF0000",
-                "team2_colour": "#00FF00",
-                "topleft_score": "1 - 1",
-                "topleft_team1": "LBO",
-                "topleft_team2": "NOT"
+                "team1_colour": "",
+                "team2_colour": "",
+                "topleft_score": "",
+                "topleft_team1": "",
+                "topleft_team2": ""
             }
         }
     ],

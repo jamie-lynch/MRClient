@@ -147,7 +147,7 @@ class TableGFXSection(QtGui.QWidget):
         else:
             AddNewStandingsTable(main=self.main, gfx_section=self)
 
-    def remove_widget(self, widget):
+    def remove_row(self, widget):
         """function to remove table row"""
 
         # remove from display
@@ -163,8 +163,11 @@ class TableGFXSection(QtGui.QWidget):
         self.tables_section.write_to_data()
 
 
-class StandingsTableDataRow(QtGui.QWidget):
+class StandingsTableDataRow(QtGui.QFrame):
     """Widget containing all data for a table row"""
+
+    playing_signal = QtCore.Signal(object)
+    stopped_signal = QtCore.Signal(object)
 
     def __init__(self, main, tables_section, gfx_section, template, tablesettings, parent=None):
         """Function to initialise TableDataRow"""
@@ -186,8 +189,14 @@ class StandingsTableDataRow(QtGui.QWidget):
         # create tuple to keep reference to channel and layer when graphics fired
         self.fire_channel_and_layer = None, None
 
+        # set playing reference
+        self.playing = False
+
         # build UI elements
         self.initUI()
+
+        # set border
+        self.setFrameStyle(QtGui.QFrame.Box)
 
     def initUI(self):
         """Function to create the UI elements"""
@@ -197,27 +206,27 @@ class StandingsTableDataRow(QtGui.QWidget):
         self.setLayout(grid)
 
         # add the parameters chosen
-        grid.addWidget(tools.QHeadingThree('League: '), 0, 0)
-        grid.addWidget(tools.QHeadingThree('Sport: '), 1, 0)
-        grid.addWidget(tools.QHeadingThree('Gender: '), 0, 2)
-        grid.addWidget(tools.QHeadingThree('Team: '), 1, 2)
+        grid.addWidget(tools.QVTLabel(self, 'League: ', bold=True), 0, 0)
+        grid.addWidget(tools.QVTLabel(self, 'Sport: ', bold=True), 1, 0)
+        grid.addWidget(tools.QVTLabel(self, 'Gender: ', bold=True), 0, 2)
+        grid.addWidget(tools.QVTLabel(self, 'Team: ', bold=True), 1, 2)
 
-        league = QtGui.QLabel(self.tablesettings['league'])
+        league = tools.QVTLabel(self, self.tablesettings['league'])
         league.setFixedWidth(100)
         grid.addWidget(league, 0, 1)
 
-        sport = QtGui.QLabel(self.tablesettings['sport'])
+        sport = tools.QVTLabel(self, self.tablesettings['sport'])
         sport.setFixedWidth(100)
 
-        grid.addWidget(QtGui.QLabel(self.tablesettings['sport']), 1, 1)
-        gender = QtGui.QLabel(self.tablesettings['gender'])
+        grid.addWidget(tools.QVTLabel(self, self.tablesettings['sport']), 1, 1)
+        gender = tools.QVTLabel(self, self.tablesettings['gender'])
         grid.addWidget(gender, 0, 3)
         gender.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
-        grid.addWidget(QtGui.QLabel(self.tablesettings['team']), 1, 3)
+        grid.addWidget(tools.QVTLabel(self, self.tablesettings['team']), 1, 3)
 
         # add channel and layer edits
-        grid.addWidget(QtGui.QLabel('Channel'), 0, 4)
-        grid.addWidget(QtGui.QLabel('Layer'), 1, 4)
+        grid.addWidget(tools.QVTLabel(self, 'Channel'), 0, 4)
+        grid.addWidget(tools.QVTLabel(self, 'Layer'), 1, 4)
         self.channel_edit = QtGui.QLineEdit()
         self.channel_edit.setText(str(self.tablesettings['channel']))
         self.channel_edit.editingFinished.connect(self.tables_section.write_to_data)
@@ -244,7 +253,7 @@ class StandingsTableDataRow(QtGui.QWidget):
         grid.addWidget(self.add, 1, 6)
 
         self.remove_button = QtGui.QPushButton("Delete")
-        self.remove_button.clicked.connect(lambda: self.gfx_section.remove_widget(self))
+        self.remove_button.clicked.connect(self.remove_row)
         grid.addWidget(self.remove_button, 1, 7)
 
         self.fire_buttons = [self.fire_button, self.update_button]
@@ -329,6 +338,9 @@ class StandingsTableDataRow(QtGui.QWidget):
                     self.fire_status = 'Stop'
                     self.fire_button.setText('Stop')
                     self.fire_channel_and_layer = self.fire_channel_and_layer[0], self.fire_channel_and_layer[1]
+                    self.playing_signal.emit(self)
+                    self.playing = True
+                    self.set_background_colour()
 
         else:
             response = self.main.comms.stop_template(
@@ -340,6 +352,9 @@ class StandingsTableDataRow(QtGui.QWidget):
             if 'OK' in response:
                 self.fire_status = 'Fire'
                 self.fire_button.setText('Fire')
+                self.stopped_signal.emit(self)
+                self.playing = False
+                self.set_background_colour()
 
     def update_graphic(self):
         """Function to update graphic"""
@@ -376,6 +391,23 @@ class StandingsTableDataRow(QtGui.QWidget):
         """Function to build a name for the rundown"""
         return "{}{}{}{}".format(self.tablesettings['league'], self.tablesettings['sport'],
                                  self.tablesettings['gender'][0].capitalize(), self.tablesettings['team'])
+
+    def set_background_colour(self):
+        """Function to set the correct background colour"""
+        if self.playing:
+            self.setStyleSheet('VideoItem{background-color: #009600}')
+        else:
+            self.setStyleSheet('VideoItem{background-color: #f0f0f0}')
+
+    def remove_row(self):
+        """Function to remove row"""
+        if self.playing:
+            error = QtGui.QErrorMessage()
+            error.showMessage("Cannot remove item while playing")
+            error.exec_()
+            return
+        else:
+            self.gfx_section.remove_row(widget=self)
 
 
 class AddNewStandingsTable(QtGui.QDialog):
@@ -582,6 +614,20 @@ class AddNewStandingsTable(QtGui.QDialog):
         # try getting the table data from the url
         table_data = tools.get_table_data(url)
 
+        # if it doesn't exist then tell the user that its not there via a dialog window
+        if not table_data:
+            error = QtGui.QErrorMessage()
+            error.showMessage("Data cannot be found for this condition. Please create data file and try again.")
+            error.setWindowTitle("Error | TBM")
+            error.setModal(True)
+
+            # removes question mark thing
+            error.setWindowFlags(error.windowFlags()
+                                 ^ QtCore.Qt.WindowContextHelpButtonHint)
+            # show
+            error.exec_()
+            return
+
         # if BUCS Overall data
         if "table_header_subtitle" not in table_data.keys():
 
@@ -609,19 +655,6 @@ class AddNewStandingsTable(QtGui.QDialog):
 
             table_data = temp
 
-        # if it doesn't exist then tell the user that its not there via a dialog window
-        if not table_data:
-            error = QtGui.QErrorMessage()
-            error.showMessage("Data cannot be found for this condition. Please create data file and try again.")
-            error.setWindowTitle("Error | TBM")
-            error.setModal(True)
-
-            # removes question mark thing
-            error.setWindowFlags(error.windowFlags()
-                                 ^ QtCore.Qt.WindowContextHelpButtonHint)
-            # show
-            error.exec_()
-
         return url, table_data
 
     def add_table(self):
@@ -637,7 +670,12 @@ class AddNewStandingsTable(QtGui.QDialog):
         }
 
         # find the url and add to the settings
-        settings['url'], settings['data'] = self.get_url(settings)
+        response = self.get_url(settings)
+
+        if not response:
+            return
+        else:
+            settings['url'], settings['data'] = response
 
         # get the filename and default channel and layer for the corresponding number of tables
         settings['filename'] = self.main.settings['templates']['standingstable{}'.format(settings['rows'])]['filename']

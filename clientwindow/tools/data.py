@@ -54,4 +54,7 @@ def get_table_data(url):
     except requests.exceptions.ConnectionError:
         table_data = None
 
+    except ValueError:
+        table_data = None
+
     return table_data

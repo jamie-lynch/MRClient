@@ -88,8 +88,6 @@ class GFXSection(QtGui.QWidget):
         # call the parent __init__ function
         super(GFXSection, self).__init__(parent)
 
-        print('adding {} section'.format(template))
-
         # set values for convenience
         self.main = main
         self.production = production
@@ -135,7 +133,7 @@ class GFXSection(QtGui.QWidget):
         if save:
             self.production.write_to_data()
 
-    def remove_widget(self, widget):
+    def remove_row(self, widget):
         """Function to remove data row"""
 
         # remove the widget from the display
@@ -151,16 +149,17 @@ class GFXSection(QtGui.QWidget):
         self.production.write_to_data()
 
 
-class TemplateRow(QtGui.QWidget):
+class TemplateRow(QtGui.QFrame):
     """Class holding data for one production graphic"""
+
+    playing_signal = QtCore.Signal(object)
+    stopped_signal = QtCore.Signal(object)
 
     def __init__(self, main, production, gfx_section, template, data, parent=None):
         """Function to initialise class"""
 
         # call the parent __init__ function
         super(TemplateRow, self).__init__(parent)
-
-        print('adding {} row'.format(template))
 
         # set values for convenience
         self.main = main
@@ -176,8 +175,14 @@ class TemplateRow(QtGui.QWidget):
         # create tuple to keep reference to channel and layer when graphics fired
         self.fire_channel_and_layer = None, None
 
+        # create variable to track if playing
+        self.playing = False
+
         # build UI elements
         self.initUI()
+
+        # set border
+        self.setFrameStyle(QtGui.QFrame.Box)
 
     def initUI(self):
         """Function to create UI elements"""
@@ -194,7 +199,7 @@ class TemplateRow(QtGui.QWidget):
 
             # for even numbers
             if not num % 2:
-                heading = QtGui.QLabel(key)
+                heading = tools.QVTLabel(self, key)
                 heading.setFixedWidth(120)
                 heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
                 grid.addWidget(heading, num//2, 0)
@@ -219,12 +224,12 @@ class TemplateRow(QtGui.QWidget):
             self.parameters[key].editingFinished.connect(self.production.write_to_data)
 
         # add channel and layer edits
-        channel = QtGui.QLabel('Channel')
+        channel = tools.QVTLabel(self, 'Channel')
         channel.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         channel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
         grid.addWidget(channel, 0, 4)
 
-        layer = QtGui.QLabel('Layer')
+        layer = tools.QVTLabel(self, 'Layer')
         layer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         layer.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         grid.addWidget(layer, 1, 4)
@@ -294,6 +299,9 @@ class TemplateRow(QtGui.QWidget):
                 self.fire_status = 'Stop'
                 self.fire_button.setText('Stop')
                 self.fire_channel_and_layer = self.channel_edit.text(), self.layer_edit.text()
+                self.playing_signal.emit(self)
+                self.playing = True
+                self.set_background_colour()
 
         else:
             response = self.main.comms.stop_template(
@@ -305,6 +313,9 @@ class TemplateRow(QtGui.QWidget):
             if 'OK' in response:
                 self.fire_status = 'Fire'
                 self.fire_button.setText('Fire')
+                self.stopped_signal.emit(self)
+                self.playing = False
+                self.set_background_colour()
 
     def update_graphic(self):
         """Function to update graphic"""
@@ -351,5 +362,11 @@ class TemplateRow(QtGui.QWidget):
 
     def get_name(self):
         """Function to build a name for the rundown"""
-        return self.template + ' ' + self.parameters[
-            self.main.settings['templates'][self.template]['rundownname']].text()
+        return self.parameters[self.main.settings['templates'][self.template]['rundownname']].text()
+
+    def set_background_colour(self):
+        """Function to set the correct background colour"""
+        if self.playing:
+            self.setStyleSheet('VideoItem{background-color: #009600}')
+        else:
+            self.setStyleSheet('VideoItem{background-color: #f0f0f0}')

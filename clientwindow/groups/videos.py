@@ -154,7 +154,7 @@ class VideoItem(QtGui.QFrame):
         grid.addWidget(self.layer_edit, 1, 3)
 
         # length
-        grid.addWidget(QVTLabel(self, "Length"), 0, 4)
+        grid.addWidget(QVTLabel(self, "Length", bold=True), 0, 4)
         self.data['length'], self.data['frames'], self.data['frame_rate'] = self.get_length_from_frames()
         length = QVTLabel(self, self.data['length'])
         length.setFixedWidth(80)
@@ -162,7 +162,7 @@ class VideoItem(QtGui.QFrame):
         grid.addWidget(length, 0, 5)
 
         # current time
-        grid.addWidget(QVTLabel(self, "Remaining"), 1, 4)
+        grid.addWidget(QVTLabel(self, "Remaining", bold=True), 1, 4)
         self.time = QVTLabel(self, "")
         self.time.setFixedWidth(80)
         self.time.setAlignment(QtCore.Qt.AlignCenter)
@@ -191,7 +191,7 @@ class VideoItem(QtGui.QFrame):
         grid.addWidget(add_button, 1, 6, 1, 2)
 
         add_GFX_button = QtGui.QPushButton("Add with Graphics")
-        add_GFX_button.clicked.connect(self.add_GFX_vt)
+        add_GFX_button.clicked.connect(lambda: self.add_vt(gfx=True))
         grid.addWidget(add_GFX_button, 1, 8, 1, 2)
 
         self.fire_buttons = [load_button, play_button, pause_button, stop_button]
@@ -312,33 +312,30 @@ class VideoItem(QtGui.QFrame):
             self.loaded = False
             self.set_background_colour()
 
-    def add_vt(self):
+    def add_vt(self, gfx=False):
         """Function to add current VT to rundown"""
 
-        settings = self.data.copy()
-        settings['filename'] = self.data['name']
-        settings['template'] = self.data['type']
-        settings['type'] = "vt"
+        self.settings = self.data.copy()
+        self.settings['filename'] = self.data['name']
+        self.settings['template'] = self.data['type']
 
         try:
-            settings['channel'] = int(self.channel_select.text())
+            self.settings['channel'] = int(self.channel_edit.text())
+            self.settings['layer'] = int(self.layer_edit.text())
         except ValueError:
             QtGui.QErrorMessage("Please select a valid channel (1-2)")
 
-        self.main.rundown.add_row(settings=settings, parameters=None, button_widget=None)
+        if gfx:
+            self.settings['type'] = "vtgfx"
+            self.settings['graphics'] = []
+            response = tools.GetVTGraphics(main=self.main, video=self)
+            if not response.result():
+                return
+            print(self.settings['graphics'])
+        else:
+            self.settings['type'] = 'vt'
 
-    def add_GFX_vt(self):
-        """Function to add current VT to rundown with graphics"""
-        settings = self.data.copy()
-        settings['filename'] = self.data['name']
-        settings['vt_type'] = self.data['type']
-        settings['type'] = "vtwithgfx"
-        try:
-            settings['channel'] = int(self.channel_select.text())
-        except ValueError:
-            QtGui.QErrorMessage("Please select a valid channel (1-2)")
-
-        self.main.rundown.add_row(settings=settings, parameters=None, button_widget=None)
+        self.main.rundown.add_row(settings=self.settings)
 
     def get_length_from_frames(self, frames=None, frame_rate=None):
         """Function to return the length based on the number of frames"""

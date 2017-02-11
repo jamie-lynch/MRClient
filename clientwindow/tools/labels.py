@@ -28,8 +28,11 @@ class QHeadingThree(QtGui.QLabel):
 class QVTLabel(QtGui.QLabel):
     """Class based on QLabel to create text which changes colour when VT plays"""
 
-    def __init__(self, videoitem, text, parent=None):
+    def __init__(self, videoitem, text, bold=False, parent=None):
         super(QVTLabel, self).__init__(text, parent)
+
+        if bold:
+            self.setStyleSheet('QHeadingThree{font: bold}')
 
         self.videoitem = videoitem
         self.videoitem.playing_signal.connect(self.set_playing_style)
@@ -39,13 +42,19 @@ class QVTLabel(QtGui.QLabel):
     def set_playing_style(self, videoitem):
         """Function to set the style to the playing format"""
         if self.videoitem == videoitem:
-            self.setStyleSheet('QVTLabel{color: white}')
+            if self.bold:
+                self.setStyleSheet('QVTLabel{color: white; font: bold}')
+            else:
+                self.setStyleSheet('QVTLabel{color: white}')
 
     @QtCore.Slot(object)
     def set_stopped_style(self, videoitem):
         """Function to set the style to standard"""
         if self.videoitem == videoitem:
-            self.setStyleSheet('QVTLabel{color: black}')
+            if self.bold:
+                self.setStyleSheet('QVTLabel{color: black; font: bold}')
+            else:
+                self.setStyleSheet('QVTLabel{color: black}')
 
 
 
