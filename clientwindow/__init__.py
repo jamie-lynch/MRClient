@@ -88,10 +88,6 @@ class ClientWindow(QtGui.QMainWindow):
         kill_button.clicked.connect(self.comms.kill_switch)
         vbox.addWidget(kill_button)
 
-        # creates the rundown element and tries to build it from file
-        # self.rundown = rundown.RundownWidget(main=self)
-        # self.rundown.build_from_file()
-
         # set element list
         elements = ['production', 'tables', 'vts', "rundown"]
 

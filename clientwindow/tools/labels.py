@@ -31,8 +31,10 @@ class QVTLabel(QtGui.QLabel):
     def __init__(self, videoitem, text, bold=False, parent=None):
         super(QVTLabel, self).__init__(text, parent)
 
+        self.bold = bold
+
         if bold:
-            self.setStyleSheet('QHeadingThree{font: bold}')
+            self.setStyleSheet('QVTLabel{font: bold}')
 
         self.videoitem = videoitem
         self.videoitem.playing_signal.connect(self.set_playing_style)

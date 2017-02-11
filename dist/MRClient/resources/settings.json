@@ -1,0 +1,69 @@
+{
+    "caspar": {
+        "address": "127.0.0.1",
+        "port": 5250,
+        "video_directory": "home"
+    },
+    "templates": {
+        "centrescore": {
+            "channel": 3,
+            "filename": "BigMatch/TBM_CentreScore/TBM_CentreScore",
+            "layer": 25,
+            "name": "Centre Score",
+            "parameters": [
+                "team_left",
+                "team_right",
+                "score",
+                "Infobar_info_text",
+                "show_infobar"
+            ],
+            "rundownname": "score"
+        },
+        "standingstable10": {
+            "channel": 3,
+            "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
+            "layer": 1,
+            "name": "Standings Table10",
+            "parameters": [],
+            "rundownname": ""
+        },
+        "standingstable6": {
+            "channel": 3,
+            "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
+            "layer": 2,
+            "name": "Standings Table6",
+            "parameters": [],
+            "rundownname": ""
+        },
+        "strapleft": {
+            "channel": 3,
+            "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+            "layer": 30,
+            "name": "Strap Left",
+            "parameters": [
+                "StrapUpper",
+                "StrapLower"
+            ],
+            "rundownname": "StrapUpper"
+        },
+        "topscore": {
+            "channel": 3,
+            "filename": "BigMatch/TBM_TopLeft_NoTimer/TBM_TopLeft_NoTimer",
+            "layer": 25,
+            "name": "TopScore",
+            "parameters": [
+                "topleft_team1",
+                "topleft_team2",
+                "topleft_score",
+                "team1_colour",
+                "team2_colour"
+            ],
+            "rundownname": "topleft_score"
+        }
+    },
+    "vt_templates": [
+        "strapleft",
+        "centrescore",
+        "topscore"
+    ]
+}

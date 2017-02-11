@@ -68,6 +68,7 @@ class RundownWidget(QtGui.QWidget):
 
         # add edit button
         edit_button = QtGui.QPushButton("Edit")
+        edit_button.clicked.connect(self.edit)
         grid.addWidget(edit_button, 0, 2)
 
         # create an item graphics elements
@@ -147,6 +148,17 @@ class RundownWidget(QtGui.QWidget):
         self.main.data['rundown']['positions'] = self.positions
         tools.store_data(self.main)
 
+    def edit(self):
+        """Function to edit the item graphics for the currently selected item"""
+        video = self.item_graphics.video
+        try:
+            _ = video.settings['graphics']
+        except KeyError:
+            return
+
+        tools.GetVTGraphics(main=self.main, video=video)
+        self.item_graphics.update_graphics(video=video)
+
 
 class RundownList(QtGui.QListWidget):
 
@@ -180,6 +192,8 @@ class RundownItem(QtGui.QFrame):
         self.main = main
         self.rundown = rundown
         self.settings = settings
+        self.data = settings
+        self.osc = self.main.osc
 
         # create reference values
         self.channel_launched = None
@@ -504,17 +518,23 @@ class ItemGraphics(QtGui.QWidget):
         vbox.addWidget(self.list_widget)
 
     @QtCore.Slot(int)
-    def update_graphics(self, current_row):
+    def update_graphics(self, current_row=None, video=None):
         """Function to show the graphics"""
-
-        print("updating graphics")
 
         # remove all of the current items
         self.list_widget.clear()
         self.list_items = []
 
-        # get the rundown item
-        rundown_item = self.rundown.items[self.rundown.positions[current_row]]
+        if not video:
+            # get the rundown item
+            rundown_item = self.rundown.items[self.rundown.positions[current_row]]
+
+            # get video for edit reference
+            self.video = rundown_item
+
+        else:
+            rundown_item = video
+            self.video = video
 
         # get graphics elements if available
         try:

@@ -47,12 +47,12 @@ class CasparOSC(QtCore.QObject):
         print("Starting Process_OSC thread")
 
         osc_startup()
-        osc_udp_server("127.0.0.1", 6250, "CasparOSC")
+        osc_udp_server("0.0.0.0", 6250, "CasparOSC")
 
         osc_method("/channel/*/stage/layer/*/file/frame", self.handler, argscheme=osm.OSCARG_ADDRESS + osm.OSCARG_DATA)
 
         while not self.finished:
             osc_process()
-            time.sleep(0.001)
+            time.sleep(0.000999)
 
         osc_terminate()

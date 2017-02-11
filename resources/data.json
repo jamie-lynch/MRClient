@@ -14,7 +14,7 @@
     ],
     "rundown": {
         "items": {
-            "78": {
+            "93": {
                 "channel": "3",
                 "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
                 "layer": "30",
@@ -23,7 +23,7 @@
                 "template": "strapleft",
                 "type": "graphic"
             },
-            "79": {
+            "94": {
                 "channel": "3",
                 "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
                 "layer": "30",
@@ -32,7 +32,7 @@
                 "template": "strapleft",
                 "type": "graphic"
             },
-            "80": {
+            "95": {
                 "channel": "3",
                 "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
                 "layer": "30",
@@ -41,7 +41,7 @@
                 "template": "strapleft",
                 "type": "graphic"
             },
-            "81": {
+            "96": {
                 "channel": "3",
                 "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
                 "layer": "30",
@@ -50,7 +50,7 @@
                 "template": "strapleft",
                 "type": "graphic"
             },
-            "82": {
+            "97": {
                 "channel": 1,
                 "date_modified": "20160911230218",
                 "file_size": "6159792",
@@ -63,7 +63,7 @@
                         "end": "00:00:10:00",
                         "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
                         "layer": "10",
-                        "name": "strap hellp",
+                        "name": "new strap",
                         "parameters": "StrapUpper=hello|StrapLower=world",
                         "start": "00:00:00:00",
                         "template": "strapleft"
@@ -75,7 +75,7 @@
                 "template": "MOVIE",
                 "type": "vtgfx"
             },
-            "85": {
+            "98": {
                 "channel": 1,
                 "date_modified": "20160911230218",
                 "file_size": "6159792",
@@ -109,15 +109,29 @@
                 "name": "CG1080I50",
                 "template": "MOVIE",
                 "type": "vtgfx"
+            },
+            "99": {
+                "channel": 1,
+                "date_modified": "20160911230221",
+                "file_size": "16694084",
+                "filename": "GO1080P 25",
+                "frame_rate": 25.0,
+                "frames": 445.0,
+                "layer": 0,
+                "length": "00:00:17:20",
+                "name": "GO1080P 25",
+                "template": "MOVIE",
+                "type": "vt"
             }
         },
         "positions": {
-            "0": "78",
-            "1": "79",
-            "2": "80",
-            "3": "81",
-            "4": "82",
-            "5": "85"
+            "0": "93",
+            "1": "94",
+            "2": "95",
+            "3": "96",
+            "4": "97",
+            "5": "98",
+            "6": "99"
         }
     },
     "standingstable": [

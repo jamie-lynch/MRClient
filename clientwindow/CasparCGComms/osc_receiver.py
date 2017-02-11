@@ -21,6 +21,7 @@ class OSCReceiver(QtCore.QObject):
     @QtCore.Slot(str)
     def process_output(self, oscdata):
 
+        print("oscsaid: {}".format(oscdata))
         # split on pipe
         oscdata = oscdata.split('|')
 
