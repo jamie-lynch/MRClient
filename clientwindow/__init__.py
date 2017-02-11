@@ -1,6 +1,6 @@
 """
 Match Report CasparCG Client
-Version 1.5
+Version 2.0
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 This file defines the mainwindow class
@@ -89,11 +89,14 @@ class ClientWindow(QtGui.QMainWindow):
         vbox.addWidget(kill_button)
 
         # creates the rundown element and tries to build it from file
-        self.rundown = rundown.RundownWidget(main=self)
-        self.rundown.build_from_file()
+        # self.rundown = rundown.RundownWidget(main=self)
+        # self.rundown.build_from_file()
 
         # set element list
-        elements = ['production', 'tables', 'vts']
+        elements = ['production', 'tables', 'vts', "rundown"]
+
+        # create the poodown
+        self.rundown = rundown.RundownWidget(main=self)
 
         # create a dictionary of elements
         self.elements = {

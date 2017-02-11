@@ -1,6 +1,9 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 2.0
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This file contains the classes required to build the production tab
 """
 
 from PySide import QtGui, QtCore
@@ -259,11 +262,21 @@ class TemplateRow(QtGui.QWidget):
         grid.addWidget(self.add, 1, 6)
 
         self.remove_button = QtGui.QPushButton("Delete")
-        self.remove_button.clicked.connect(lambda: self.gfx_section.remove_widget(self))
+        self.remove_button.clicked.connect(self.remove_row)
         grid.addWidget(self.remove_button, 1, 7)
 
         self.fire_buttons = [self.fire_button, self.update_button]
         self.set_enabled_disabled()
+
+    def remove_row(self):
+        """Function to remove row"""
+        if self.playing:
+            error = QtGui.QErrorMessage()
+            error.showMessage("Cannot remove item while playing")
+            error.exec_()
+            return
+        else:
+            self.gfx_section.remove_row(widget=self)
 
     def fire_graphic(self):
         """Function to fire graphic"""
@@ -280,7 +293,7 @@ class TemplateRow(QtGui.QWidget):
             if 'OK' in response:
                 self.fire_status = 'Stop'
                 self.fire_button.setText('Stop')
-                self.fire_channel_and_layer = self.fire_channel_and_layer[0], self.fire_channel_and_layer[1]
+                self.fire_channel_and_layer = self.channel_edit.text(), self.layer_edit.text()
 
         else:
             response = self.main.comms.stop_template(
@@ -313,11 +326,12 @@ class TemplateRow(QtGui.QWidget):
             'filename': self.main.settings['templates'][self.template]['filename'],
             'name': self.get_name(),
             'type': "graphic",
-            'parameters': self.get_parameters()
+            'parameters': self.get_parameters(),
+            'template': self.template
         }
 
         # add to rundown
-        self.main.rundown.add_row(settings=settings, parameters=self.get_parameters())
+        self.main.rundown.add_row(settings=settings)
 
     def set_enabled_disabled(self):
         """Function to set fire buttons as enabled or disabled"""

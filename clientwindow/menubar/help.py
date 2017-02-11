@@ -1,6 +1,6 @@
 """
 Match Report CasparCG Client
-Version 1.5
+Version 2.0
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 This file holds the two help based classes
@@ -147,7 +147,7 @@ class AboutClient(QtGui.QDialog):
         vbox.addStretch(1)
 
         # Define the version
-        version = QtGui.QLabel("Version 1.5 | 02/2017")
+        version = QtGui.QLabel("Version 2.0 | 02/2017")
         version.setIndent(width*0.04)
         version.setAlignment(QtCore.Qt.AlignRight)
         vbox.addWidget(version)

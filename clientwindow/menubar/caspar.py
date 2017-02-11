@@ -1,8 +1,7 @@
 """
 Match Report CasparCG Client
-Version 1.5
+Version 2.0
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
-
 This file holds the classes for caspar connection
 """
 

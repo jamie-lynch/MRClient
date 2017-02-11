@@ -1,6 +1,9 @@
 """
-The Big Match graphics client
+Match Report CasparCG Client
+Version 2.0
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
+
+This file holds the classes to build the videos tab
 """
 
 from PySide import QtGui, QtCore
@@ -117,8 +120,6 @@ class VideoItem(QtGui.QFrame):
 
         # set border
         self.setFrameStyle(QtGui.QFrame.Box)
-
-
 
     def initUI(self):
         """Function to create the UI elements"""
@@ -316,7 +317,7 @@ class VideoItem(QtGui.QFrame):
 
         settings = self.data.copy()
         settings['filename'] = self.data['name']
-        settings['vt_type'] = self.data['type']
+        settings['template'] = self.data['type']
         settings['type'] = "vt"
 
         try:

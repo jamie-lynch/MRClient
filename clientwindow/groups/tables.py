@@ -1,6 +1,6 @@
 """
 Match Report CasparCG Client
-Version 1.5
+Version 2.0
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 This file defines the table tab widget
@@ -366,11 +366,11 @@ class StandingsTableDataRow(QtGui.QWidget):
                 'filename': self.tablesettings['filename'],
                 'name': self.get_name(),
                 'type': "graphic",
+                'template': "table",
                 "parameters": parameters
             }
 
-            print(settings)
-            self.main.rundown.add_row(settings=settings, button_widget=None, parameters=parameters)
+            self.main.rundown.add_row(settings=settings)
 
     def get_name(self):
         """Function to build a name for the rundown"""
