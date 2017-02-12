@@ -225,8 +225,12 @@ class StandingsTableDataRow(QtGui.QFrame):
         grid.addWidget(tools.QVTLabel(self, self.tablesettings['team']), 1, 3)
 
         # add channel and layer edits
-        grid.addWidget(tools.QVTLabel(self, 'Channel'), 0, 4)
-        grid.addWidget(tools.QVTLabel(self, 'Layer'), 1, 4)
+        channel = tools.QVTLabel(self, 'Channel')
+        channel.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        grid.addWidget(channel, 0, 4)
+        layer = tools.QVTLabel(self, 'Layer')
+        layer.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        grid.addWidget(layer, 1, 4)
         self.channel_edit = QtGui.QLineEdit()
         self.channel_edit.setText(str(self.tablesettings['channel']))
         self.channel_edit.editingFinished.connect(self.tables_section.write_to_data)

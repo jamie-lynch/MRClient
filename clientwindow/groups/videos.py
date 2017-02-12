@@ -155,19 +155,26 @@ class VideoItem(QtGui.QFrame):
         grid.addWidget(self.layer_edit, 1, 3)
 
         # length
-        grid.addWidget(QVTLabel(self, "Length", bold=True), 0, 4)
         self.data['length'], self.data['frames'], self.data['frame_rate'] = self.get_length_from_frames()
         length = QVTLabel(self, self.data['length'])
         length.setFixedWidth(80)
         length.setAlignment(QtCore.Qt.AlignCenter)
-        grid.addWidget(length, 0, 5)
+        if self.data['type'] != 'STILL':
+            length_label = QVTLabel(self, "Length", bold=True)
+            length_label.setFixedWidth(80)
+            grid.addWidget(length_label, 0, 4)
+            grid.addWidget(length, 0, 5)
+        else:
+            spacer = QtGui.QSpacerItem(165, 1, hData=QtGui.QSizePolicy.Fixed)
+            grid.addItem(spacer, 0, 4, 1, 2)
 
         # current time
-        grid.addWidget(QVTLabel(self, "Remaining", bold=True), 1, 4)
         self.time = QVTLabel(self, "")
         self.time.setFixedWidth(80)
         self.time.setAlignment(QtCore.Qt.AlignCenter)
-        grid.addWidget(self.time, 1, 5)
+        if self.data['type'] == 'MOVIE':
+            grid.addWidget(self.time, 1, 5)
+            grid.addWidget(QVTLabel(self, "Remaining", bold=True), 1, 4)
 
         # buttons
 
@@ -246,7 +253,10 @@ class VideoItem(QtGui.QFrame):
             channel = int(self.channel_edit.text())
             self.channel_launched = channel
 
-            self.osc.videos[int(self.channel_launched)][0].stop_vt()
+            try:
+                self.osc.videos[int(self.channel_launched)][0].stop_vt()
+            except KeyError:
+                print("No video on channel {} to stop".format(self.channel_launched))
 
             self.comms.load_video(name=self.data['name'], channel=channel)
             self.osc.videos[int(self.channel_launched)][0] = self
@@ -254,6 +264,7 @@ class VideoItem(QtGui.QFrame):
             self.playing_signal.emit(self)
             self.loaded = True
             self.set_background_colour()
+            self.main.set_refresh_button()
 
         except ValueError:
             QtGui.QErrorMessage("Please select a valid channel (1-2)")
@@ -286,6 +297,7 @@ class VideoItem(QtGui.QFrame):
                 self.loaded = False
                 self.osc.videos[int(self.channel_launched)][0] = self
                 self.set_background_colour()
+                self.main.set_refresh_button()
 
         except ValueError:
             QtGui.QErrorMessage("Please select a valid channel (1-2)")
@@ -312,6 +324,7 @@ class VideoItem(QtGui.QFrame):
             self.stopped_signal.emit(self)
             self.loaded = False
             self.set_background_colour()
+            self.main.set_refresh_button()
 
     def add_vt(self, gfx=False):
         """Function to add current VT to rundown"""

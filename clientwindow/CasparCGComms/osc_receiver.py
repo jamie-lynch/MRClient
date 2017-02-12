@@ -10,7 +10,7 @@ class OSCReceiver(QtCore.QObject):
         super(OSCReceiver, self).__init__()
         osc = CasparOSC()
 
-        self.videos = {0: {}, 1: {}}
+        self.videos = {1: {}, 2: {}, 3: {}, 4: {}}
 
         osc.osc_update.connect(self.process_output)
 

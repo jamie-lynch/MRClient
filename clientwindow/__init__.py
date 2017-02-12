@@ -79,9 +79,9 @@ class ClientWindow(QtGui.QMainWindow):
         vbox.addWidget(self.tab_widget)
 
         # refresh button
-        refresh_button = QtGui.QPushButton('Refresh')
-        refresh_button.clicked.connect(self.refresh_video_list)
-        vbox.addWidget(refresh_button)
+        self.refresh_button = QtGui.QPushButton('Refresh')
+        self.refresh_button.clicked.connect(self.refresh_video_list)
+        vbox.addWidget(self.refresh_button)
 
         # shit the bed
         kill_button = QtGui.QPushButton("Clear All")
@@ -96,17 +96,17 @@ class ClientWindow(QtGui.QMainWindow):
 
         # create a dictionary of elements
         self.elements = {
-            "production": {"element": production.ProductionWidget(main=self), "index": 0},
-            "vts": {"element": videos.VideoWidget(main=self), "index": 1},
-            "tables": {"element": tables.TablesWidget(main=self), "index": 2},
-            "rundown": {"element": self.rundown, "index": 3}
+            "production": {"element": production.ProductionWidget(main=self), "index": 0, "name": "Production"},
+            "vts": {"element": videos.VideoWidget(main=self), "index": 1, "name": "VTs"},
+            "tables": {"element": tables.TablesWidget(main=self), "index": 2, "name": "Tables"},
+            "rundown": {"element": self.rundown, "index": 3, "name": "Rundown"}
         }
 
         # add each element to the tab widget
         for num, element_name in enumerate(elements):
             self.tab_widget.addTab(
                 self.elements[element_name]["element"],
-                element_name.capitalize()
+                self.elements[element_name]["name"]
             )
 
         # add menu
@@ -122,6 +122,14 @@ class ClientWindow(QtGui.QMainWindow):
     def refresh_video_list(self):
         """Function which passes the refresh command onto the video element"""
         self.elements['vts']['element'].refresh_data()
+
+    def set_refresh_button(self):
+        """Function to decide whether the refresh button should be enabled or disabled"""
+        playing = [len(self.osc.videos[key].keys()) for key in self.osc.videos.keys()]
+        if sum(playing):
+            self.refresh_button.setDisabled(True)
+        else:
+            self.refresh_button.setEnabled(True)
 
     def attempt_startup_connect(self):
         """Function which attempts to connect to Caspar on startup"""

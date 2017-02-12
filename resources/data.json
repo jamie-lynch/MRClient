@@ -247,8 +247,8 @@
             "date_modified": "20160911230222",
             "file_size": "6220854",
             "frame_rate": 1,
-            "frames": 1.0,
-            "length": "00:00:01:00",
+            "frames": 1,
+            "length": " ",
             "name": "SPLIT",
             "type": "STILL"
         },

@@ -191,6 +191,12 @@ class TemplateRow(QtGui.QFrame):
         grid = QtGui.QGridLayout()
         self.setLayout(grid)
 
+        parameters_grid = QtGui.QGridLayout()
+        control_grid = QtGui.QGridLayout()
+
+        grid.addLayout(parameters_grid, 0, 0)
+        grid.addLayout(control_grid, 0, 1)
+
         # add edits for parameters
         self.parameters_list = self.main.settings['templates'][self.template]['parameters']
         self.parameters = {key: 0 for key in self.main.settings['templates'][self.template]['parameters']}
@@ -202,19 +208,19 @@ class TemplateRow(QtGui.QFrame):
                 heading = tools.QVTLabel(self, key)
                 heading.setFixedWidth(120)
                 heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
-                grid.addWidget(heading, num//2, 0)
+                parameters_grid.addWidget(heading, num//2, 0)
                 self.parameters[key] = QtGui.QLineEdit()
                 self.parameters[key].setFixedWidth(160)
-                grid.addWidget(self.parameters[key], num//2, 1)
+                parameters_grid.addWidget(self.parameters[key], num//2, 1)
             # for odd numbers
             else:
                 heading = tools.QVTLabel(self, key)
                 heading.setFixedWidth(120)
                 heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
-                grid.addWidget(heading, num//2, 2)
+                parameters_grid.addWidget(heading, num//2, 2)
                 self.parameters[key] = QtGui.QLineEdit()
                 self.parameters[key].setFixedWidth(160)
-                grid.addWidget(self.parameters[key], num // 2, 3)
+                parameters_grid.addWidget(self.parameters[key], num // 2, 3)
 
             # add the text if data exists
             if self.data:
@@ -227,12 +233,12 @@ class TemplateRow(QtGui.QFrame):
         channel = tools.QVTLabel(self, 'Channel')
         channel.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         channel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
-        grid.addWidget(channel, 0, 4)
+        control_grid.addWidget(channel, 0, 4)
 
         layer = tools.QVTLabel(self, 'Layer')
         layer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         layer.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        grid.addWidget(layer, 1, 4)
+        control_grid.addWidget(layer, 1, 4)
 
         self.channel_edit = QtGui.QLineEdit()
         self.channel_edit.setFixedWidth(60)
@@ -249,26 +255,26 @@ class TemplateRow(QtGui.QFrame):
         else:
             self.layer_edit.setText(str(self.main.settings['templates'][self.template]['layer']))
         self.layer_edit.editingFinished.connect(self.production.write_to_data)
-        grid.addWidget(self.channel_edit, 0, 5)
-        grid.addWidget(self.layer_edit, 1, 5)
+        control_grid.addWidget(self.channel_edit, 0, 5)
+        control_grid.addWidget(self.layer_edit, 1, 5)
 
         # add the control buttons
         self.fire_button = QtGui.QPushButton("Fire")
         self.fire_status = "Fire"
         self.fire_button.clicked.connect(self.fire_graphic)
-        grid.addWidget(self.fire_button, 0, 6)
+        control_grid.addWidget(self.fire_button, 0, 6)
 
         self.update_button = QtGui.QPushButton("Update")
         self.update_button.clicked.connect(self.update_graphic)
-        grid.addWidget(self.update_button, 0, 7)
+        control_grid.addWidget(self.update_button, 0, 7)
 
         self.add = QtGui.QPushButton("Add")
         self.add.clicked.connect(self.add_graphic)
-        grid.addWidget(self.add, 1, 6)
+        control_grid.addWidget(self.add, 1, 6)
 
         self.remove_button = QtGui.QPushButton("Delete")
         self.remove_button.clicked.connect(self.remove_row)
-        grid.addWidget(self.remove_button, 1, 7)
+        control_grid.addWidget(self.remove_button, 1, 7)
 
         self.fire_buttons = [self.fire_button, self.update_button]
         self.set_enabled_disabled()
