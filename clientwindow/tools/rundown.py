@@ -336,7 +336,15 @@ class EditGraphic(QtGui.QDialog):
         """Function to add current graphic"""
         data = {}
         data['start'] = self.time_edit.text()
+        if self.item:
+            data['start_frames'] = self.get_frames_from_length(data['start'], self.item.window.video.settings['frame_rate'])
+        else:
+            data['start_frames'] = self.get_frames_from_length(data['start'], self.window.video.settings['frame_rate'])
         data['end'] = self.end_time.text()
+        if self.item:
+            data['end_frames'] = self.get_frames_from_length(data['end'], self.item.window.video.settings['frame_rate'])
+        else:
+            data['end_frames'] = self.get_frames_from_length(data['end'], self.window.video.settings['frame_rate'])
         data['template'] = self.name_select.currentText()
         if self.item:
             data['channel'] = self.item.data['channel']
@@ -361,3 +369,15 @@ class EditGraphic(QtGui.QDialog):
         """Function to split a Caspar formatted parameters string"""
         items = self.item.data['parameters'].split("|")
         self.curr_parameters = {item.split("=")[0]: item.split("=")[1] for item in items}
+
+    def get_frames_from_length(self, length, frame_rate):
+        """Function to return the length based on the number of frames"""
+        hours, minutes, seconds, smpte_frames = length.split(':')
+
+        hours = int(hours) * frame_rate * 60 * 60
+        minutes = int(minutes) * frame_rate * 60
+        seconds = int(seconds) * frame_rate
+
+        frames = hours + minutes + seconds + int(smpte_frames)
+
+        return frames

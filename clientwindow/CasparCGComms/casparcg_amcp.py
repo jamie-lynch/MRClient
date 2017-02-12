@@ -4,9 +4,9 @@
 
 # Version History:
 #
-# v0.7.0:
+# v0.7.1_MR:
 # (JCR) Class name changed to CasparAMCP and added to package CasparCGComms
-#
+# (JPL) playonload feature added
 
 import socket
 import os.path
@@ -168,7 +168,7 @@ class CasparAMCP(object):
             logger.error("Stop command failed")
             return "Stop command failed"
 
-    def template(self, name, channel, layer, parameters=""):
+    def template(self, name, channel, layer, parameters="", playonload=0):
         try:
             if self.playing_templates[str(channel) + "-" + str(layer)] == str(name):
                 logger.info("Found a playing template called " + str(name) + " on " + str(channel) + "-" + str(layer) +
@@ -178,12 +178,12 @@ class CasparAMCP(object):
         except KeyError:
             logger.info("Found a playing template called " + str(name) + " on " + str(channel) + "-" + str(layer) +
                         ", calling template play function")
-            response = self.play_template(name, channel, layer, parameters)
+            response = self.play_template(name, channel, layer, parameters, playonload)
             return response
         return "Failed"
 
-    def play_template(self, name, channel, layer, parameters=""):
-        command = 'CG ' + str(channel) + '-' + str(layer) + ' ADD 10 ' + name + ' \"0\" \"<templateData>'
+    def play_template(self, name, channel, layer, parameters="", playonload=0):
+        command = 'CG ' + str(channel) + '-' + str(layer) + ' ADD 10 ' + name + ' \"{}\" \"<templateData>'.format(playonload)
         # params,count = self.string_split(parameters)
         delimited = parameters.split("|")
         count = len(delimited)

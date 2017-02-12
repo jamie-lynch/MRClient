@@ -337,7 +337,7 @@ class StandingsTableDataRow(QtGui.QFrame):
                 if 'OK' in response:
                     self.fire_status = 'Stop'
                     self.fire_button.setText('Stop')
-                    self.fire_channel_and_layer = self.fire_channel_and_layer[0], self.fire_channel_and_layer[1]
+                    self.fire_channel_and_layer = self.channel_edit.text(), self.layer_edit.text()
                     self.playing_signal.emit(self)
                     self.playing = True
                     self.set_background_colour()
@@ -395,9 +395,9 @@ class StandingsTableDataRow(QtGui.QFrame):
     def set_background_colour(self):
         """Function to set the correct background colour"""
         if self.playing:
-            self.setStyleSheet('VideoItem{background-color: #009600}')
+            self.setStyleSheet('StandingsTableDataRow{background-color: #009600}')
         else:
-            self.setStyleSheet('VideoItem{background-color: #f0f0f0}')
+            self.setStyleSheet('StandingsTableDataRow{background-color: #f0f0f0}')
 
     def remove_row(self):
         """Function to remove row"""

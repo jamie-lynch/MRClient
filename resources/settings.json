@@ -50,7 +50,7 @@
             "channel": 3,
             "filename": "BigMatch/TBM_TopLeft_NoTimer/TBM_TopLeft_NoTimer",
             "layer": 25,
-            "name": "TopScore",
+            "name": "Top Score",
             "parameters": [
                 "topleft_team1",
                 "topleft_team2",

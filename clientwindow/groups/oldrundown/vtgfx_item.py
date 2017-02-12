@@ -101,17 +101,7 @@ class VTGFXRundownItem(QtGui.QFrame):
         for graphic in self.graphic_items:
             self.add_to_command_list(graphic.settings)
 
-    def get_frames_from_length(self, length, frame_rate):
-        """Function to return the length based on the number of frames"""
-        hours, minutes, seconds, smpte_frames = length.split(':')
 
-        hours = int(hours) * frame_rate * 60 * 60
-        minutes = int(minutes) * frame_rate * 60
-        seconds = int(seconds) * frame_rate
-
-        frames = hours + minutes + seconds + int(smpte_frames)
-
-        return frames
 
     def remove_graphic(self, item):
         """Function to remove a graphic item"""

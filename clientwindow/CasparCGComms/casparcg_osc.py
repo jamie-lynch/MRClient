@@ -53,6 +53,6 @@ class CasparOSC(QtCore.QObject):
 
         while not self.finished:
             osc_process()
-            time.sleep(0.000999)
+            time.sleep(0.0009999)
 
         osc_terminate()

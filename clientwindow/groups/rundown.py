@@ -194,6 +194,7 @@ class RundownItem(QtGui.QFrame):
         self.settings = settings
         self.data = settings
         self.osc = self.main.osc
+        self.comms = self.main.comms
 
         # create reference values
         self.channel_launched = None
@@ -201,6 +202,7 @@ class RundownItem(QtGui.QFrame):
         self.playing = False
         self.paused = False
         self.loaded = False
+        self.fired_graphics = []
 
         # call the correct create UI function
         if self.settings['type'] == "graphic":
@@ -325,14 +327,15 @@ class RundownItem(QtGui.QFrame):
                 name=self.settings['filename'],
                 channel=self.channel_edit.text(),
                 layer=self.layer_edit.text(),
-                parameters=self.settings['parameters']
+                parameters=self.settings['parameters'],
+                playonload=1
             )
-            print(response)
 
             if 'OK' in response:
                 self.fire_status = 'Stop'
                 self.fire_button.setText('Stop')
-                self.fire_channel_and_layer = self.fire_channel_and_layer[0], self.fire_channel_and_layer[1]
+                self.channel_launched = self.channel_edit.text()
+                self.layer_launched = self.layer_edit.text()
                 self.playing_signal.emit()
                 self.playing = True
                 self.set_background_colour()
@@ -342,7 +345,6 @@ class RundownItem(QtGui.QFrame):
                 channel=self.channel_launched,
                 layer=self.layer_launched
             )
-            print(response)
 
             if 'OK' in response:
                 self.fire_status = 'Fire'
@@ -363,9 +365,9 @@ class RundownItem(QtGui.QFrame):
     def set_background_colour(self):
         """Function to set the correct background colour"""
         if self.playing:
-            self.setStyleSheet('VideoItem{background-color: #009600}')
+            self.setStyleSheet('RundownItem{background-color: #009600}')
         else:
-            self.setStyleSheet('VideoItem{background-color: #f0f0f0}')
+            self.setStyleSheet('RundownItem{background-color: transparent}')
 
     def remove_row(self):
         """Function to remove row"""
@@ -383,10 +385,10 @@ class RundownItem(QtGui.QFrame):
             channel = int(self.channel_edit.text())
             self.channel_launched = channel
 
-            self.osc.videos[int(self.channel_launched)].stop_vt()
+            self.osc.videos[int(self.channel_launched)][0].stop_vt()
 
             self.comms.load_video(name=self.data['name'], channel=channel)
-            self.osc.videos[int(self.channel_launched)] = self
+            self.osc.videos[int(self.channel_launched)][0] = self
             self.playing = True
             self.playing_signal.emit(self)
             self.loaded = True
@@ -404,9 +406,9 @@ class RundownItem(QtGui.QFrame):
 
             # kill current things on this channel
             try:
-                self.osc.videos[int(self.channel_launched)].stop_vt()
+                self.osc.videos[int(self.channel_launched)][0].stop_vt()
             except KeyError:
-                print("No video on channel {} to stop".format(self.channel_launched))
+                pass
 
             if self.loop_select.isChecked():
                 loop = 1
@@ -415,14 +417,19 @@ class RundownItem(QtGui.QFrame):
             self.channel_launched = channel
 
             response, message = self.comms.play_video(name=self.data['name'], channel=channel, loop=loop)
-            print(response)
             if response:
                 self.playing = True
                 self.playing_signal.emit(self)
                 self.paused = False
                 self.loaded = False
-                self.osc.videos[int(self.channel_launched)] = self
+                self.osc.videos[int(self.channel_launched)][0] = self
                 self.set_background_colour()
+                try:
+                    self.graphics_remaining = self.settings['graphics'].copy()
+                    self.fired_graphics = []
+                    self.stopped_graphics = []
+                except KeyError:
+                    pass
 
         except ValueError:
             QtGui.QErrorMessage("Please select a valid channel (1-2)")
@@ -440,9 +447,8 @@ class RundownItem(QtGui.QFrame):
     def stop_vt(self):
         """Function to stop current VT"""
         if self.playing:
-            print("stop: {}".format(self.data['name']))
             self.comms.stop_video(channel=self.channel_launched)
-            del self.osc.videos[int(self.channel_launched)]
+            del self.osc.videos[int(self.channel_launched)][0]
             self.channel_launched = None
             self.time.setText("")
             self.playing = False
@@ -480,6 +486,16 @@ class RundownItem(QtGui.QFrame):
         """Function to set the time remaining"""
 
         if not self.loaded:
+
+            try:
+                _ = self.settings['graphics']
+
+                # call to fire graphics function
+                self.automagical_graphics(current_frame)
+
+            except KeyError:
+                pass
+
             # find the number of frames remaining
             remaining_frames = int(total_frames) - int(current_frame)
 
@@ -489,6 +505,37 @@ class RundownItem(QtGui.QFrame):
 
             # sets the time
             self.time.setText(remaining_time)
+
+    def automagical_graphics(self, current_frame):
+        """Function to play graphics if there are any"""
+        for graphic in self.graphics_remaining:
+            if int(current_frame) >= int(graphic['start_frames']):
+                _ = self.main.comms.template(
+                    name=graphic['filename'],
+                    channel=graphic['channel'],
+                    layer=graphic['layer'],
+                    parameters=graphic['parameters'],
+                    playonload=1
+                )
+                self.fired_graphics.append(graphic)
+
+        for graphic in self.fired_graphics:
+            try:
+                self.graphics_remaining.remove(graphic)
+            except ValueError:
+                pass
+            if int(current_frame) >= int(graphic['end_frames']):
+                _ = self.main.comms.stop_template(
+                    channel=graphic['channel'],
+                    layer=graphic['layer'],
+                )
+                self.stopped_graphics.append(graphic)
+
+        for graphic in self.stopped_graphics:
+            try:
+                self.fired_graphics.remove(graphic)
+            except ValueError:
+                pass
 
 
 class ItemGraphics(QtGui.QWidget):
@@ -527,7 +574,10 @@ class ItemGraphics(QtGui.QWidget):
 
         if not video:
             # get the rundown item
-            rundown_item = self.rundown.items[self.rundown.positions[current_row]]
+            try:
+                rundown_item = self.rundown.items[self.rundown.positions[current_row]]
+            except KeyError:
+                pass
 
             # get video for edit reference
             self.video = rundown_item

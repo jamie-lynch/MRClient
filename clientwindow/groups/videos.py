@@ -150,6 +150,7 @@ class VideoItem(QtGui.QFrame):
         # add layer elements
         grid.addWidget(QVTLabel(self, "Layer"), 1, 2)
         self.layer_edit = QtGui.QLineEdit("0")
+        self.layer_edit.setDisabled(True)
         self.layer_edit.setFixedWidth(60)
         grid.addWidget(self.layer_edit, 1, 3)
 
@@ -245,10 +246,10 @@ class VideoItem(QtGui.QFrame):
             channel = int(self.channel_edit.text())
             self.channel_launched = channel
 
-            self.osc.videos[int(self.channel_launched)].stop_vt()
+            self.osc.videos[int(self.channel_launched)][0].stop_vt()
 
             self.comms.load_video(name=self.data['name'], channel=channel)
-            self.osc.videos[int(self.channel_launched)] = self
+            self.osc.videos[int(self.channel_launched)][0] = self
             self.playing = True
             self.playing_signal.emit(self)
             self.loaded = True
@@ -266,7 +267,7 @@ class VideoItem(QtGui.QFrame):
 
             # kill current things on this channel
             try:
-                self.osc.videos[int(self.channel_launched)].stop_vt()
+                self.osc.videos[int(self.channel_launched)][0].stop_vt()
             except KeyError:
                 print("No video on channel {} to stop".format(self.channel_launched))
 
@@ -283,7 +284,7 @@ class VideoItem(QtGui.QFrame):
                 self.playing_signal.emit(self)
                 self.paused = False
                 self.loaded = False
-                self.osc.videos[int(self.channel_launched)] = self
+                self.osc.videos[int(self.channel_launched)][0] = self
                 self.set_background_colour()
 
         except ValueError:
@@ -304,7 +305,7 @@ class VideoItem(QtGui.QFrame):
         if self.playing:
             print("stop: {}".format(self.data['name']))
             self.comms.stop_video(channel=self.channel_launched)
-            del self.osc.videos[int(self.channel_launched)]
+            del self.osc.videos[int(self.channel_launched)][0]
             self.channel_launched = None
             self.time.setText("")
             self.playing = False

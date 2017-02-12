@@ -10,7 +10,7 @@ class OSCReceiver(QtCore.QObject):
         super(OSCReceiver, self).__init__()
         osc = CasparOSC()
 
-        self.videos = {}
+        self.videos = {0: {}, 1: {}}
 
         osc.osc_update.connect(self.process_output)
 
@@ -21,13 +21,12 @@ class OSCReceiver(QtCore.QObject):
     @QtCore.Slot(str)
     def process_output(self, oscdata):
 
-        print("oscsaid: {}".format(oscdata))
         # split on pipe
         oscdata = oscdata.split('|')
 
         # pass the current frames to the video playing on the channel from the osc data
         try:
-            self.videos[int(oscdata[0])].set_remaining_time(oscdata[2], oscdata[3])
+            self.videos[int(oscdata[0])][0].set_remaining_time(oscdata[2], oscdata[3])
         # catch the stray messages after you click stop
         except KeyError:
-            print("Key Error Couldn't find a video on channel {}".format(oscdata[0]))
+            pass

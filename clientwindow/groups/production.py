@@ -208,7 +208,7 @@ class TemplateRow(QtGui.QFrame):
                 grid.addWidget(self.parameters[key], num//2, 1)
             # for odd numbers
             else:
-                heading = QtGui.QLabel(key)
+                heading = tools.QVTLabel(self, key)
                 heading.setFixedWidth(120)
                 heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
                 grid.addWidget(heading, num//2, 2)
@@ -291,7 +291,8 @@ class TemplateRow(QtGui.QFrame):
                 name=self.main.settings['templates'][self.template]['filename'],
                 channel=self.channel_edit.text(),
                 layer=self.layer_edit.text(),
-                parameters=self.get_parameters()
+                parameters=self.get_parameters(),
+                playonload=1
             )
             print(response)
 
@@ -367,6 +368,6 @@ class TemplateRow(QtGui.QFrame):
     def set_background_colour(self):
         """Function to set the correct background colour"""
         if self.playing:
-            self.setStyleSheet('VideoItem{background-color: #009600}')
+            self.setStyleSheet('TemplateRow{background-color: #009600}')
         else:
-            self.setStyleSheet('VideoItem{background-color: #f0f0f0}')
+            self.setStyleSheet('TemplateRow{background-color: #f0f0f0}')

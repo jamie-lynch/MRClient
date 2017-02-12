@@ -8,7 +8,8 @@ This is the run file for the whole tool
 
 import sys
 from PySide import QtGui
-from clientwindow import ClientWindow, splash
+from clientwindow import ClientWindow, splash, tools
+from os import path
 
 
 def main():
@@ -16,6 +17,7 @@ def main():
 
     # create application
     app = QtGui.QApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon(path.join(tools.get_resources(), 'icon.ico')))
 
     # create a splash window
     splash_window = splash.ClientSplash(app=app)
