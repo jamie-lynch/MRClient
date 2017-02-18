@@ -300,7 +300,6 @@ class TemplateRow(QtGui.QFrame):
                 parameters=self.get_parameters(),
                 playonload=1
             )
-            print(response)
 
             if 'OK' in response:
                 self.fire_status = 'Stop'

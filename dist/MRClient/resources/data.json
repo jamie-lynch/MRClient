@@ -14,16 +14,7 @@
     ],
     "rundown": {
         "items": {
-            "108": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "3",
-                "parameters": "StrapLower=|StrapUpper=3",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "109": {
+            "118": {
                 "channel": "3",
                 "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
                 "layer": "30",
@@ -32,7 +23,7 @@
                 "template": "strapleft",
                 "type": "graphic"
             },
-            "110": {
+            "119": {
                 "channel": "3",
                 "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
                 "layer": "30",
@@ -41,25 +32,100 @@
                 "template": "strapleft",
                 "type": "graphic"
             },
-            "113": {
-                "channel": 1,
-                "date_modified": "20160911230221",
-                "file_size": "16694084",
-                "filename": "GO1080P25",
-                "frame_rate": 25.0,
-                "frames": 445.0,
-                "layer": 0,
-                "length": "00:00:17:20",
-                "name": "GO1080P25",
-                "template": "MOVIE",
-                "type": "vt"
+            "120": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "3",
+                "parameters": "StrapLower=|StrapUpper=3",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "121": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "4",
+                "parameters": "StrapLower=|StrapUpper=4",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "122": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "5",
+                "parameters": "StrapLower=|StrapUpper=5",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "123": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "6",
+                "parameters": "StrapLower=|StrapUpper=6",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "124": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "7",
+                "parameters": "StrapLower=|StrapUpper=7",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "125": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "8",
+                "parameters": "StrapLower=|StrapUpper=8",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "126": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "9",
+                "parameters": "StrapLower=|StrapUpper=9",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "127": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "10",
+                "parameters": "StrapLower=|StrapUpper=10",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "128": {
+                "channel": "3",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "11",
+                "parameters": "StrapLower=|StrapUpper=11",
+                "template": "strapleft",
+                "type": "graphic"
             }
         },
         "positions": {
-            "0": "108",
-            "1": "109",
-            "2": "110",
-            "3": "113"
+            "0": "118",
+            "1": "119",
+            "10": "128",
+            "2": "120",
+            "3": "121",
+            "4": "122",
+            "5": "123",
+            "6": "124",
+            "7": "125",
+            "8": "126",
+            "9": "127"
         }
     },
     "standingstable": [
@@ -171,7 +237,87 @@
             "layer": "30",
             "parameters": {
                 "StrapLower": "",
+                "StrapUpper": "1"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "2"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "3"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
                 "StrapUpper": "4"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "5"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "6"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "7"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "8"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "9"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "10"
+            }
+        },
+        {
+            "channel": "3",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "",
+                "StrapUpper": "11"
             }
         }
     ],
@@ -247,8 +393,8 @@
             "date_modified": "20160911230222",
             "file_size": "6220854",
             "frame_rate": 1,
-            "frames": 1,
-            "length": " ",
+            "frames": 1.0,
+            "length": "00:00:01:00",
             "name": "SPLIT",
             "type": "STILL"
         },

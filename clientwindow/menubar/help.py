@@ -31,7 +31,7 @@ class ErrorReport(QtGui.QDialog):
                             ^ QtCore.Qt.WindowContextHelpButtonHint)
 
         # set title
-        self.setWindowTitle('Report Error | The Big Match CasparCG Client')
+        self.setWindowTitle('Report Error | Match Report CasparCG Client')
 
         # 3... 2... 1... GO!
         self.exec_()

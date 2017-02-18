@@ -38,7 +38,10 @@ class GetVTGraphics(QtGui.QDialog):
                             ^ QtCore.Qt.WindowContextHelpButtonHint)
 
         # set title
-        self.setWindowTitle("Settings | The Big Match CasparCG Client")
+        self.setWindowTitle("VT Graphics | Match Report CasparCG Client")
+
+        # set window size
+        self.resize(600, 500)
 
         # GO!
         self.exec_()
@@ -118,7 +121,7 @@ class GetVTGraphics(QtGui.QDialog):
         self.accept()
 
 
-class GraphicItem(QtGui.QWidget):
+class GraphicItem(QtGui.QFrame):
     """Widget to hold data for one graphic"""
 
     def __init__(self, data, window):
@@ -134,6 +137,9 @@ class GraphicItem(QtGui.QWidget):
         # create UI elements
         self.initUI()
 
+        # set border
+        self.setFrameStyle(QtGui.QFrame.Box)
+
     def initUI(self):
         """Function to create UI elements"""
 
@@ -146,10 +152,10 @@ class GraphicItem(QtGui.QWidget):
         self.name = QtGui.QLabel(self.data['name'])
         grid.addWidget(self.name, 0, 1)
 
-        # add the filename
-        grid.addWidget(QHeadingThree("Filename: "), 1, 0)
-        self.filename = QtGui.QLabel(self.data['filename'])
-        grid.addWidget(self.filename, 1, 1)
+        # add the template
+        grid.addWidget(QHeadingThree("Template: "), 1, 0)
+        self.template = QtGui.QLabel(self.data['template'])
+        grid.addWidget(self.template, 1, 1)
 
         # add the start time
         grid.addWidget(QHeadingThree("Start: "), 0, 2)
@@ -222,7 +228,7 @@ class EditGraphic(QtGui.QDialog):
                             ^ QtCore.Qt.WindowContextHelpButtonHint)
 
         # set title
-        self.setWindowTitle("Settings | The Big Match CasparCG Client")
+        self.setWindowTitle("New Graphic | Match Report CasparCG Client")
         self.exec_()
 
     def initUI(self):
@@ -235,6 +241,7 @@ class EditGraphic(QtGui.QDialog):
         # Label
         self.grid.addWidget(QtGui.QLabel("Label:"), 0, 0)
         self.label_edit = QtGui.QLineEdit()
+        self.label_edit.setMaxLength(16)
         if self.item:
             self.label_edit.setText(self.item.data['name'])
         self.grid.addWidget(self.label_edit, 0, 1)
@@ -302,8 +309,6 @@ class EditGraphic(QtGui.QDialog):
         cancel.clicked.connect(self.reject)
         self.grid.addWidget(cancel, 10, 1)
 
-
-
     def add_parameters(self, name):
         """Function to display corresponding parameters to name chosen"""
 
@@ -335,17 +340,29 @@ class EditGraphic(QtGui.QDialog):
     def add_graphics(self):
         """Function to add current graphic"""
         data = {}
+
+        data['template'] = self.name_select.currentText()
+        if data['template'] == 'Select Graphic...':
+            return
+
         data['start'] = self.time_edit.text()
         if self.item:
             data['start_frames'] = self.get_frames_from_length(data['start'], self.item.window.video.settings['frame_rate'])
         else:
             data['start_frames'] = self.get_frames_from_length(data['start'], self.window.video.settings['frame_rate'])
         data['end'] = self.end_time.text()
+
         if self.item:
-            data['end_frames'] = self.get_frames_from_length(data['end'], self.item.window.video.settings['frame_rate'])
+            if data['end']:
+                data['end_frames'] = self.get_frames_from_length(data['end'], self.item.window.video.settings['frame_rate'])
+            else:
+                data['end_frames'] = None
         else:
-            data['end_frames'] = self.get_frames_from_length(data['end'], self.window.video.settings['frame_rate'])
-        data['template'] = self.name_select.currentText()
+            if data['end']:
+                data['end_frames'] = self.get_frames_from_length(data['end'], self.window.video.settings['frame_rate'])
+            else:
+                data['end_frames'] = None
+
         if self.item:
             data['channel'] = self.item.data['channel']
         else:
@@ -370,7 +387,8 @@ class EditGraphic(QtGui.QDialog):
         items = self.item.data['parameters'].split("|")
         self.curr_parameters = {item.split("=")[0]: item.split("=")[1] for item in items}
 
-    def get_frames_from_length(self, length, frame_rate):
+    @staticmethod
+    def get_frames_from_length(length, frame_rate):
         """Function to return the length based on the number of frames"""
         hours, minutes, seconds, smpte_frames = length.split(':')
 

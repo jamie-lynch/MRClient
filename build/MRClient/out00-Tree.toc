@@ -1,6 +1,6 @@
 ('C:\\Users\\Jamie\\Documents\\MRClient\\build\\MRClient\\setuptools-17.1.1-py3.4.egg',
  None,
- {'*.pyc', '*.so', 'EGG-INFO', '*.pyo', '*.pyd', '*.py'},
+ {'*.py', '*.pyd', '*.pyo', '*.pyc', 'EGG-INFO', '*.so'},
  'DATA',
  [('setuptools\\cli-32.exe',
    'C:\\Users\\Jamie\\Documents\\MRClient\\build\\MRClient\\setuptools-17.1.1-py3.4.egg\\setuptools\\cli-32.exe',

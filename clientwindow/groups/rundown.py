@@ -57,8 +57,8 @@ class RundownWidget(QtGui.QWidget):
         grid.addWidget(self.list_widget, 1, 0)
 
         # add the elements from file
-        for position in sorted(list(self.data['rundown']['positions'].keys())):
-            self.add_row(self.data['rundown']['items'][self.data['rundown']['positions'][position]], save=False)
+        for position in sorted(map(int, list(self.data['rundown']['positions'].keys()))):
+            self.add_row(self.data['rundown']['items'][self.data['rundown']['positions'][str(position)]], save=False)
 
         # get the current reference
         self.get_positions()
@@ -154,7 +154,10 @@ class RundownWidget(QtGui.QWidget):
         try:
             _ = video.settings['graphics']
         except KeyError:
-            return
+            if video.settings['type'] == 'vt':
+                video.settings['graphics'] = []
+            else:
+                return
 
         tools.GetVTGraphics(main=self.main, video=video)
         self.item_graphics.update_graphics(video=video)
@@ -234,24 +237,29 @@ class RundownItem(QtGui.QFrame):
         grid.addWidget(tools.QVTLabel(self, self.settings['template']), 1, 1)
 
         # Create channel edit
-        grid.addWidget(tools.QVTLabel(self, "Channel"), 0, 2)
+        grid.addWidget(tools.QVTLabel(self, "Channel:", bold=True), 0, 2)
         self.channel_edit = tools.QVTLabel(self, str(self.settings['channel']))
         grid.addWidget(self.channel_edit, 0, 3)
 
         # Create layer edit
-        grid.addWidget(tools.QVTLabel(self, "Layer"), 1, 2)
+        grid.addWidget(tools.QVTLabel(self, "Layer:", bold=True), 1, 2)
         self.layer_edit = tools.QVTLabel(self, str(self.settings['layer']))
         grid.addWidget(self.layer_edit, 1, 3)
+
+        grid.addWidget(QtGui.QLabel(''), 0, 4)
+        grid.addWidget(QtGui.QLabel(''), 0, 5)
+        grid.addWidget(QtGui.QLabel(''), 0, 6)
+        grid.addWidget(QtGui.QLabel(''), 0, 7)
 
         # Create buttons
         self.fire_button = QtGui.QPushButton("Fire")
         self.fire_status = "Fire"
         self.fire_button.clicked.connect(self.fire_graphic)
-        grid.addWidget(self.fire_button, 0, 4)
+        grid.addWidget(self.fire_button, 0, 8, 1, 2)
 
         self.remove_button = QtGui.QPushButton("Delete")
         self.remove_button.clicked.connect(self.remove_row)
-        grid.addWidget(self.remove_button, 1, 4)
+        grid.addWidget(self.remove_button, 1, 8, 1, 2)
 
         self.fire_buttons = [self.fire_button]
         self.set_enabled_disabled()
@@ -271,22 +279,22 @@ class RundownItem(QtGui.QFrame):
         grid.addWidget(tools.QVTLabel(self, self.settings['template']), 1, 1)
 
         # Create channel edit
-        grid.addWidget(tools.QVTLabel(self, "Channel"), 0, 2)
+        grid.addWidget(tools.QVTLabel(self, "Channel:", bold=True), 0, 2)
         self.channel_edit = tools.QVTLabel(self, str(self.settings['channel']))
         grid.addWidget(self.channel_edit, 0, 3)
 
         # Create layer edit
-        grid.addWidget(tools.QVTLabel(self, "Layer"), 1, 2)
+        grid.addWidget(tools.QVTLabel(self, "Layer:", bold=True), 1, 2)
         self.layer_edit = tools.QVTLabel(self, str(self.settings['layer']))
         grid.addWidget(self.layer_edit, 1, 3)
 
         # Create length label
-        grid.addWidget(tools.QVTLabel(self, "Length: "), 0, 4)
+        grid.addWidget(tools.QVTLabel(self, "Length: ", bold=True), 0, 4)
         length = tools.QVTLabel(self, self.settings['length'])
         grid.addWidget(length, 0, 5)
 
         # Create remaining label
-        grid.addWidget(tools.QVTLabel(self, "Remaining: "), 1, 4)
+        grid.addWidget(tools.QVTLabel(self, "Remaining: ", bold=True), 1, 4)
         self.time = tools.QVTLabel(self, "")
         grid.addWidget(self.time, 1, 5)
 
@@ -336,9 +344,10 @@ class RundownItem(QtGui.QFrame):
                 self.fire_button.setText('Stop')
                 self.channel_launched = self.channel_edit.text()
                 self.layer_launched = self.layer_edit.text()
-                self.playing_signal.emit()
+                self.playing_signal.emit(self)
                 self.playing = True
                 self.set_background_colour()
+
 
         else:
             response = self.main.comms.stop_template(
@@ -349,7 +358,7 @@ class RundownItem(QtGui.QFrame):
             if 'OK' in response:
                 self.fire_status = 'Fire'
                 self.fire_button.setText('Fire')
-                self.stopped_signal.emit()
+                self.stopped_signal.emit(self)
                 self.playing = False
                 self.set_background_colour()
 
@@ -448,6 +457,11 @@ class RundownItem(QtGui.QFrame):
         """Function to stop current VT"""
         if self.playing:
             self.comms.stop_video(channel=self.channel_launched)
+            for graphic in self.fired_graphics:
+                _ = self.main.comms.stop_template(
+                    channel=graphic['channel'],
+                    layer=graphic['layer'],
+                )
             del self.osc.videos[int(self.channel_launched)][0]
             self.channel_launched = None
             self.time.setText("")
@@ -524,12 +538,13 @@ class RundownItem(QtGui.QFrame):
                 self.graphics_remaining.remove(graphic)
             except ValueError:
                 pass
-            if int(current_frame) >= int(graphic['end_frames']):
-                _ = self.main.comms.stop_template(
-                    channel=graphic['channel'],
-                    layer=graphic['layer'],
-                )
-                self.stopped_graphics.append(graphic)
+            if graphic['end_frames']:
+                if int(current_frame) >= int(graphic['end_frames']):
+                    _ = self.main.comms.stop_template(
+                        channel=graphic['channel'],
+                        layer=graphic['layer'],
+                    )
+                    self.stopped_graphics.append(graphic)
 
         for graphic in self.stopped_graphics:
             try:
@@ -555,6 +570,8 @@ class ItemGraphics(QtGui.QWidget):
 
         # create list
         self.list_widget = QtGui.QListWidget()
+        self.list_widget.setFixedWidth(275)
+        self.list_widget.setSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Expanding)
 
         # create list of items
         self.list_items = []
@@ -570,6 +587,7 @@ class ItemGraphics(QtGui.QWidget):
 
         # remove all of the current items
         self.list_widget.clear()
+
         self.list_items = []
 
         if not video:
@@ -624,7 +642,8 @@ class ItemGraphic(QtGui.QFrame):
         self.setFrameStyle(QtGui.QFrame.Box)
 
         # set the height
-        self.setFixedHeight(76)
+        self.setFixedHeight(70)
+        self.resize(240, 70)
 
     def initUI(self):
         """Function to build the UI elements"""
@@ -636,6 +655,7 @@ class ItemGraphic(QtGui.QFrame):
         # add the name of the data
         grid.addWidget(tools.QHeadingThree("Name: "), 0, 0)
         self.name = QtGui.QLabel(self.data['name'])
+        self.name.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         grid.addWidget(self.name, 0, 1)
 
         # add the filename
@@ -649,16 +669,8 @@ class ItemGraphic(QtGui.QFrame):
         grid.addWidget(self.start, 0, 3)
 
         # add the end time
-        grid.addWidget(tools.QHeadingThree("End: "), 1, 2)
+        end_label = tools.QHeadingThree("End: ")
+        grid.addWidget(end_label, 1, 2)
         self.end = QtGui.QLabel(self.data['end'])
         grid.addWidget(self.end, 1, 3)
 
-        # add the channel
-        grid.addWidget(tools.QHeadingThree("Channel: "), 0, 4)
-        self.channel = QtGui.QLabel(str(self.data['channel']))
-        grid.addWidget(self.channel, 0, 5)
-
-        # add the layer
-        grid.addWidget(tools.QHeadingThree("Layer: "), 1, 4)
-        self.layer = QtGui.QLabel(str(self.data['layer']))
-        grid.addWidget(self.layer, 1, 5)

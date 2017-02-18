@@ -393,8 +393,19 @@ class StandingsTableDataRow(QtGui.QFrame):
 
     def get_name(self):
         """Function to build a name for the rundown"""
+
+        if self.tablesettings['gender'] == 'Choose gender...':
+            gender = ''
+        else:
+            gender = self.tablesettings['gender'][0].capitalize()
+        if self.tablesettings['team'] == 'Choose team...':
+            team = ''
+        else:
+            team = self.tablesettings['team']
+
         return "{}{}{}{}".format(self.tablesettings['league'], self.tablesettings['sport'],
-                                 self.tablesettings['gender'][0].capitalize(), self.tablesettings['team'])
+                                 gender, team)
+
 
     def set_background_colour(self):
         """Function to set the correct background colour"""
