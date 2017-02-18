@@ -1,7 +1,7 @@
 {
     "centrescore": [
         {
-            "channel": "3",
+            "channel": "1",
             "layer": "25",
             "parameters": {
                 "Infobar_info_text": "",
@@ -13,120 +13,8 @@
         }
     ],
     "rundown": {
-        "items": {
-            "118": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "1",
-                "parameters": "StrapLower=|StrapUpper=1",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "119": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "2",
-                "parameters": "StrapLower=|StrapUpper=2",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "120": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "3",
-                "parameters": "StrapLower=|StrapUpper=3",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "121": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "4",
-                "parameters": "StrapLower=|StrapUpper=4",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "122": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "5",
-                "parameters": "StrapLower=|StrapUpper=5",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "123": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "6",
-                "parameters": "StrapLower=|StrapUpper=6",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "124": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "7",
-                "parameters": "StrapLower=|StrapUpper=7",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "125": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "8",
-                "parameters": "StrapLower=|StrapUpper=8",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "126": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "9",
-                "parameters": "StrapLower=|StrapUpper=9",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "127": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "10",
-                "parameters": "StrapLower=|StrapUpper=10",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "128": {
-                "channel": "3",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "11",
-                "parameters": "StrapLower=|StrapUpper=11",
-                "template": "strapleft",
-                "type": "graphic"
-            }
-        },
-        "positions": {
-            "0": "118",
-            "1": "119",
-            "10": "128",
-            "2": "120",
-            "3": "121",
-            "4": "122",
-            "5": "123",
-            "6": "124",
-            "7": "125",
-            "8": "126",
-            "9": "127"
-        }
+        "items": {},
+        "positions": {}
     },
     "standingstable": [
         {
@@ -229,101 +117,126 @@
             "sport": "Overall",
             "team": "Choose team...",
             "url": "http://bigmatch.jcrnet.uk/tabletojson/bucs_table.json"
+        },
+        {
+            "channel": "1",
+            "data": {
+                "gender": "womens",
+                "sport": "fencing",
+                "table_header_points_title": "Pts",
+                "table_header_stat_1_title": "",
+                "table_header_stat_2_title": "P",
+                "table_header_stat_3_title": "W",
+                "table_header_stat_4_title": "D",
+                "table_header_stat_5_title": "L",
+                "table_header_subtitle": "Midlands 1A",
+                "table_row_10_points": "",
+                "table_row_10_position": "",
+                "table_row_10_stat_1": "",
+                "table_row_10_stat_2": "",
+                "table_row_10_stat_3": "",
+                "table_row_10_stat_4": "",
+                "table_row_10_stat_5": "",
+                "table_row_10_team_name": "",
+                "table_row_1_points": "24",
+                "table_row_1_position": "1",
+                "table_row_1_stat_1": "",
+                "table_row_1_stat_2": "9",
+                "table_row_1_stat_3": "8",
+                "table_row_1_stat_4": "0",
+                "table_row_1_stat_5": "1",
+                "table_row_1_team_name": "Loughborough",
+                "table_row_2_points": "18",
+                "table_row_2_position": "2",
+                "table_row_2_stat_1": "",
+                "table_row_2_stat_2": "8",
+                "table_row_2_stat_3": "6",
+                "table_row_2_stat_4": "0",
+                "table_row_2_stat_5": "2",
+                "table_row_2_team_name": "Warwick",
+                "table_row_3_points": "9",
+                "table_row_3_position": "3",
+                "table_row_3_stat_1": "",
+                "table_row_3_stat_2": "6",
+                "table_row_3_stat_3": "3",
+                "table_row_3_stat_4": "0",
+                "table_row_3_stat_5": "3",
+                "table_row_3_team_name": "Leicester",
+                "table_row_4_points": "6",
+                "table_row_4_position": "4",
+                "table_row_4_stat_1": "",
+                "table_row_4_stat_2": "7",
+                "table_row_4_stat_3": "2",
+                "table_row_4_stat_4": "0",
+                "table_row_4_stat_5": "5",
+                "table_row_4_team_name": "Birmingham",
+                "table_row_5_points": "6",
+                "table_row_5_position": "5",
+                "table_row_5_stat_1": "",
+                "table_row_5_stat_2": "7",
+                "table_row_5_stat_3": "2",
+                "table_row_5_stat_4": "0",
+                "table_row_5_stat_5": "5",
+                "table_row_5_team_name": "Oxford",
+                "table_row_6_points": "3",
+                "table_row_6_position": "6",
+                "table_row_6_stat_1": "",
+                "table_row_6_stat_2": "7",
+                "table_row_6_stat_3": "1",
+                "table_row_6_stat_4": "0",
+                "table_row_6_stat_5": "6",
+                "table_row_6_team_name": "Cambridge",
+                "table_row_7_points": "",
+                "table_row_7_position": "",
+                "table_row_7_stat_1": "",
+                "table_row_7_stat_2": "",
+                "table_row_7_stat_3": "",
+                "table_row_7_stat_4": "",
+                "table_row_7_stat_5": "",
+                "table_row_7_team_name": "",
+                "table_row_8_points": "",
+                "table_row_8_position": "",
+                "table_row_8_stat_1": "",
+                "table_row_8_stat_2": "",
+                "table_row_8_stat_3": "",
+                "table_row_8_stat_4": "",
+                "table_row_8_stat_5": "",
+                "table_row_8_team_name": "",
+                "table_row_9_points": "",
+                "table_row_9_position": "",
+                "table_row_9_stat_1": "",
+                "table_row_9_stat_2": "",
+                "table_row_9_stat_3": "",
+                "table_row_9_stat_4": "",
+                "table_row_9_stat_5": "",
+                "table_row_9_team_name": "",
+                "team": "1",
+                "title": "BUCS Fencing 2016-2017",
+                "type": "BUCS"
+            },
+            "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
+            "gender": "womens",
+            "layer": "2",
+            "league": "BUCS",
+            "rows": "6",
+            "sport": "Fencing",
+            "team": "1",
+            "url": "http://bigmatch.jamielynch.net/client/tabledata/data/BUCS_fencing_womens_1.json"
         }
     ],
     "strapleft": [
         {
-            "channel": "3",
+            "channel": "1",
             "layer": "30",
             "parameters": {
                 "StrapLower": "",
-                "StrapUpper": "1"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "2"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "3"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "4"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "5"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "6"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "7"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "8"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "9"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "10"
-            }
-        },
-        {
-            "channel": "3",
-            "layer": "30",
-            "parameters": {
-                "StrapLower": "",
-                "StrapUpper": "11"
+                "StrapUpper": ""
             }
         }
     ],
     "topscore": [
         {
-            "channel": "3",
+            "channel": "1",
             "layer": "25",
             "parameters": {
                 "team1_colour": "",

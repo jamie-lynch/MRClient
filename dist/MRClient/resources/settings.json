@@ -6,7 +6,7 @@
     },
     "templates": {
         "centrescore": {
-            "channel": 3,
+            "channel": 1,
             "filename": "BigMatch/TBM_CentreScore/TBM_CentreScore",
             "layer": 25,
             "name": "Centre Score",
@@ -20,7 +20,7 @@
             "rundownname": "score"
         },
         "standingstable10": {
-            "channel": 3,
+            "channel": 1,
             "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
             "layer": 1,
             "name": "Standings Table10",
@@ -28,7 +28,7 @@
             "rundownname": ""
         },
         "standingstable6": {
-            "channel": 3,
+            "channel": 1,
             "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
             "layer": 2,
             "name": "Standings Table6",
@@ -36,7 +36,7 @@
             "rundownname": ""
         },
         "strapleft": {
-            "channel": 3,
+            "channel": 1,
             "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
             "layer": 30,
             "name": "Strap Left",
@@ -47,7 +47,7 @@
             "rundownname": "StrapUpper"
         },
         "topscore": {
-            "channel": 3,
+            "channel": 1,
             "filename": "BigMatch/TBM_TopLeft_NoTimer/TBM_TopLeft_NoTimer",
             "layer": 25,
             "name": "Top Score",
