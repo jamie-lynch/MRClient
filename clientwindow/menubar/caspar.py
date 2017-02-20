@@ -31,7 +31,7 @@ class CasparConnection(QtGui.QDialog):
                             ^ QtCore.Qt.WindowContextHelpButtonHint)
 
         # set title
-        self.setWindowTitle('Server Connection | The Big Match CasparCG Client')
+        self.setWindowTitle('Server Connection | Match Report CasparCG Client')
 
         # Here we go!
         self.exec_()

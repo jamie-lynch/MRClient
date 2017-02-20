@@ -13,8 +13,128 @@
         }
     ],
     "rundown": {
-        "items": {},
-        "positions": {}
+        "items": {
+            "10": {
+                "channel": 1,
+                "date_modified": "20160911230218",
+                "file_size": "6445960",
+                "filename": "AMB",
+                "frame_rate": 25.0,
+                "frames": 268.0,
+                "layer": 0,
+                "length": "00:00:10:18",
+                "name": "AMB",
+                "template": "MOVIE",
+                "type": "vt"
+            },
+            "11": {
+                "channel": 4,
+                "date_modified": "20130619224440",
+                "file_size": "5119595",
+                "filename": "COMINGUPBED",
+                "frame_rate": 1.0,
+                "frames": 215.0,
+                "layer": 0,
+                "length": "00:03:35:00",
+                "name": "COMINGUPBED",
+                "template": "AUDIO",
+                "type": "vt"
+            },
+            "12": {
+                "channel": 4,
+                "date_modified": "20130619224440",
+                "file_size": "5119595",
+                "filename": "LEAGUETABLESBED",
+                "frame_rate": 1.0,
+                "frames": 215.0,
+                "layer": 0,
+                "length": "00:03:35:00",
+                "name": "LEAGUETABLESBED",
+                "template": "AUDIO",
+                "type": "vt"
+            },
+            "13": {
+                "channel": 1,
+                "date_modified": "20160911230221",
+                "file_size": "16694084",
+                "filename": "LUKE THOMSON ULTIMATE FRISBEE",
+                "frame_rate": 25.0,
+                "frames": 445.0,
+                "layer": 0,
+                "length": "00:00:17:20",
+                "name": "LUKE THOMSON ULTIMATE FRISBEE",
+                "template": "MOVIE",
+                "type": "vt"
+            },
+            "14": {
+                "channel": 1,
+                "date_modified": "20160911230221",
+                "file_size": "16694084",
+                "filename": "TITLESEQUENCE",
+                "frame_rate": 25.0,
+                "frames": 445.0,
+                "layer": 0,
+                "length": "00:00:17:20",
+                "name": "TITLESEQUENCE",
+                "template": "MOVIE",
+                "type": "vt"
+            },
+            "15": {
+                "channel": "1",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "Ed Radford",
+                "parameters": "StrapLower=LSU Media|StrapUpper=Ed Radford",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "16": {
+                "channel": "1",
+                "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
+                "layer": "2",
+                "name": "BUCSFencingW1",
+                "parameters": "table_row_2_team_name=Warwick|table_row_8_team_name=|table_row_2_points=18|table_row_7_stat_2=|table_row_6_team_name=Cambridge|table_row_6_points=3|table_row_4_stat_3=2|table_row_1_stat_4=0|table_row_5_team_name=Oxford|table_row_8_points=|table_row_6_stat_4=0|team=1|table_row_9_stat_3=|table_row_8_position=|table_row_5_stat_2=7|table_row_7_stat_1=|table_row_3_team_name=Leicester|table_row_8_stat_2=|table_row_2_stat_3=6|table_row_8_stat_1=|table_row_4_stat_1=|table_header_stat_2_title=P|sport=fencing|table_row_2_position=2|table_row_5_stat_3=2|table_row_10_position=|table_row_8_stat_3=|table_row_10_stat_5=|table_row_2_stat_2=8|table_row_3_points=9|table_row_3_stat_4=0|table_row_4_stat_2=7|table_row_5_points=6|table_row_7_stat_5=|table_row_6_stat_3=1|table_header_subtitle=Midlands 1A|table_row_1_stat_2=9|table_row_9_stat_1=|table_row_7_team_name=|table_row_6_stat_1=|table_row_5_stat_1=|table_row_9_stat_4=|table_row_3_stat_3=3|table_row_1_points=24|table_row_9_points=|table_row_3_stat_2=6|table_row_1_position=1|table_row_3_position=3|table_row_2_stat_4=0|table_row_10_stat_1=|table_row_7_stat_3=|table_row_5_position=5|table_row_10_stat_2=|table_header_stat_1_title=|table_row_9_position=|table_header_points_title=Pts|table_header_stat_4_title=D|table_row_5_stat_5=5|table_row_4_team_name=Birmingham|table_row_2_stat_1=|table_row_10_points=|table_row_4_position=4|table_row_1_stat_3=8|table_row_9_stat_2=|table_row_2_stat_5=2|type=BUCS|table_row_6_stat_2=7|title=BUCS Fencing 2016-2017|table_row_10_stat_4=|table_row_6_position=6|table_row_3_stat_1=|table_row_1_team_name=Loughborough|table_header_stat_3_title=W|table_row_3_stat_5=3|table_row_6_stat_5=6|table_row_1_stat_1=|table_row_4_points=6|table_row_9_stat_5=|table_row_10_stat_3=|table_row_8_stat_5=|table_row_1_stat_5=1|table_row_5_stat_4=0|gender=womens|table_row_7_points=|table_row_9_team_name=|table_row_7_position=|table_row_4_stat_4=0|table_row_7_stat_4=|table_row_4_stat_5=5|table_row_8_stat_4=|table_row_10_team_name=|table_header_stat_5_title=L",
+                "template": "table",
+                "type": "graphic"
+            },
+            "9": {
+                "channel": 1,
+                "date_modified": "20160911230218",
+                "file_size": "6159792",
+                "filename": "CG1080I50",
+                "frame_rate": 25.0,
+                "frames": 264.0,
+                "graphics": [
+                    {
+                        "channel": 1,
+                        "end": "",
+                        "end_frames": null,
+                        "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                        "layer": "10",
+                        "name": "",
+                        "parameters": "StrapLower=|StrapUpper=",
+                        "start": "00:00:00:00",
+                        "start_frames": 0.0,
+                        "template": "strapleft"
+                    }
+                ],
+                "layer": 0,
+                "length": "00:00:10:14",
+                "name": "CG1080I50",
+                "template": "MOVIE",
+                "type": "vtgfx"
+            }
+        },
+        "positions": {
+            "0": "9",
+            "1": "10",
+            "2": "11",
+            "3": "12",
+            "4": "13",
+            "5": "14",
+            "6": "15",
+            "7": "16"
+        }
     },
     "standingstable": [
         {
@@ -229,8 +349,8 @@
             "channel": "1",
             "layer": "30",
             "parameters": {
-                "StrapLower": "",
-                "StrapUpper": ""
+                "StrapLower": "LSU Media",
+                "StrapUpper": "Ed Radford"
             }
         }
     ],
@@ -254,34 +374,34 @@
             "frame_rate": 1.0,
             "frames": 215.0,
             "length": "00:03:35:00",
-            "name": "01-KELLY_CLARKSON-MISS_INDEPENDENT",
+            "name": "COMINGUPBED",
             "type": "AUDIO"
         },
         "2": {
-            "date_modified": "20160911230218",
-            "file_size": "6445960",
-            "frame_rate": 25.0,
-            "frames": 268.0,
-            "length": "00:00:10:18",
-            "name": "AMB",
-            "type": "MOVIE"
+            "date_modified": "20130619224440",
+            "file_size": "5119595",
+            "frame_rate": 1.0,
+            "frames": 215.0,
+            "length": "00:03:35:00",
+            "name": "LEAGUETABLESBED",
+            "type": "AUDIO"
         },
         "3": {
-            "date_modified": "20160911230218",
-            "file_size": "6159792",
+            "date_modified": "20160911230221",
+            "file_size": "16694084",
             "frame_rate": 25.0,
-            "frames": 264.0,
-            "length": "00:00:10:14",
-            "name": "CG1080I50",
+            "frames": 445.0,
+            "length": "00:00:17:20",
+            "name": "LUKE THOMSON ULTIMATE FRISBEE",
             "type": "MOVIE"
         },
         "4": {
-            "date_modified": "20160911230220",
-            "file_size": "10298115",
+            "date_modified": "20160911230221",
+            "file_size": "16694084",
             "frame_rate": 25.0,
-            "frames": 260.0,
-            "length": "00:00:10:10",
-            "name": "CG1080I50_A",
+            "frames": 445.0,
+            "length": "00:00:17:20",
+            "name": "TITLESEQUENCE",
             "type": "MOVIE"
         },
         "5": {
@@ -290,7 +410,7 @@
             "frame_rate": 25.0,
             "frames": 445.0,
             "length": "00:00:17:20",
-            "name": "GO1080P 25",
+            "name": "TOM TRIES FENCING",
             "type": "MOVIE"
         },
         "6": {
@@ -299,25 +419,16 @@
             "frame_rate": 25.0,
             "frames": 445.0,
             "length": "00:00:17:20",
-            "name": "GO1080P25",
+            "name": "W1 FENCING",
             "type": "MOVIE"
         },
         "7": {
-            "date_modified": "20160911230222",
-            "file_size": "6220854",
-            "frame_rate": 1,
-            "frames": 1.0,
-            "length": "00:00:01:00",
-            "name": "SPLIT",
-            "type": "STILL"
-        },
-        "8": {
-            "date_modified": "20160911230222",
-            "file_size": "1268784",
+            "date_modified": "20160911230221",
+            "file_size": "16694084",
             "frame_rate": 25.0,
-            "frames": 31.0,
-            "length": "00:00:01:06",
-            "name": "WIPE",
+            "frames": 445.0,
+            "length": "00:00:17:20",
+            "name": "W1 HOCKEY",
             "type": "MOVIE"
         }
     }

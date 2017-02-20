@@ -229,8 +229,13 @@ class RundownItem(QtGui.QFrame):
         self.setLayout(grid)
 
         # Create name label
-        grid.addWidget(tools.QVTLabel(self, "Name: ", bold=True), 0, 0)
-        grid.addWidget(tools.QVTLabel(self, self.settings['name']), 0, 1)
+        name_label = tools.QVTLabel(self, "Name: ", bold=True)
+        name_label.setFixedWidth(50)
+        grid.addWidget(name_label, 0, 0)
+        name = tools.QVTLabel(self, self.settings['name'])
+        name.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        name.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom)
+        grid.addWidget(name, 0, 1)
 
         # Create graphic label
         grid.addWidget(tools.QVTLabel(self, "Graphic: ", bold=True), 1, 0)
@@ -239,25 +244,39 @@ class RundownItem(QtGui.QFrame):
         # Create channel edit
         grid.addWidget(tools.QVTLabel(self, "Channel:", bold=True), 0, 2)
         self.channel_edit = tools.QVTLabel(self, str(self.settings['channel']))
+        self.channel_edit.setFixedWidth(40)
+        self.channel_edit.setAlignment(QtCore.Qt.AlignCenter)
         grid.addWidget(self.channel_edit, 0, 3)
 
         # Create layer edit
         grid.addWidget(tools.QVTLabel(self, "Layer:", bold=True), 1, 2)
         self.layer_edit = tools.QVTLabel(self, str(self.settings['layer']))
+        self.layer_edit.setFixedWidth(40)
+        self.layer_edit.setAlignment(QtCore.Qt.AlignCenter)
         grid.addWidget(self.layer_edit, 1, 3)
 
-        grid.addWidget(QtGui.QLabel(''), 0, 4)
-        grid.addWidget(QtGui.QLabel(''), 0, 5)
-        grid.addWidget(QtGui.QLabel(''), 0, 6)
-        grid.addWidget(QtGui.QLabel(''), 0, 7)
+        label1 = QtGui.QLabel('')
+        label2 = QtGui.QLabel('')
+        label3 = QtGui.QLabel('')
+        label4 = QtGui.QLabel('')
+        label1.setFixedWidth(80)
+        label2.setFixedWidth(75)
+        label3.setFixedWidth(90)
+        label4.setFixedWidth(90)
+        grid.addWidget(label1, 0, 4)
+        grid.addWidget(label2, 0, 5)
+        grid.addWidget(label3, 0, 6)
+        grid.addWidget(label4, 0, 7)
 
         # Create buttons
         self.fire_button = QtGui.QPushButton("Fire")
         self.fire_status = "Fire"
+        self.fire_button.setFixedWidth(185)
         self.fire_button.clicked.connect(self.fire_graphic)
         grid.addWidget(self.fire_button, 0, 8, 1, 2)
 
         self.remove_button = QtGui.QPushButton("Delete")
+        self.remove_button.setFixedWidth(185)
         self.remove_button.clicked.connect(self.remove_row)
         grid.addWidget(self.remove_button, 1, 8, 1, 2)
 
@@ -271,8 +290,13 @@ class RundownItem(QtGui.QFrame):
         self.setLayout(grid)
 
         # Create name label
-        grid.addWidget(tools.QVTLabel(self, "Name: ", bold=True), 0, 0)
-        grid.addWidget(tools.QVTLabel(self, self.settings['name']), 0, 1)
+        name_label = tools.QVTLabel(self, "Name: ", bold=True)
+        name_label.setFixedWidth(50)
+        grid.addWidget(name_label, 0, 0)
+        name = tools.QVTLabel(self, self.settings['name'])
+        name.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        name.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom)
+        grid.addWidget(name, 0, 1)
 
         # Create graphic label
         grid.addWidget(tools.QVTLabel(self, "Type: ", bold=True), 1, 0)
@@ -281,16 +305,23 @@ class RundownItem(QtGui.QFrame):
         # Create channel edit
         grid.addWidget(tools.QVTLabel(self, "Channel:", bold=True), 0, 2)
         self.channel_edit = tools.QVTLabel(self, str(self.settings['channel']))
+        self.channel_edit.setFixedWidth(40)
+        self.channel_edit.setAlignment(QtCore.Qt.AlignCenter)
         grid.addWidget(self.channel_edit, 0, 3)
 
         # Create layer edit
         grid.addWidget(tools.QVTLabel(self, "Layer:", bold=True), 1, 2)
         self.layer_edit = tools.QVTLabel(self, str(self.settings['layer']))
+        self.layer_edit.setFixedWidth(40)
+        self.layer_edit.setAlignment(QtCore.Qt.AlignCenter)
         grid.addWidget(self.layer_edit, 1, 3)
 
         # Create length label
-        grid.addWidget(tools.QVTLabel(self, "Length: ", bold=True), 0, 4)
+        length_label = tools.QVTLabel(self, "Length: ", bold=True)
+        length_label.setFixedWidth(80)
+        grid.addWidget(length_label, 0, 4)
         length = tools.QVTLabel(self, self.settings['length'])
+        length.setFixedWidth(75)
         grid.addWidget(length, 0, 5)
 
         # Create remaining label
@@ -299,29 +330,37 @@ class RundownItem(QtGui.QFrame):
         grid.addWidget(self.time, 1, 5)
 
         # add the loop label and checkbox
-        grid.addWidget(tools.QVTLabel(self, "Loop?"), 1, 6)
+        loop = tools.QVTLabel(self, "Loop?")
+        grid.addWidget(loop, 1, 6)
+        grid.setAlignment(loop, QtCore.Qt.AlignCenter)
         self.loop_select = QtGui.QCheckBox()
         grid.addWidget(self.loop_select, 1, 7)
+        grid.setAlignment(self.loop_select, QtCore.Qt.AlignCenter)
 
         # Create buttons
         load_button = QtGui.QPushButton("Load")
         load_button.clicked.connect(self.load_vt)
+        load_button.setFixedWidth(90)
         grid.addWidget(load_button, 0, 6)
 
         play_button = QtGui.QPushButton("Play")
+        play_button.setFixedWidth(90)
         play_button.clicked.connect(self.play_vt)
         grid.addWidget(play_button, 0, 7)
 
         pause_button = QtGui.QPushButton("Pause/Resume")
         pause_button.clicked.connect(self.pause_vt)
+        pause_button.setFixedWidth(90)
         grid.addWidget(pause_button, 0, 8)
 
         stop_button = QtGui.QPushButton("Stop")
         stop_button.clicked.connect(self.stop_vt)
+        stop_button.setFixedWidth(90)
         grid.addWidget(stop_button, 0, 9)
 
         remove_button = QtGui.QPushButton("Delete")
         remove_button.clicked.connect(self.remove_row)
+        remove_button.setFixedWidth(185)
         grid.addWidget(remove_button, 1, 8, 1, 2)
 
         self.fire_buttons = [load_button, play_button, pause_button, stop_button]
@@ -553,7 +592,7 @@ class RundownItem(QtGui.QFrame):
                 pass
 
 
-class ItemGraphics(QtGui.QWidget):
+class ItemGraphics(QtGui.QListWidget):
     """Class which holds a list of the graphic items for the selected item"""
 
     def __init__(self, rundown, parent=None):
@@ -569,24 +608,18 @@ class ItemGraphics(QtGui.QWidget):
         self.rundown.list_widget.currentRowChanged.connect(self.update_graphics)
 
         # create list
-        self.list_widget = QtGui.QListWidget()
-        self.list_widget.setFixedWidth(275)
-        self.list_widget.setSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Expanding)
+        self.setFixedWidth(275)
+        self.setSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Expanding)
 
         # create list of items
         self.list_items = []
-
-        # add to view
-        vbox = QtGui.QVBoxLayout()
-        self.setLayout(vbox)
-        vbox.addWidget(self.list_widget)
 
     @QtCore.Slot(int)
     def update_graphics(self, current_row=None, video=None):
         """Function to show the graphics"""
 
         # remove all of the current items
-        self.list_widget.clear()
+        self.clear()
 
         self.list_items = []
 
@@ -615,10 +648,10 @@ class ItemGraphics(QtGui.QWidget):
 
             new = ItemGraphic(graphic)
 
-            item = QtGui.QListWidgetItem(self.list_widget)
+            item = QtGui.QListWidgetItem(self)
             item.setSizeHint(QtCore.QSize(new.width(), new.height()))
-            self.list_widget.addItem(item)
-            self.list_widget.setItemWidget(item, new)
+            self.addItem(item)
+            self.setItemWidget(item, new)
 
             self.list_items.append(item)
 

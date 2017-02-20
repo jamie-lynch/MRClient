@@ -446,7 +446,7 @@ class AddNewStandingsTable(QtGui.QDialog):
                             ^ QtCore.Qt.WindowContextHelpButtonHint)
 
         # set title
-        self.setWindowTitle("Settings | The Big Match CasparCG Client")
+        self.setWindowTitle("Settings | Match Report CasparCG Client")
 
         # here goes nothing...
         self.exec_()

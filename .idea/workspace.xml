@@ -21,14 +21,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="help.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/clientwindow/menubar/help.py">
+      <file leaf-file-name="rundown.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clientwindow/groups/rundown.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="272">
+              <caret line="293" column="36" selection-start-line="293" selection-start-column="36" selection-end-line="293" selection-end-column="36" />
               <folding>
-                <element signature="e#373#3064#0" expanded="false" />
+                <element signature="e#271#5022#0" expanded="false" />
+                <element signature="e#375#1078#0" expanded="false" />
+                <element signature="e#2323#2993#0" expanded="false" />
+                <element signature="e#3037#3572#0" expanded="false" />
+                <element signature="e#3611#4206#0" expanded="false" />
+                <element signature="e#5068#5434#0" expanded="false" />
+                <element signature="e#5232#5434#0" expanded="false" />
+                <element signature="e#5691#6834#0" expanded="false" />
+                <element signature="e#12622#13790#0" expanded="false" />
+                <element signature="e#13836#14115#0" expanded="false" />
+                <element signature="e#14162#14402#0" expanded="false" />
+                <element signature="e#14438#14700#0" expanded="false" />
+                <element signature="e#14733#15333#0" expanded="false" />
+                <element signature="e#15366#16609#0" expanded="false" />
+                <element signature="e#16643#16967#0" expanded="false" />
+                <element signature="e#17000#17619#0" expanded="false" />
+                <element signature="e#17697#18805#0" expanded="false" />
+                <element signature="e#18878#19591#0" expanded="false" />
+                <element signature="e#19652#20836#0" expanded="false" />
+                <element signature="e#22643#24189#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tables.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clientwindow/groups/tables.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="448" column="53" selection-start-line="448" selection-start-column="53" selection-end-line="448" selection-end-column="53" />
+              <folding>
+                <element signature="e#255#2464#0" expanded="false" />
+                <element signature="e#2509#5215#0" expanded="false" />
+                <element signature="e#5265#15118#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="caspar.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/clientwindow/menubar/caspar.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,7 +107,6 @@
         <option value="$PROJECT_DIR$/clientwindow/tools/caspar.py" />
         <option value="$PROJECT_DIR$/clientwindow/tools/settings.py" />
         <option value="$PROJECT_DIR$/clientwindow/splash.py" />
-        <option value="$PROJECT_DIR$/clientwindow/menubar/caspar.py" />
         <option value="$PROJECT_DIR$/clientwindow/menubar/__init__.py" />
         <option value="$PROJECT_DIR$/clientwindow/groups/__init__.py" />
         <option value="$PROJECT_DIR$/clientwindow/groups/oldrundown/__init__.py" />
@@ -86,17 +128,18 @@
         <option value="$PROJECT_DIR$/clientwindow/groups/production.py" />
         <option value="$PROJECT_DIR$/resources/settings.json" />
         <option value="$PROJECT_DIR$/clientwindow/tools/rundown.py" />
-        <option value="$PROJECT_DIR$/clientwindow/groups/tables.py" />
-        <option value="$PROJECT_DIR$/clientwindow/groups/rundown.py" />
         <option value="$PROJECT_DIR$/clientwindow/menubar/help.py" />
+        <option value="$PROJECT_DIR$/clientwindow/groups/rundown.py" />
+        <option value="$PROJECT_DIR$/clientwindow/groups/tables.py" />
+        <option value="$PROJECT_DIR$/clientwindow/menubar/caspar.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1358" />
-    <option name="y" value="39" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -142,8 +185,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -194,6 +237,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clientwindow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groups" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -204,11 +265,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/run.py" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Jamie\Documents\MRClient\resources" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jamie\Documents\MRClient" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jamie\Documents\MRClient\resources" />
     </key>
   </component>
   <component name="RunManager" selected="Python.MRClient">
@@ -384,26 +445,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="39" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15437302" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1532738" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18939394" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25859246" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -443,7 +504,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -459,13 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#6707#6844#0" expanded="false" />
-            <element signature="e#6883#7788#0" expanded="false" />
-            <element signature="e#7834#8116#0" expanded="false" />
-            <element signature="e#10128#10452#0" expanded="false" />
-            <element signature="e#11949#13031#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -532,13 +586,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/clientwindow/groups/rundown/vtgfx_item.py" />
     <entry file="file://$PROJECT_DIR$/clientwindow/groups/rundown/vt_gfx.py" />
-    <entry file="file://$PROJECT_DIR$/clientwindow/menubar/caspar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="59" selection-start-line="3" selection-start-column="59" selection-end-line="3" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clientwindow/menubar/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -659,7 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,17 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="243" column="39" selection-start-line="243" selection-start-column="39" selection-end-line="243" selection-end-column="39" />
-          <folding>
-            <element signature="e#293#3577#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clientwindow/groups/tables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1906">
-          <caret line="403" column="43" selection-start-line="403" selection-start-column="43" selection-end-line="403" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -685,17 +720,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-724">
           <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="184" selection-end-column="44" />
-          <folding>
-            <element signature="e#5973#10055#0" expanded="false" />
-            <element signature="e#10091#10364#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clientwindow/groups/videos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="349" column="22" selection-start-line="349" selection-start-column="22" selection-end-line="349" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clientwindow/menubar/help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/clientwindow/groups/rundown.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="296" column="68" selection-start-line="296" selection-start-column="68" selection-end-line="296" selection-end-column="68" />
+        <state relative-caret-position="272">
+          <caret line="293" column="36" selection-start-line="293" selection-start-column="36" selection-end-line="293" selection-end-column="36" />
           <folding>
             <element signature="e#271#5022#0" expanded="false" />
             <element signature="e#375#1078#0" expanded="false" />
@@ -705,44 +750,39 @@
             <element signature="e#5068#5434#0" expanded="false" />
             <element signature="e#5232#5434#0" expanded="false" />
             <element signature="e#5691#6834#0" expanded="false" />
-            <element signature="e#10962#12130#0" expanded="false" />
-            <element signature="e#12176#12455#0" expanded="false" />
-            <element signature="e#12502#12742#0" expanded="false" />
-            <element signature="e#12778#13040#0" expanded="false" />
-            <element signature="e#13073#13673#0" expanded="false" />
-            <element signature="e#13706#14949#0" expanded="false" />
-            <element signature="e#14983#15307#0" expanded="false" />
-            <element signature="e#15340#15959#0" expanded="false" />
-            <element signature="e#16037#17145#0" expanded="false" />
-            <element signature="e#17218#17931#0" expanded="false" />
-            <element signature="e#17992#19176#0" expanded="false" />
-            <element signature="e#19218#21186#0" expanded="false" />
-            <element signature="e#21226#22772#0" expanded="false" />
+            <element signature="e#12622#13790#0" expanded="false" />
+            <element signature="e#13836#14115#0" expanded="false" />
+            <element signature="e#14162#14402#0" expanded="false" />
+            <element signature="e#14438#14700#0" expanded="false" />
+            <element signature="e#14733#15333#0" expanded="false" />
+            <element signature="e#15366#16609#0" expanded="false" />
+            <element signature="e#16643#16967#0" expanded="false" />
+            <element signature="e#17000#17619#0" expanded="false" />
+            <element signature="e#17697#18805#0" expanded="false" />
+            <element signature="e#18878#19591#0" expanded="false" />
+            <element signature="e#19652#20836#0" expanded="false" />
+            <element signature="e#22643#24189#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clientwindow/groups/videos.py">
+    <entry file="file://$PROJECT_DIR$/clientwindow/groups/tables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="349" column="22" selection-start-line="349" selection-start-column="22" selection-end-line="349" selection-end-column="22" />
+        <state relative-caret-position="336">
+          <caret line="448" column="53" selection-start-line="448" selection-start-column="53" selection-end-line="448" selection-end-column="53" />
           <folding>
-            <element signature="e#6707#6844#0" expanded="false" />
-            <element signature="e#6883#7788#0" expanded="false" />
-            <element signature="e#7834#8116#0" expanded="false" />
-            <element signature="e#10128#10452#0" expanded="false" />
-            <element signature="e#11949#13031#0" expanded="false" />
+            <element signature="e#255#2464#0" expanded="false" />
+            <element signature="e#2509#5215#0" expanded="false" />
+            <element signature="e#5265#15118#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clientwindow/menubar/help.py">
+    <entry file="file://$PROJECT_DIR$/clientwindow/menubar/caspar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding>
-            <element signature="e#373#3064#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
