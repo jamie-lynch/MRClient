@@ -4,100 +4,17 @@
             "channel": "1",
             "layer": "25",
             "parameters": {
-                "Infobar_info_text": "",
-                "score": "",
-                "show_infobar": "",
-                "team_left": "",
-                "team_right": ""
+                "Infobar_info_text": "Final Score",
+                "score": "117 - 88",
+                "show_infobar": "1",
+                "team_left": "Loughborough",
+                "team_right": "Oxford"
             }
         }
     ],
     "rundown": {
         "items": {
-            "10": {
-                "channel": 1,
-                "date_modified": "20160911230218",
-                "file_size": "6445960",
-                "filename": "AMB",
-                "frame_rate": 25.0,
-                "frames": 268.0,
-                "layer": 0,
-                "length": "00:00:10:18",
-                "name": "AMB",
-                "template": "MOVIE",
-                "type": "vt"
-            },
-            "11": {
-                "channel": 4,
-                "date_modified": "20130619224440",
-                "file_size": "5119595",
-                "filename": "COMINGUPBED",
-                "frame_rate": 1.0,
-                "frames": 215.0,
-                "layer": 0,
-                "length": "00:03:35:00",
-                "name": "COMINGUPBED",
-                "template": "AUDIO",
-                "type": "vt"
-            },
-            "12": {
-                "channel": 4,
-                "date_modified": "20130619224440",
-                "file_size": "5119595",
-                "filename": "LEAGUETABLESBED",
-                "frame_rate": 1.0,
-                "frames": 215.0,
-                "layer": 0,
-                "length": "00:03:35:00",
-                "name": "LEAGUETABLESBED",
-                "template": "AUDIO",
-                "type": "vt"
-            },
-            "13": {
-                "channel": 1,
-                "date_modified": "20160911230221",
-                "file_size": "16694084",
-                "filename": "LUKE THOMSON ULTIMATE FRISBEE",
-                "frame_rate": 25.0,
-                "frames": 445.0,
-                "layer": 0,
-                "length": "00:00:17:20",
-                "name": "LUKE THOMSON ULTIMATE FRISBEE",
-                "template": "MOVIE",
-                "type": "vt"
-            },
-            "14": {
-                "channel": 1,
-                "date_modified": "20160911230221",
-                "file_size": "16694084",
-                "filename": "TITLESEQUENCE",
-                "frame_rate": 25.0,
-                "frames": 445.0,
-                "layer": 0,
-                "length": "00:00:17:20",
-                "name": "TITLESEQUENCE",
-                "template": "MOVIE",
-                "type": "vt"
-            },
-            "15": {
-                "channel": "1",
-                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
-                "layer": "30",
-                "name": "Ed Radford",
-                "parameters": "StrapLower=LSU Media|StrapUpper=Ed Radford",
-                "template": "strapleft",
-                "type": "graphic"
-            },
-            "16": {
-                "channel": "1",
-                "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
-                "layer": "2",
-                "name": "BUCSFencingW1",
-                "parameters": "table_row_2_team_name=Warwick|table_row_8_team_name=|table_row_2_points=18|table_row_7_stat_2=|table_row_6_team_name=Cambridge|table_row_6_points=3|table_row_4_stat_3=2|table_row_1_stat_4=0|table_row_5_team_name=Oxford|table_row_8_points=|table_row_6_stat_4=0|team=1|table_row_9_stat_3=|table_row_8_position=|table_row_5_stat_2=7|table_row_7_stat_1=|table_row_3_team_name=Leicester|table_row_8_stat_2=|table_row_2_stat_3=6|table_row_8_stat_1=|table_row_4_stat_1=|table_header_stat_2_title=P|sport=fencing|table_row_2_position=2|table_row_5_stat_3=2|table_row_10_position=|table_row_8_stat_3=|table_row_10_stat_5=|table_row_2_stat_2=8|table_row_3_points=9|table_row_3_stat_4=0|table_row_4_stat_2=7|table_row_5_points=6|table_row_7_stat_5=|table_row_6_stat_3=1|table_header_subtitle=Midlands 1A|table_row_1_stat_2=9|table_row_9_stat_1=|table_row_7_team_name=|table_row_6_stat_1=|table_row_5_stat_1=|table_row_9_stat_4=|table_row_3_stat_3=3|table_row_1_points=24|table_row_9_points=|table_row_3_stat_2=6|table_row_1_position=1|table_row_3_position=3|table_row_2_stat_4=0|table_row_10_stat_1=|table_row_7_stat_3=|table_row_5_position=5|table_row_10_stat_2=|table_header_stat_1_title=|table_row_9_position=|table_header_points_title=Pts|table_header_stat_4_title=D|table_row_5_stat_5=5|table_row_4_team_name=Birmingham|table_row_2_stat_1=|table_row_10_points=|table_row_4_position=4|table_row_1_stat_3=8|table_row_9_stat_2=|table_row_2_stat_5=2|type=BUCS|table_row_6_stat_2=7|title=BUCS Fencing 2016-2017|table_row_10_stat_4=|table_row_6_position=6|table_row_3_stat_1=|table_row_1_team_name=Loughborough|table_header_stat_3_title=W|table_row_3_stat_5=3|table_row_6_stat_5=6|table_row_1_stat_1=|table_row_4_points=6|table_row_9_stat_5=|table_row_10_stat_3=|table_row_8_stat_5=|table_row_1_stat_5=1|table_row_5_stat_4=0|gender=womens|table_row_7_points=|table_row_9_team_name=|table_row_7_position=|table_row_4_stat_4=0|table_row_7_stat_4=|table_row_4_stat_5=5|table_row_8_stat_4=|table_row_10_team_name=|table_header_stat_5_title=L",
-                "template": "table",
-                "type": "graphic"
-            },
-            "9": {
+            "17": {
                 "channel": 1,
                 "date_modified": "20160911230218",
                 "file_size": "6159792",
@@ -123,17 +40,114 @@
                 "name": "CG1080I50",
                 "template": "MOVIE",
                 "type": "vtgfx"
+            },
+            "18": {
+                "channel": 1,
+                "date_modified": "20160911230218",
+                "file_size": "6445960",
+                "filename": "AMB",
+                "frame_rate": 25.0,
+                "frames": 268.0,
+                "layer": 0,
+                "length": "00:00:10:18",
+                "name": "AMB",
+                "template": "MOVIE",
+                "type": "vt"
+            },
+            "19": {
+                "channel": 4,
+                "date_modified": "20130619224440",
+                "file_size": "5119595",
+                "filename": "COMINGUPBED",
+                "frame_rate": 1.0,
+                "frames": 215.0,
+                "layer": 0,
+                "length": "00:03:35:00",
+                "name": "COMINGUPBED",
+                "template": "AUDIO",
+                "type": "vt"
+            },
+            "20": {
+                "channel": 4,
+                "date_modified": "20130619224440",
+                "file_size": "5119595",
+                "filename": "LEAGUETABLESBED",
+                "frame_rate": 1.0,
+                "frames": 215.0,
+                "layer": 0,
+                "length": "00:03:35:00",
+                "name": "LEAGUETABLESBED",
+                "template": "AUDIO",
+                "type": "vt"
+            },
+            "21": {
+                "channel": 1,
+                "date_modified": "20160911230221",
+                "file_size": "16694084",
+                "filename": "LUKE THOMSON ULTIMATE FRISBEE",
+                "frame_rate": 25.0,
+                "frames": 445.0,
+                "layer": 0,
+                "length": "00:00:17:20",
+                "name": "LUKE THOMSON ULTIMATE FRISBEE",
+                "template": "MOVIE",
+                "type": "vt"
+            },
+            "22": {
+                "channel": 1,
+                "date_modified": "20160911230221",
+                "file_size": "16694084",
+                "filename": "TITLESEQUENCE",
+                "frame_rate": 25.0,
+                "frames": 445.0,
+                "layer": 0,
+                "length": "00:00:17:20",
+                "name": "TITLESEQUENCE",
+                "template": "MOVIE",
+                "type": "vt"
+            },
+            "23": {
+                "channel": "1",
+                "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+                "layer": "30",
+                "name": "Ed Radford",
+                "parameters": "StrapLower=LSU Media|StrapUpper=Ed Radford",
+                "template": "strapleft",
+                "type": "graphic"
+            },
+            "24": {
+                "channel": "1",
+                "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
+                "layer": "2",
+                "name": "BUCSFencingW1",
+                "parameters": "table_row_2_team_name=Warwick|table_row_8_team_name=|table_row_2_points=18|table_row_7_stat_2=|table_row_6_team_name=Cambridge|table_row_6_points=3|table_row_4_stat_3=2|table_row_1_stat_4=0|table_row_5_team_name=Oxford|table_row_8_points=|table_row_6_stat_4=0|team=1|table_row_9_stat_3=|table_row_8_position=|table_row_5_stat_2=7|table_row_7_stat_1=|table_row_3_team_name=Leicester|table_row_8_stat_2=|table_row_2_stat_3=6|table_row_8_stat_1=|table_row_4_stat_1=|table_header_stat_2_title=P|sport=fencing|table_row_2_position=2|table_row_5_stat_3=2|table_row_10_position=|table_row_8_stat_3=|table_row_10_stat_5=|table_row_2_stat_2=8|table_row_3_points=9|table_row_3_stat_4=0|table_row_4_stat_2=7|table_row_5_points=6|table_row_7_stat_5=|table_row_6_stat_3=1|table_header_subtitle=Midlands 1A|table_row_1_stat_2=9|table_row_9_stat_1=|table_row_7_team_name=|table_row_6_stat_1=|table_row_5_stat_1=|table_row_9_stat_4=|table_row_3_stat_3=3|table_row_1_points=24|table_row_9_points=|table_row_3_stat_2=6|table_row_1_position=1|table_row_3_position=3|table_row_2_stat_4=0|table_row_10_stat_1=|table_row_7_stat_3=|table_row_5_position=5|table_row_10_stat_2=|table_header_stat_1_title=|table_row_9_position=|table_header_points_title=Pts|table_header_stat_4_title=D|table_row_5_stat_5=5|table_row_4_team_name=Birmingham|table_row_2_stat_1=|table_row_10_points=|table_row_4_position=4|table_row_1_stat_3=8|table_row_9_stat_2=|table_row_2_stat_5=2|type=BUCS|table_row_6_stat_2=7|title=BUCS Fencing 2016-2017|table_row_10_stat_4=|table_row_6_position=6|table_row_3_stat_1=|table_row_1_team_name=Loughborough|table_header_stat_3_title=W|table_row_3_stat_5=3|table_row_6_stat_5=6|table_row_1_stat_1=|table_row_4_points=6|table_row_9_stat_5=|table_row_10_stat_3=|table_row_8_stat_5=|table_row_1_stat_5=1|table_row_5_stat_4=0|gender=womens|table_row_7_points=|table_row_9_team_name=|table_row_7_position=|table_row_4_stat_4=0|table_row_7_stat_4=|table_row_4_stat_5=5|table_row_8_stat_4=|table_row_10_team_name=|table_header_stat_5_title=L",
+                "template": "table",
+                "type": "graphic"
+            },
+            "25": {
+                "channel": 1,
+                "date_modified": "20141002155940",
+                "file_size": "16694084",
+                "filename": "GO1080P25.COPY",
+                "frame_rate": 25.0,
+                "frames": 445.0,
+                "layer": 0,
+                "length": "00:00:17:20",
+                "name": "GO1080P25.COPY",
+                "template": "MOVIE",
+                "type": "vt"
             }
         },
         "positions": {
-            "0": "9",
-            "1": "10",
-            "2": "11",
-            "3": "12",
-            "4": "13",
-            "5": "14",
-            "6": "15",
-            "7": "16"
+            "0": "17",
+            "1": "18",
+            "2": "19",
+            "3": "20",
+            "4": "21",
+            "5": "22",
+            "6": "23",
+            "7": "24",
+            "8": "25"
         }
     },
     "standingstable": [
@@ -342,6 +356,111 @@
             "sport": "Fencing",
             "team": "1",
             "url": "http://bigmatch.jamielynch.net/client/tabledata/data/BUCS_fencing_womens_1.json"
+        },
+        {
+            "channel": "1",
+            "data": {
+                "gender": "womens",
+                "sport": "hockey",
+                "table_header_points_title": "Pts",
+                "table_header_stat_1_title": "P",
+                "table_header_stat_2_title": "W",
+                "table_header_stat_3_title": "D",
+                "table_header_stat_4_title": "L",
+                "table_header_stat_5_title": "GD",
+                "table_header_subtitle": "North A",
+                "table_row_10_points": "",
+                "table_row_10_position": "",
+                "table_row_10_stat_1": "",
+                "table_row_10_stat_2": "",
+                "table_row_10_stat_3": "",
+                "table_row_10_stat_4": "",
+                "table_row_10_stat_5": "",
+                "table_row_10_team_name": "",
+                "table_row_1_points": "20",
+                "table_row_1_position": "1",
+                "table_row_1_stat_1": "10",
+                "table_row_1_stat_2": "6",
+                "table_row_1_stat_3": "2",
+                "table_row_1_stat_4": "2",
+                "table_row_1_stat_5": "21",
+                "table_row_1_team_name": "Birmingham",
+                "table_row_2_points": "16",
+                "table_row_2_position": "2",
+                "table_row_2_stat_1": "10",
+                "table_row_2_stat_2": "4",
+                "table_row_2_stat_3": "4",
+                "table_row_2_stat_4": "2",
+                "table_row_2_stat_5": "-3",
+                "table_row_2_team_name": "Loughborough",
+                "table_row_3_points": "15",
+                "table_row_3_position": "3",
+                "table_row_3_stat_1": "10",
+                "table_row_3_stat_2": "5",
+                "table_row_3_stat_3": "0",
+                "table_row_3_stat_4": "5",
+                "table_row_3_stat_5": "2",
+                "table_row_3_team_name": "Edinburgh",
+                "table_row_4_points": "14",
+                "table_row_4_position": "4",
+                "table_row_4_stat_1": "10",
+                "table_row_4_stat_2": "3",
+                "table_row_4_stat_3": "5",
+                "table_row_4_stat_4": "2",
+                "table_row_4_stat_5": "6",
+                "table_row_4_team_name": "Durham",
+                "table_row_5_points": "10",
+                "table_row_5_position": "5",
+                "table_row_5_stat_1": "10",
+                "table_row_5_stat_2": "2",
+                "table_row_5_stat_3": "4",
+                "table_row_5_stat_4": "4",
+                "table_row_5_stat_5": "-13",
+                "table_row_5_team_name": "Nottingham",
+                "table_row_6_points": "7",
+                "table_row_6_position": "6",
+                "table_row_6_stat_1": "10",
+                "table_row_6_stat_2": "2",
+                "table_row_6_stat_3": "1",
+                "table_row_6_stat_4": "7",
+                "table_row_6_stat_5": "-13",
+                "table_row_6_team_name": "Leeds Beckett",
+                "table_row_7_points": "",
+                "table_row_7_position": "",
+                "table_row_7_stat_1": "",
+                "table_row_7_stat_2": "",
+                "table_row_7_stat_3": "",
+                "table_row_7_stat_4": "",
+                "table_row_7_stat_5": "",
+                "table_row_7_team_name": "",
+                "table_row_8_points": "",
+                "table_row_8_position": "",
+                "table_row_8_stat_1": "",
+                "table_row_8_stat_2": "",
+                "table_row_8_stat_3": "",
+                "table_row_8_stat_4": "",
+                "table_row_8_stat_5": "",
+                "table_row_8_team_name": "",
+                "table_row_9_points": "",
+                "table_row_9_position": "",
+                "table_row_9_stat_1": "",
+                "table_row_9_stat_2": "",
+                "table_row_9_stat_3": "",
+                "table_row_9_stat_4": "",
+                "table_row_9_stat_5": "",
+                "table_row_9_team_name": "",
+                "team": "1",
+                "title": "BUCS Hockey 2016-2017",
+                "type": "BUCS"
+            },
+            "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
+            "gender": "womens",
+            "layer": "2",
+            "league": "BUCS",
+            "rows": "6",
+            "sport": "Hockey",
+            "team": "1",
+            "url": "http://bigmatch.jamielynch.net/client/tabledata/data/BUCS_hockey_womens_1.json"
         }
     ],
     "strapleft": [
@@ -352,6 +471,22 @@
                 "StrapLower": "LSU Media",
                 "StrapUpper": "Ed Radford"
             }
+        },
+        {
+            "channel": "1",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "AU Hockey Captain",
+                "StrapUpper": "Ffion Thompson"
+            }
+        },
+        {
+            "channel": "1",
+            "layer": "30",
+            "parameters": {
+                "StrapLower": "LSU Media",
+                "StrapUpper": "Tom Haslam"
+            }
         }
     ],
     "topscore": [
@@ -359,76 +494,652 @@
             "channel": "1",
             "layer": "25",
             "parameters": {
-                "team1_colour": "",
-                "team2_colour": "",
-                "topleft_score": "",
-                "topleft_team1": "",
-                "topleft_team2": ""
+                "team1_colour": "#FFFFFF",
+                "team2_colour": "1 - 0",
+                "topleft_score": "#6A1863",
+                "topleft_team1": "LBO",
+                "topleft_team2": "DUR"
             }
         }
     ],
     "videos": {
         "1": {
-            "date_modified": "20130619224440",
-            "file_size": "5119595",
-            "frame_rate": 1.0,
-            "frames": 215.0,
-            "length": "00:03:35:00",
-            "name": "COMINGUPBED",
-            "type": "AUDIO"
+            "date_modified": "20141002155939",
+            "file_size": "6445960",
+            "frame_rate": 25.0,
+            "frames": 268.0,
+            "length": "00:00:10:18",
+            "name": "AMB",
+            "type": "MOVIE"
         },
         "2": {
-            "date_modified": "20130619224440",
-            "file_size": "5119595",
-            "frame_rate": 1.0,
-            "frames": 215.0,
-            "length": "00:03:35:00",
-            "name": "LEAGUETABLESBED",
-            "type": "AUDIO"
+            "date_modified": "20141002155939",
+            "file_size": "6159792",
+            "frame_rate": 25.0,
+            "frames": 264.0,
+            "length": "00:00:10:14",
+            "name": "CG1080I50",
+            "type": "MOVIE"
         },
         "3": {
-            "date_modified": "20160911230221",
-            "file_size": "16694084",
+            "date_modified": "20141002155939",
+            "file_size": "10298115",
             "frame_rate": 25.0,
-            "frames": 445.0,
-            "length": "00:00:17:20",
-            "name": "LUKE THOMSON ULTIMATE FRISBEE",
+            "frames": 260.0,
+            "length": "00:00:10:10",
+            "name": "CG1080I50_A",
             "type": "MOVIE"
         },
         "4": {
-            "date_modified": "20160911230221",
-            "file_size": "16694084",
-            "frame_rate": 25.0,
-            "frames": 445.0,
-            "length": "00:00:17:20",
-            "name": "TITLESEQUENCE",
-            "type": "MOVIE"
+            "date_modified": "20160120113530",
+            "file_size": "34544970",
+            "frame_rate": 1.0,
+            "frames": 195.0,
+            "length": "00:03:15:00",
+            "name": "COMING HOME (RADIO EDIT)",
+            "type": "AUDIO"
         },
         "5": {
-            "date_modified": "20160911230221",
-            "file_size": "16694084",
-            "frame_rate": 25.0,
-            "frames": 445.0,
-            "length": "00:00:17:20",
-            "name": "TOM TRIES FENCING",
-            "type": "MOVIE"
+            "date_modified": "20160210151408",
+            "file_size": "36604220",
+            "frame_rate": 1.0,
+            "frames": 207.0,
+            "length": "00:03:27:00",
+            "name": "CONQUEROR",
+            "type": "AUDIO"
         },
         "6": {
-            "date_modified": "20160911230221",
-            "file_size": "16694084",
-            "frame_rate": 25.0,
-            "frames": 445.0,
-            "length": "00:00:17:20",
-            "name": "W1 FENCING",
-            "type": "MOVIE"
+            "date_modified": "20160206125359",
+            "file_size": "11800931",
+            "frame_rate": 1.0,
+            "frames": 295.0,
+            "length": "00:04:55:00",
+            "name": "DELILAH",
+            "type": "AUDIO"
         },
         "7": {
-            "date_modified": "20160911230221",
+            "date_modified": "20141002155940",
             "file_size": "16694084",
             "frame_rate": 25.0,
             "frames": 445.0,
             "length": "00:00:17:20",
-            "name": "W1 HOCKEY",
+            "name": "GO1080P25.COPY",
+            "type": "MOVIE"
+        },
+        "8": {
+            "date_modified": "20141002155940",
+            "file_size": "16694084",
+            "frame_rate": 25.0,
+            "frames": 445.0,
+            "length": "00:00:17:20",
+            "name": "GO1080P25",
+            "type": "MOVIE"
+        },
+        "9": {
+            "date_modified": "20141002155939",
+            "file_size": "6220854",
+            "frame_rate": 1,
+            "frames": 1,
+            "length": " ",
+            "name": "SPLIT",
+            "type": "STILL"
+        },
+        "10": {
+            "date_modified": "20141002155939",
+            "file_size": "6159792",
+            "frame_rate": 25.0,
+            "frames": 264.0,
+            "length": "00:00:10:14",
+            "name": "TEST\\CG1080I50",
+            "type": "MOVIE"
+        },
+        "11": {
+            "date_modified": "20141002155939",
+            "file_size": "1053771",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080I5000_TEST",
+            "type": "MOVIE"
+        },
+        "12": {
+            "date_modified": "20141002155939",
+            "file_size": "1340796",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080I5000_TEST_A",
+            "type": "MOVIE"
+        },
+        "13": {
+            "date_modified": "20141002155939",
+            "file_size": "1250970",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080I5994_TEST",
+            "type": "MOVIE"
+        },
+        "14": {
+            "date_modified": "20141002155939",
+            "file_size": "1592759",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080I5994_TEST_A",
+            "type": "MOVIE"
+        },
+        "15": {
+            "date_modified": "20141002155939",
+            "file_size": "1268605",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\1080I6000_TEST",
+            "type": "MOVIE"
+        },
+        "16": {
+            "date_modified": "20141002155939",
+            "file_size": "1606243",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\1080I6000_TEST_A",
+            "type": "MOVIE"
+        },
+        "17": {
+            "date_modified": "20141002155939",
+            "file_size": "608718",
+            "frame_rate": 23.976023,
+            "frames": 47.0,
+            "length": "00:00:01:23",
+            "name": "TESTPATTERNS\\1080P2398_TEST",
+            "type": "MOVIE"
+        },
+        "18": {
+            "date_modified": "20141002155939",
+            "file_size": "776850",
+            "frame_rate": 23.976023,
+            "frames": 47.0,
+            "length": "00:00:01:23",
+            "name": "TESTPATTERNS\\1080P2398_TEST_A",
+            "type": "MOVIE"
+        },
+        "19": {
+            "date_modified": "20141002155939",
+            "file_size": "607748",
+            "frame_rate": 24.0,
+            "frames": 48.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P2400_TEST",
+            "type": "MOVIE"
+        },
+        "20": {
+            "date_modified": "20141002155939",
+            "file_size": "777272",
+            "frame_rate": 24.0,
+            "frames": 48.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P2400_TEST_A",
+            "type": "MOVIE"
+        },
+        "21": {
+            "date_modified": "20141002155939",
+            "file_size": "634626",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P2500_TEST",
+            "type": "MOVIE"
+        },
+        "22": {
+            "date_modified": "20141002155939",
+            "file_size": "809223",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P2500_TEST_A",
+            "type": "MOVIE"
+        },
+        "23": {
+            "date_modified": "20141002155939",
+            "file_size": "760365",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\1080P2997_TEST",
+            "type": "MOVIE"
+        },
+        "24": {
+            "date_modified": "20141002155939",
+            "file_size": "970665",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\1080P2997_TEST_A",
+            "type": "MOVIE"
+        },
+        "25": {
+            "date_modified": "20141002155939",
+            "file_size": "759386",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P3000_TEST",
+            "type": "MOVIE"
+        },
+        "26": {
+            "date_modified": "20141002155939",
+            "file_size": "971151",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P3000_TEST_A",
+            "type": "MOVIE"
+        },
+        "27": {
+            "date_modified": "20141002155939",
+            "file_size": "1267714",
+            "frame_rate": 50.0,
+            "frames": 100.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P5000_TEST",
+            "type": "MOVIE"
+        },
+        "28": {
+            "date_modified": "20141002155939",
+            "file_size": "1615895",
+            "frame_rate": 50.0,
+            "frames": 100.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P5000_TEST_A",
+            "type": "MOVIE"
+        },
+        "29": {
+            "date_modified": "20141002155939",
+            "file_size": "817311",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\1080P5994_TEST",
+            "type": "MOVIE"
+        },
+        "30": {
+            "date_modified": "20141002155939",
+            "file_size": "1004809",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\1080P5994_TEST_A",
+            "type": "MOVIE"
+        },
+        "31": {
+            "date_modified": "20141002155939",
+            "file_size": "1517716",
+            "frame_rate": 60.0,
+            "frames": 120.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P6000_TEST",
+            "type": "MOVIE"
+        },
+        "32": {
+            "date_modified": "20141002155939",
+            "file_size": "1939533",
+            "frame_rate": 60.0,
+            "frames": 120.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\1080P6000_TEST_A",
+            "type": "MOVIE"
+        },
+        "33": {
+            "date_modified": "20141002155939",
+            "file_size": "8294444",
+            "frame_rate": 1,
+            "frames": 1,
+            "length": " ",
+            "name": "TESTPATTERNS\\1080_TEST",
+            "type": "STILL"
+        },
+        "34": {
+            "date_modified": "20141002155939",
+            "file_size": "725131",
+            "frame_rate": 23.976023,
+            "frames": 47.0,
+            "length": "00:00:01:23",
+            "name": "TESTPATTERNS\\2160P2398_TEST",
+            "type": "MOVIE"
+        },
+        "35": {
+            "date_modified": "20141002155939",
+            "file_size": "798765",
+            "frame_rate": 23.976023,
+            "frames": 47.0,
+            "length": "00:00:01:23",
+            "name": "TESTPATTERNS\\2160P2398_TEST_A",
+            "type": "MOVIE"
+        },
+        "36": {
+            "date_modified": "20141002155939",
+            "file_size": "724935",
+            "frame_rate": 24.0,
+            "frames": 48.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\2160P2400_TEST",
+            "type": "MOVIE"
+        },
+        "37": {
+            "date_modified": "20141002155939",
+            "file_size": "798572",
+            "frame_rate": 24.0,
+            "frames": 48.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\2160P2400_TEST_A",
+            "type": "MOVIE"
+        },
+        "38": {
+            "date_modified": "20141002155939",
+            "file_size": "755704",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\2160P2500_TEST",
+            "type": "MOVIE"
+        },
+        "39": {
+            "date_modified": "20141002155939",
+            "file_size": "831973",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\2160P2500_TEST_A",
+            "type": "MOVIE"
+        },
+        "40": {
+            "date_modified": "20141002155939",
+            "file_size": "905285",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\2160P2997_TEST",
+            "type": "MOVIE"
+        },
+        "41": {
+            "date_modified": "20141002155939",
+            "file_size": "997449",
+            "frame_rate": 29.976,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\2160P2997_TEST_A",
+            "type": "MOVIE"
+        },
+        "42": {
+            "date_modified": "20141002155939",
+            "file_size": "905275",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\2160P3000_TEST",
+            "type": "MOVIE"
+        },
+        "43": {
+            "date_modified": "20141002155939",
+            "file_size": "997550",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\2160P3000_TEST_A",
+            "type": "MOVIE"
+        },
+        "44": {
+            "date_modified": "20141002155939",
+            "file_size": "33177644",
+            "frame_rate": 1,
+            "frames": 1,
+            "length": " ",
+            "name": "TESTPATTERNS\\2160_TEST",
+            "type": "STILL"
+        },
+        "45": {
+            "date_modified": "20141002155940",
+            "file_size": "280899",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\576P2500_TEST",
+            "type": "MOVIE"
+        },
+        "46": {
+            "date_modified": "20141002155940",
+            "file_size": "445106",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\576P2500_TEST_A",
+            "type": "MOVIE"
+        },
+        "47": {
+            "date_modified": "20141002155940",
+            "file_size": "1658924",
+            "frame_rate": 1,
+            "frames": 1,
+            "length": " ",
+            "name": "TESTPATTERNS\\576_TEST",
+            "type": "STILL"
+        },
+        "48": {
+            "date_modified": "20141002155940",
+            "file_size": "408643",
+            "frame_rate": 23.976023,
+            "frames": 47.0,
+            "length": "00:00:01:23",
+            "name": "TESTPATTERNS\\720P2398_TEST",
+            "type": "MOVIE"
+        },
+        "49": {
+            "date_modified": "20141002155940",
+            "file_size": "604415",
+            "frame_rate": 23.976023,
+            "frames": 47.0,
+            "length": "00:00:01:23",
+            "name": "TESTPATTERNS\\720P2398_TEST_A",
+            "type": "MOVIE"
+        },
+        "50": {
+            "date_modified": "20141002155940",
+            "file_size": "408308",
+            "frame_rate": 24.0,
+            "frames": 48.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P2400_TEST",
+            "type": "MOVIE"
+        },
+        "51": {
+            "date_modified": "20141002155940",
+            "file_size": "604403",
+            "frame_rate": 24.0,
+            "frames": 48.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P2400_TEST_A",
+            "type": "MOVIE"
+        },
+        "52": {
+            "date_modified": "20141002155940",
+            "file_size": "428664",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P2500_TEST",
+            "type": "MOVIE"
+        },
+        "53": {
+            "date_modified": "20141002155940",
+            "file_size": "630636",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P2500_TEST_A",
+            "type": "MOVIE"
+        },
+        "54": {
+            "date_modified": "20141002155940",
+            "file_size": "518721",
+            "frame_rate": 29.976,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P2997_TEST",
+            "type": "MOVIE"
+        },
+        "55": {
+            "date_modified": "20141002155940",
+            "file_size": "767513",
+            "frame_rate": 29.976,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P2997_TEST_A",
+            "type": "MOVIE"
+        },
+        "56": {
+            "date_modified": "20141002155940",
+            "file_size": "509644",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P3000_TEST",
+            "type": "MOVIE"
+        },
+        "57": {
+            "date_modified": "20141002155940",
+            "file_size": "755038",
+            "frame_rate": 30.0,
+            "frames": 60.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P3000_TEST_A",
+            "type": "MOVIE"
+        },
+        "58": {
+            "date_modified": "20141002155940",
+            "file_size": "851807",
+            "frame_rate": 50.0,
+            "frames": 100.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P5000_TEST",
+            "type": "MOVIE"
+        },
+        "59": {
+            "date_modified": "20141002155940",
+            "file_size": "1257467",
+            "frame_rate": 50.0,
+            "frames": 100.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P5000_TEST_A",
+            "type": "MOVIE"
+        },
+        "60": {
+            "date_modified": "20141002155940",
+            "file_size": "1015826",
+            "frame_rate": 59.940059,
+            "frames": 119.0,
+            "length": "00:00:01:59",
+            "name": "TESTPATTERNS\\720P5994_TEST",
+            "type": "MOVIE"
+        },
+        "61": {
+            "date_modified": "20141002155940",
+            "file_size": "1506160",
+            "frame_rate": 59.940059,
+            "frames": 119.0,
+            "length": "00:00:01:59",
+            "name": "TESTPATTERNS\\720P5994_TEST_A",
+            "type": "MOVIE"
+        },
+        "62": {
+            "date_modified": "20141002155940",
+            "file_size": "1014253",
+            "frame_rate": 60.0,
+            "frames": 120.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P6000_TEST",
+            "type": "MOVIE"
+        },
+        "63": {
+            "date_modified": "20141002155940",
+            "file_size": "1504653",
+            "frame_rate": 60.0,
+            "frames": 120.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\720P6000_TEST_A",
+            "type": "MOVIE"
+        },
+        "64": {
+            "date_modified": "20141002155940",
+            "file_size": "3686444",
+            "frame_rate": 1,
+            "frames": 1,
+            "length": " ",
+            "name": "TESTPATTERNS\\720_TEST",
+            "type": "STILL"
+        },
+        "65": {
+            "date_modified": "20141002155940",
+            "file_size": "897909",
+            "frame_rate": 29.970029,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\NTSC_TEST",
+            "type": "MOVIE"
+        },
+        "66": {
+            "date_modified": "20141002155940",
+            "file_size": "1399724",
+            "frame_rate": 1,
+            "frames": 1,
+            "length": " ",
+            "name": "TESTPATTERNS\\NTSC_TEST",
+            "type": "STILL"
+        },
+        "67": {
+            "date_modified": "20141002155940",
+            "file_size": "1341860",
+            "frame_rate": 29.970029,
+            "frames": 59.0,
+            "length": "00:00:01:29",
+            "name": "TESTPATTERNS\\NTSC_TEST_A",
+            "type": "MOVIE"
+        },
+        "68": {
+            "date_modified": "20141002155940",
+            "file_size": "582730",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\PAL_TEST",
+            "type": "MOVIE"
+        },
+        "69": {
+            "date_modified": "20141002155940",
+            "file_size": "1658924",
+            "frame_rate": 1,
+            "frames": 1,
+            "length": " ",
+            "name": "TESTPATTERNS\\PAL_TEST",
+            "type": "STILL"
+        },
+        "70": {
+            "date_modified": "20141002155940",
+            "file_size": "873805",
+            "frame_rate": 25.0,
+            "frames": 50.0,
+            "length": "00:00:02:00",
+            "name": "TESTPATTERNS\\PAL_TEST_A",
+            "type": "MOVIE"
+        },
+        "71": {
+            "date_modified": "20141002155940",
+            "file_size": "1268784",
+            "frame_rate": 25.0,
+            "frames": 31.0,
+            "length": "00:00:01:06",
+            "name": "WIPE",
             "type": "MOVIE"
         }
     }

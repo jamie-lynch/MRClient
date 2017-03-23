@@ -163,6 +163,7 @@ class ClientWindow(QtGui.QMainWindow):
                     self.comms.caspar_disconnect()
             tools.store_data(self)
             tools.store_settings(self.settings)
+            self.osc.osc.finished = True
             event.accept()
         else:
             event.ignore()

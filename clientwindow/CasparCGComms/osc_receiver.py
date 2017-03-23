@@ -8,13 +8,13 @@ class OSCReceiver(QtCore.QObject):
 
     def __init__(self):
         super(OSCReceiver, self).__init__()
-        osc = CasparOSC()
+        self.osc = CasparOSC()
 
         self.videos = {1: {}, 2: {}, 3: {}, 4: {}}
 
-        osc.osc_update.connect(self.process_output)
+        self.osc.osc_framedata.connect(self.process_output)
 
-        t = threading.Thread(target=osc.process_osc, name="Process_OSC")
+        t = threading.Thread(target=self.osc.process_osc, name="Process_OSC")
         t.daemon = True
         t.start()
 
