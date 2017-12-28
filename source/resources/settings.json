@@ -1,6 +1,6 @@
 {
     "caspar": {
-        "address": "192.168.1.157",
+        "address": "127.0.0.1",
         "port": 5250,
         "video_directory": "home"
     },
@@ -21,11 +21,12 @@
         },
         "standingstable10": {
             "channel": 1,
-            "filename": "BigMatch/TBM_PointsTable_10Row/TBM_PointsTable_10Row",
+            "filename": "BigMatch/MR_2018PointsTable_10Row/MR_2018PointsTable_10Row",
             "layer": 1,
             "name": "Standings Table10",
             "parameters": [],
-            "rundownname": ""
+            "rundownname": "",
+            "table_title": "BUCS Championship 2017-18"
         },
         "standingstable6": {
             "channel": 1,

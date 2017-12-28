@@ -210,6 +210,7 @@ class StandingsTableDataRow(QtGui.QFrame):
         grid.addWidget(tools.QVTLabel(self, 'Sport: ', bold=True), 1, 0)
         grid.addWidget(tools.QVTLabel(self, 'Gender: ', bold=True), 0, 2)
         grid.addWidget(tools.QVTLabel(self, 'Team: ', bold=True), 1, 2)
+        grid.addWidget(tools.QVTLabel(self, 'Customise Title: ', bold=True), 0, 4)
 
         league = tools.QVTLabel(self, self.tablesettings['league'])
         league.setFixedWidth(100)
@@ -217,20 +218,27 @@ class StandingsTableDataRow(QtGui.QFrame):
 
         sport = tools.QVTLabel(self, self.tablesettings['sport'])
         sport.setFixedWidth(100)
-
         grid.addWidget(tools.QVTLabel(self, self.tablesettings['sport']), 1, 1)
+
         gender = tools.QVTLabel(self, self.tablesettings['gender'])
         grid.addWidget(gender, 0, 3)
-        gender.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        gender.setFixedWidth(100)
         grid.addWidget(tools.QVTLabel(self, self.tablesettings['team']), 1, 3)
+
+        # add custom table title edit
+        self.custom_title_edit = QtGui.QLineEdit()
+        self.custom_title_edit.setText(str(self.tablesettings['data']['title']))
+        self.custom_title_edit.editingFinished.connect(self.tables_section.write_to_data)
+        self.custom_title_edit.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        grid.addWidget(self.custom_title_edit, 0, 5)
 
         # add channel and layer edits
         channel = tools.QVTLabel(self, 'Channel')
         channel.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        grid.addWidget(channel, 0, 4)
+        grid.addWidget(channel, 0, 6)
         layer = tools.QVTLabel(self, 'Layer')
         layer.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        grid.addWidget(layer, 1, 4)
+        grid.addWidget(layer, 1, 6)
         self.channel_edit = QtGui.QLineEdit()
         self.channel_edit.setText(str(self.tablesettings['channel']))
         self.channel_edit.editingFinished.connect(self.tables_section.write_to_data)
@@ -239,26 +247,26 @@ class StandingsTableDataRow(QtGui.QFrame):
         self.layer_edit.setText(str(self.tablesettings['layer']))
         self.layer_edit.editingFinished.connect(self.tables_section.write_to_data)
         self.layer_edit.setFixedWidth(60)
-        grid.addWidget(self.channel_edit, 0, 5)
-        grid.addWidget(self.layer_edit, 1, 5)
+        grid.addWidget(self.channel_edit, 0, 7)
+        grid.addWidget(self.layer_edit, 1, 7)
 
         # add the control buttons
         self.fire_button = QtGui.QPushButton("Fire")
         self.fire_status = "Fire"
         self.fire_button.clicked.connect(self.fire_graphic)
-        grid.addWidget(self.fire_button, 0, 6)
+        grid.addWidget(self.fire_button, 0, 8)
 
         self.update_button = QtGui.QPushButton("Update")
         self.update_button.clicked.connect(self.update_graphic)
-        grid.addWidget(self.update_button, 0, 7)
+        grid.addWidget(self.update_button, 0, 9)
 
         self.add = QtGui.QPushButton("Add")
         self.add.clicked.connect(self.add_graphic)
-        grid.addWidget(self.add, 1, 6)
+        grid.addWidget(self.add, 1, 8)
 
         self.remove_button = QtGui.QPushButton("Delete")
         self.remove_button.clicked.connect(self.remove_row)
-        grid.addWidget(self.remove_button, 1, 7)
+        grid.addWidget(self.remove_button, 1, 9)
 
         self.fire_buttons = [self.fire_button, self.update_button]
         self.set_enabled_disabled()
@@ -293,14 +301,14 @@ class StandingsTableDataRow(QtGui.QFrame):
 
             temp = {}
 
-            temp['title'] = "BUCS 2016-17 Championship"
+            temp['table_title_title'] = self.custom_title_edit.text()
 
             temp['table_header_subtitle'] = "Overall Standings"
             temp['table_header_stat_1_title'] = ""
-            temp['table_header_stat_2_tiz tle'] = ""
-            temp['table_header_stat_3_title'] = ""
-            temp['table_header_stat_4_title'] = ""
-            temp['table_header_stat_5_title'] = ""
+            temp['table_header_stat_2_title'] = ""
+            temp['table_header_stat_3_title'] = "Lge"
+            temp['table_header_stat_4_title'] = "Cup"
+            temp['table_header_stat_5_title'] = "Indiv"
             temp['table_header_points_title'] = "Points"
 
             for num in range(1, 11):
@@ -308,9 +316,9 @@ class StandingsTableDataRow(QtGui.QFrame):
                 temp['table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
                 temp['table_row_{}_stat_1'.format(num)] = ""
                 temp['table_row_{}_stat_2'.format(num)] = ""
-                temp['table_row_{}_stat_3'.format(num)] = ""
-                temp['table_row_{}_stat_4'.format(num)] = ""
-                temp['table_row_{}_stat_5'.format(num)] = ""
+                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['League']
+                temp['table_row_{}_stat_4'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
                 temp['table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
 
             table_data = temp
@@ -334,7 +342,8 @@ class StandingsTableDataRow(QtGui.QFrame):
                     name=self.tablesettings['filename'],
                     channel=self.channel_edit.text(),
                     layer=self.layer_edit.text(),
-                    parameters=parameters
+                    parameters=parameters,
+                    playonload=1
                 )
                 print(response)
 
@@ -648,14 +657,14 @@ class AddNewStandingsTable(QtGui.QDialog):
 
             temp = {}
 
-            temp['title'] = "BUCS 2016-17 Championship"
+            temp['title'] = self.main.settings['templates']['standingstable10']['table_title']
 
             temp['table_header_subtitle'] = "Overall Standings"
             temp['table_header_stat_1_title'] = ""
-            temp['table_header_stat_2_tiz tle'] = ""
-            temp['table_header_stat_3_title'] = ""
-            temp['table_header_stat_4_title'] = ""
-            temp['table_header_stat_5_title'] = ""
+            temp['table_header_stat_2_title'] = ""
+            temp['table_header_stat_3_title'] = "Lge"
+            temp['table_header_stat_4_title'] = "Cup"
+            temp['table_header_stat_5_title'] = "Indiv"
             temp['table_header_points_title'] = "Points"
 
             for num in range(1, 11):
@@ -663,9 +672,9 @@ class AddNewStandingsTable(QtGui.QDialog):
                 temp['table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
                 temp['table_row_{}_stat_1'.format(num)] = ""
                 temp['table_row_{}_stat_2'.format(num)] = ""
-                temp['table_row_{}_stat_3'.format(num)] = ""
-                temp['table_row_{}_stat_4'.format(num)] = ""
-                temp['table_row_{}_stat_5'.format(num)] = ""
+                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['League']
+                temp['table_row_{}_stat_4'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
                 temp['table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
 
             table_data = temp

@@ -147,7 +147,7 @@ class AboutClient(QtGui.QDialog):
         vbox.addStretch(1)
 
         # Define the version
-        version = QtGui.QLabel("Version 2.0 | 02/2017")
+        version = QtGui.QLabel("Version 2.1 | December 2017")
         version.setIndent(width*0.04)
         version.setAlignment(QtCore.Qt.AlignRight)
         vbox.addWidget(version)

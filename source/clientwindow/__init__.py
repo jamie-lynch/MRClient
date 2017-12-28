@@ -14,7 +14,6 @@ from clientwindow.CasparCGComms.osc_receiver import OSCReceiver
 from clientwindow.groups import videos, rundown, tables, production
 from clientwindow.menubar import ClientMenu
 
-
 class ClientWindow(QtGui.QMainWindow):
     """Class which defines the mainwindow for the MRClient"""
 
@@ -34,7 +33,7 @@ class ClientWindow(QtGui.QMainWindow):
         self.setWindowState(QtCore.Qt.WindowMaximized)
 
         # set title
-        self.setWindowTitle('Match Report CasparCG Client')
+        self.setWindowTitle('Match Report CasparCG Client v2.1')
 
     def startup(self, splash_window):
         """Function to carry out all startup procedures"""
