@@ -40,12 +40,12 @@
         },
         "strapleft": {
             "channel": 1,
-            "filename": "BigMatch/TBM_StrapLeft/TBM_StrapLeft",
+            "filename": "BigMatch/MR_2018StrapLeft/MR_2018StrapLeft",
             "layer": 30,
             "name": "Strap Left",
             "parameters": [
-                "StrapUpper",
-                "StrapLower"
+                "StrapUpper_text",
+                "StrapLower_text"
             ],
             "rundownname": "StrapUpper"
         },

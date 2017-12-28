@@ -1,4 +1,4 @@
-# Jack Connor-Richards - 15th December 2016 - v0.7.0
+# Jack Connor-Richards - 28th December 2017 - v0.7.2_MR
 # CasparCG AMCP communications class to be used with The Match Report CasparCG Custom Client
 # written by Jamie Lynch and Jack Connor-Richards for LSU Media
 
@@ -7,11 +7,15 @@
 # v0.7.1_MR:
 # (JCR) Class name changed to CasparAMCP and added to package CasparCGComms
 # (JPL) playonload feature added
+#
+# v0.7.2_MR:
+# (JCR) Improved handling of illegal characters in Caspar data
 
 import socket
 import os.path
 import logging
 import logging.handlers as handlers
+import html
 
 
 class CasparAMCP(object):
@@ -24,7 +28,7 @@ class CasparAMCP(object):
     def __init__(self):
         global logger
         logger = self.init_logging()
-        logger.info("CasparComms | Jack Connor-Richards/Jamie Lynch | Version 0.7.0 - 15th December 2016")
+        logger.info("CasparComms | Jack Connor-Richards/Jamie Lynch | Version 0.7.2 - 28th December 2017")
         logger.info("CasparComms Class initialised")
 
     def init_logging(self):
@@ -188,7 +192,7 @@ class CasparAMCP(object):
         delimited = parameters.split("|")
         count = len(delimited)
         for i in range(count):
-            command += '<componentData id=\\\"' + delimited[i].split("=")[0] + '\\\"><data id=\\\"text\\\" value=\\\"' + delimited[i].split("=")[1] + '\\\" /></componentData>'
+            command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
         command += "</templateData>\""
         try:
             logger.info("Sending command: " + command)
@@ -228,7 +232,7 @@ class CasparAMCP(object):
         delimited = parameters.split("|")
         count = len(delimited)
         for i in range(count):
-            command += '<componentData id=\\\"' + delimited[i].split("=")[0] + '\\\"><data id=\\\"text\\\" value=\\\"' + delimited[i].split("=")[1] + '\\\" /></componentData>'
+            command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
         command += "</templateData>\""
         try:
             logger.info("Sending command: " + command)

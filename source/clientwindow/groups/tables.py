@@ -211,6 +211,7 @@ class StandingsTableDataRow(QtGui.QFrame):
         grid.addWidget(tools.QVTLabel(self, 'Gender: ', bold=True), 0, 2)
         grid.addWidget(tools.QVTLabel(self, 'Team: ', bold=True), 1, 2)
         grid.addWidget(tools.QVTLabel(self, 'Customise Title: ', bold=True), 0, 4)
+        grid.addWidget(tools.QVTLabel(self, 'Table Rows: ', bold=True), 1, 4)
 
         league = tools.QVTLabel(self, self.tablesettings['league'])
         league.setFixedWidth(100)
@@ -224,6 +225,10 @@ class StandingsTableDataRow(QtGui.QFrame):
         grid.addWidget(gender, 0, 3)
         gender.setFixedWidth(100)
         grid.addWidget(tools.QVTLabel(self, self.tablesettings['team']), 1, 3)
+
+        rows = tools.QVTLabel(self, str(self.tablesettings['data']['table_rows']))
+        grid.addWidget(rows, 1, 5)
+        rows.setFixedWidth(100)
 
         # add custom table title edit
         self.custom_title_edit = QtGui.QLineEdit()
@@ -301,6 +306,7 @@ class StandingsTableDataRow(QtGui.QFrame):
 
             temp = {}
 
+            temp['title'] = self.custom_title_edit.text()
             temp['table_title_title'] = self.custom_title_edit.text()
 
             temp['table_header_subtitle'] = "Overall Standings"
