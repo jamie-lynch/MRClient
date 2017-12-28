@@ -304,24 +304,31 @@ class StandingsTableDataRow(QtGui.QFrame):
             temp['table_title_title'] = self.custom_title_edit.text()
 
             temp['table_header_subtitle'] = "Overall Standings"
-            temp['table_header_stat_1_title'] = ""
+            temp['table_header_stat_1_title'] = "League"
             temp['table_header_stat_2_title'] = ""
-            temp['table_header_stat_3_title'] = "Lge"
-            temp['table_header_stat_4_title'] = "Cup"
-            temp['table_header_stat_5_title'] = "Indiv"
+            temp['table_header_stat_3_title'] = "Cup"
+            temp['table_header_stat_4_title'] = ""
+            temp['table_header_stat_5_title'] = "Indvdl"
             temp['table_header_points_title'] = "Points"
 
             for num in range(1, 11):
                 temp['table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
                 temp['table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
-                temp['table_row_{}_stat_1'.format(num)] = ""
+                temp['table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
                 temp['table_row_{}_stat_2'.format(num)] = ""
-                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['League']
-                temp['table_row_{}_stat_4'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_row_{}_stat_4'.format(num)] = ""
                 temp['table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
                 temp['table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
 
             table_data = temp
+
+        # Add the number of table rows to the data to send to Caspar
+        table_data['table_rows'] = self.tablesettings['data']['table_rows']
+
+        # Use Customised Title field data for table title data, both title keys set for compatibility with templates
+        table_data['title'] = self.custom_title_edit.text()
+        table_data['table_title_title'] = self.custom_title_edit.text()
 
         parameters = ['{}={}'.format(key, val) for key, val in table_data.items()]
         parameters = '|'.join(parameters)
@@ -657,23 +664,23 @@ class AddNewStandingsTable(QtGui.QDialog):
 
             temp = {}
 
-            temp['title'] = self.main.settings['templates']['standingstable10']['table_title']
+            temp['title'] = self.main.settings['templates']['standingstable10']['default_table_title']
 
             temp['table_header_subtitle'] = "Overall Standings"
-            temp['table_header_stat_1_title'] = ""
+            temp['table_header_stat_1_title'] = "League"
             temp['table_header_stat_2_title'] = ""
-            temp['table_header_stat_3_title'] = "Lge"
-            temp['table_header_stat_4_title'] = "Cup"
-            temp['table_header_stat_5_title'] = "Indiv"
+            temp['table_header_stat_3_title'] = "Cup"
+            temp['table_header_stat_4_title'] = ""
+            temp['table_header_stat_5_title'] = "Indvdl"
             temp['table_header_points_title'] = "Points"
 
             for num in range(1, 11):
                 temp['table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
                 temp['table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
-                temp['table_row_{}_stat_1'.format(num)] = ""
+                temp['table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
                 temp['table_row_{}_stat_2'.format(num)] = ""
-                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['League']
-                temp['table_row_{}_stat_4'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_row_{}_stat_4'.format(num)] = ""
                 temp['table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
                 temp['table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
 
@@ -705,6 +712,7 @@ class AddNewStandingsTable(QtGui.QDialog):
         settings['filename'] = self.main.settings['templates']['standingstable{}'.format(settings['rows'])]['filename']
         settings['channel'] = self.main.settings['templates']['standingstable{}'.format(settings['rows'])]['channel']
         settings['layer'] = self.main.settings['templates']['standingstable{}'.format(settings['rows'])]['layer']
+        settings['data']['table_rows'] = self.main.settings['templates']['standingstable{}'.format(settings['rows'])]['table_rows']
 
         # tries to add the table to the client and close
         self.gfx_section.add_row(tablesettings=settings)

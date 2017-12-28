@@ -21,20 +21,22 @@
         },
         "standingstable10": {
             "channel": 1,
+            "default_table_title": "BUCS Championship 2017-18",
             "filename": "BigMatch/MR_2018PointsTable_10Row/MR_2018PointsTable_10Row",
             "layer": 1,
             "name": "Standings Table10",
             "parameters": [],
             "rundownname": "",
-            "table_title": "BUCS Championship 2017-18"
+            "table_rows": 10
         },
         "standingstable6": {
             "channel": 1,
-            "filename": "BigMatch/TBM_PointsTable_6Row/TBM_PointsTable_6Row",
+            "filename": "BigMatch/MR_2018PointsTable_10Row/MR_2018PointsTable_10Row",
             "layer": 2,
             "name": "Standings Table6",
             "parameters": [],
-            "rundownname": ""
+            "rundownname": "",
+            "table_rows": 6
         },
         "strapleft": {
             "channel": 1,
