@@ -59,6 +59,7 @@ class CasparAMCP(object):
         if self.casparcg is None:
             try:
                 self.casparcg = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.casparcg.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                 self.casparcg.settimeout(5)
                 self.casparcg.connect((address, int(port)))
                 logger.info("Connected to CasparCG Server at " + str(address) + ":" + str(port))
@@ -195,7 +196,7 @@ class CasparAMCP(object):
             command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
         command += "</templateData>\""
         try:
-            logger.info("Sending command: " + command)
+            logger.info(("Sending command: " + command).encode("UTF-8"))
             if self.casparcg:
                 self.casparcg.send((command + '\r\n').encode("UTF-8"))
                 received = self.casparcg.recv(1024).decode("UTF-8")
@@ -235,7 +236,7 @@ class CasparAMCP(object):
             command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
         command += "</templateData>\""
         try:
-            logger.info("Sending command: " + command)
+            logger.info(("Sending command: " + command).encode("UTF-8"))
             if self.casparcg:
                 self.casparcg.send((command + '\r\n').encode("UTF-8"))
                 received = self.casparcg.recv(1024).decode("UTF-8")
@@ -348,6 +349,7 @@ class CasparAMCP(object):
                 logger.info("Closing connection to CasparCG")
             except socket.error as e:
                 logger.error("Error closing socket" + str(e))
+                self.casparcg = None
                 return "Error closing socket" + str(e)
             self.connected = False
             return "Closed connection to CasparCG Server"
