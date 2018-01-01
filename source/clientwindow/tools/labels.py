@@ -1,6 +1,6 @@
 """
 Match Report CasparCG Client
-Version 2.0
+Version 2.1
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 This file contains a number of custom labels

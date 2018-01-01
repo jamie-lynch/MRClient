@@ -1,6 +1,6 @@
 """
 Match Report CasparCG Client
-Version 2.0
+Version 2.1
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 This file defines the table tab widget
@@ -77,6 +77,11 @@ class TablesWidget(QtGui.QWidget):
                 item = graphic.tablesettings.copy()
                 item['channel'] = graphic.channel_edit.text()
                 item['layer'] = graphic.layer_edit.text()
+                try:
+                    item['data']['show_form'] = graphic.show_form_checkbox.isChecked()
+                    item['data']['title'] = graphic.custom_title_edit.text()
+                except AttributeError:
+                    pass
                 self.main.data[section].append(item)
 
         tools.store_data(self.main)
@@ -213,6 +218,10 @@ class StandingsTableDataRow(QtGui.QFrame):
         grid.addWidget(tools.QVTLabel(self, 'Customise Title: ', bold=True), 0, 4)
         grid.addWidget(tools.QVTLabel(self, 'Table Rows: ', bold=True), 1, 4)
 
+        # Don't show form checkbox label if the overall table, otherwise add checkbox label for any other sport
+        if self.tablesettings['sport'] != "Overall":
+            grid.addWidget(tools.QVTLabel(self, 'Show Form Data: ', bold=True), 1, 6)
+
         league = tools.QVTLabel(self, self.tablesettings['league'])
         league.setFixedWidth(100)
         grid.addWidget(league, 0, 1)
@@ -235,15 +244,29 @@ class StandingsTableDataRow(QtGui.QFrame):
         self.custom_title_edit.setText(str(self.tablesettings['data']['title']))
         self.custom_title_edit.editingFinished.connect(self.tables_section.write_to_data)
         self.custom_title_edit.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
-        grid.addWidget(self.custom_title_edit, 0, 5)
+        grid.addWidget(self.custom_title_edit, 0, 5, 1, 3)
+
+        # Don't show form checkbox if the overall table, otherwise add checkbox for any other sport
+        if self.tablesettings['sport'] != "Overall":
+            self.show_form_checkbox = QtGui.QCheckBox()
+            if self.tablesettings['data']['show_form']:
+                self.show_form_checkbox.setChecked(True)
+            self.show_form_checkbox.stateChanged.connect(self.tables_section.write_to_data)
+            self.show_form_checkbox.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+            grid.addWidget(self.show_form_checkbox, 1, 7)
+        else:
+            # Add an empty widget where checkbox should be otherwise layout goes bonkers
+            spacer_widget = QtGui.QWidget()
+            spacer_widget.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+            grid.addWidget(spacer_widget, 1, 7)
 
         # add channel and layer edits
         channel = tools.QVTLabel(self, 'Channel')
         channel.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        grid.addWidget(channel, 0, 6)
+        grid.addWidget(channel, 0, 8)
         layer = tools.QVTLabel(self, 'Layer')
         layer.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        grid.addWidget(layer, 1, 6)
+        grid.addWidget(layer, 1, 8)
         self.channel_edit = QtGui.QLineEdit()
         self.channel_edit.setText(str(self.tablesettings['channel']))
         self.channel_edit.editingFinished.connect(self.tables_section.write_to_data)
@@ -252,26 +275,26 @@ class StandingsTableDataRow(QtGui.QFrame):
         self.layer_edit.setText(str(self.tablesettings['layer']))
         self.layer_edit.editingFinished.connect(self.tables_section.write_to_data)
         self.layer_edit.setFixedWidth(60)
-        grid.addWidget(self.channel_edit, 0, 7)
-        grid.addWidget(self.layer_edit, 1, 7)
+        grid.addWidget(self.channel_edit, 0, 9)
+        grid.addWidget(self.layer_edit, 1, 9)
 
         # add the control buttons
         self.fire_button = QtGui.QPushButton("Fire")
         self.fire_status = "Fire"
         self.fire_button.clicked.connect(self.fire_graphic)
-        grid.addWidget(self.fire_button, 0, 8)
+        grid.addWidget(self.fire_button, 0, 10)
 
         self.update_button = QtGui.QPushButton("Update")
         self.update_button.clicked.connect(self.update_graphic)
-        grid.addWidget(self.update_button, 0, 9)
+        grid.addWidget(self.update_button, 0, 11)
 
         self.add = QtGui.QPushButton("Add")
         self.add.clicked.connect(self.add_graphic)
-        grid.addWidget(self.add, 1, 8)
+        grid.addWidget(self.add, 1, 10)
 
         self.remove_button = QtGui.QPushButton("Delete")
         self.remove_button.clicked.connect(self.remove_row)
-        grid.addWidget(self.remove_button, 1, 9)
+        grid.addWidget(self.remove_button, 1, 11)
 
         self.fire_buttons = [self.fire_button, self.update_button]
         self.set_enabled_disabled()
@@ -302,39 +325,47 @@ class StandingsTableDataRow(QtGui.QFrame):
             return
 
         # if BUCS Overall data
-        if "table_header_subtitle" not in table_data.keys():
+        if "table_table_header_subtitle" not in table_data.keys():
 
             temp = {}
 
             temp['title'] = self.custom_title_edit.text()
-            temp['table_title_title'] = self.custom_title_edit.text()
+            temp['table_table_title_title'] = self.custom_title_edit.text()
 
-            temp['table_header_subtitle'] = "Overall Standings"
-            temp['table_header_stat_1_title'] = "League"
-            temp['table_header_stat_2_title'] = ""
-            temp['table_header_stat_3_title'] = "Cup"
-            temp['table_header_stat_4_title'] = ""
-            temp['table_header_stat_5_title'] = "Indvdl"
-            temp['table_header_points_title'] = "Points"
+            temp['table_table_header_subtitle'] = "Overall Standings"
+            temp['table_table_header_stat_1_title'] = "League"
+            temp['table_table_header_stat_2_title'] = ""
+            temp['table_table_header_stat_3_title'] = "Cup"
+            temp['table_table_header_stat_4_title'] = ""
+            temp['table_table_header_stat_5_title'] = "Indvdl"
+            temp['table_table_header_points_title'] = "Points"
 
             for num in range(1, 11):
-                temp['table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
-                temp['table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
-                temp['table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
-                temp['table_row_{}_stat_2'.format(num)] = ""
-                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
-                temp['table_row_{}_stat_4'.format(num)] = ""
-                temp['table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
-                temp['table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
+                temp['table_table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
+                temp['table_table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
+                temp['table_table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
+                temp['table_table_row_{}_stat_2'.format(num)] = ""
+                temp['table_table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_table_row_{}_stat_4'.format(num)] = ""
+                temp['table_table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
+                temp['table_table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
 
             table_data = temp
 
         # Add the number of table rows to the data to send to Caspar
         table_data['table_rows'] = self.tablesettings['data']['table_rows']
 
-        # Use Customised Title field data for table title data, both title keys set for compatibility with templates
+        # Use Customised Title field data for table title data, all title keys set for compatibility with templates
         table_data['title'] = self.custom_title_edit.text()
-        table_data['table_title_title'] = self.custom_title_edit.text()
+        table_data['table_table_title_title'] = self.custom_title_edit.text()
+        table_data['tableform_table_title_form_title'] = self.custom_title_edit.text()
+
+        # Get state of the show form data checkbox
+        try:
+            table_data['show_form'] = self.show_form_checkbox.isChecked()
+        except AttributeError:
+            # If show_form_checkbox doesn't exist it's the overall table, use the default saved data for this field
+            pass
 
         parameters = ['{}={}'.format(key, val) for key, val in table_data.items()]
         parameters = '|'.join(parameters)
@@ -468,7 +499,10 @@ class AddNewStandingsTable(QtGui.QDialog):
                             ^ QtCore.Qt.WindowContextHelpButtonHint)
 
         # set title
-        self.setWindowTitle("Settings | Match Report CasparCG Client")
+        self.setWindowTitle("Add Table | Match Report CasparCG Client")
+
+        # set window size
+        self.resize(300, 100)
 
         # here goes nothing...
         self.exec_()
@@ -498,6 +532,7 @@ class AddNewStandingsTable(QtGui.QDialog):
         self.league_options = ["Choose league...", "BUCS", "IMS"]
         for item in self.league_options:
             self.league_combo.addItem(item)
+        self.league_combo.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         grid.addWidget(self.league_combo, row, 1)
         row += 1
 
@@ -543,7 +578,7 @@ class AddNewStandingsTable(QtGui.QDialog):
             {"sport": "Volleyball", "mens": 2, "womens": 2, "mixed": False, "gender_options": ["mens", "womens"]},
             {"sport": "Water Polo", "mens": 1, "womens": 1, "mixed": False, "gender_options": ["mens", "womens"]},
             {"sport": "American Football", "mens": False, "womens": False, "mixed": 1, "gender_options": ["mixed"]},
-            {"sport": "Ultimate Frisbee", "mens": 3, "womens": False, "mixed": False, "gender_options": ["mens", "womens"]},
+            {"sport": "Ultimate (Outdoor)", "mens": 3, "womens": False, "mixed": False, "gender_options": ["mens", "womens"]},
 
         ]
         self.setup_sport_combo()
@@ -585,8 +620,8 @@ class AddNewStandingsTable(QtGui.QDialog):
         if self.league_combo.currentText() == "BUCS":
             self.sport_combo.clear()
             self.sport_combo.addItem("Choose sport...")
-            for item in self.bucs_options:
-                self.sport_combo.addItem(item['sport'])
+            for item in self.main.bucs_league_settings['sport_names']:
+                self.sport_combo.addItem(item)
         elif self.league_combo.currentText() == "IMS":
             self.sport_combo.clear()
             self.sport_combo.addItem("Choose sport...")
@@ -635,6 +670,7 @@ class AddNewStandingsTable(QtGui.QDialog):
 
     def get_url(self, settings):
         """Function to get the url of the json data"""
+        bucs_url = ""
 
         # if its the BUCS overall table look at Jack's website
         if settings['league'] == "BUCS" and settings['sport'] == "Overall":
@@ -648,8 +684,16 @@ class AddNewStandingsTable(QtGui.QDialog):
                 settings['team']
             )
 
-        # try getting the table data from the url
-        table_data = tools.get_table_data(url)
+        # Find the url of the chosen options from the BUCS league settings
+        for league in self.main.bucs_league_settings['league_data']:
+            if league['sport'] == settings['sport'] and league['gender'] == settings['gender'].capitalize() and settings['team'] in league['team']:
+                bucs_url = self.main.settings['bucscore_url'] + league['href']
+
+        # try getting the table data from the url, check in settings where the data should come from
+        if self.main.settings["bucs_data_location"] == "bucs" and settings['sport'] != "Overall" and settings['league'] == "BUCS" and bucs_url:
+            table_data = tools.get_bucs_data(bucs_url, settings['sport'], settings['gender'], settings['team'])
+        else:
+            table_data = tools.get_table_data(url)
 
         # if it doesn't exist then tell the user that its not there via a dialog window
         if not table_data:
@@ -666,29 +710,32 @@ class AddNewStandingsTable(QtGui.QDialog):
             return
 
         # if BUCS Overall data
-        if "table_header_subtitle" not in table_data.keys():
+        if "table_table_header_subtitle" not in table_data.keys():
 
             temp = {}
 
             temp['title'] = self.main.settings['templates']['standingstable10']['default_table_title']
 
-            temp['table_header_subtitle'] = "Overall Standings"
-            temp['table_header_stat_1_title'] = "League"
-            temp['table_header_stat_2_title'] = ""
-            temp['table_header_stat_3_title'] = "Cup"
-            temp['table_header_stat_4_title'] = ""
-            temp['table_header_stat_5_title'] = "Indvdl"
-            temp['table_header_points_title'] = "Points"
+            temp['table_table_header_subtitle'] = "Overall Standings"
+            temp['table_table_header_stat_1_title'] = "League"
+            temp['table_table_header_stat_2_title'] = ""
+            temp['table_table_header_stat_3_title'] = "Cup"
+            temp['table_table_header_stat_4_title'] = ""
+            temp['table_table_header_stat_5_title'] = "Indvdl"
+            temp['table_table_header_points_title'] = "Points"
 
             for num in range(1, 11):
-                temp['table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
-                temp['table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
-                temp['table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
-                temp['table_row_{}_stat_2'.format(num)] = ""
-                temp['table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
-                temp['table_row_{}_stat_4'.format(num)] = ""
-                temp['table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
-                temp['table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
+                temp['table_table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
+                temp['table_table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
+                temp['table_table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
+                temp['table_table_row_{}_stat_2'.format(num)] = ""
+                temp['table_table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_table_row_{}_stat_4'.format(num)] = ""
+                temp['table_table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
+                temp['table_table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
+
+            # Set overall table to not show form data by default
+            temp['show_form'] = False
 
             table_data = temp
 

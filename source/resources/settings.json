@@ -1,4 +1,6 @@
 {
+    "bucs_data_location": "bucs",
+    "bucscore_url": "https://www.bucs.org.uk/bucscore/",
     "caspar": {
         "address": "127.0.0.1",
         "port": 5250,
@@ -7,15 +9,19 @@
     "templates": {
         "centrescore": {
             "channel": 1,
-            "filename": "BigMatch/TBM_CentreScore/TBM_CentreScore",
+            "filename": "BigMatch/MR_2018CentreScore/MR_2018CentreScore",
             "layer": 25,
             "name": "Centre Score",
             "parameters": [
-                "team_left",
-                "team_right",
-                "score",
-                "Infobar_info_text",
-                "show_infobar"
+                "team_left_name",
+                "team_right_name",
+                "score_left",
+                "score_right",
+                "infobar_text",
+                "data_left",
+                "data_right",
+                "logo_left_image",
+                "logo_right_image"
             ],
             "rundownname": "score"
         },
@@ -32,7 +38,7 @@
         "standingstable6": {
             "channel": 1,
             "filename": "BigMatch/MR_2018PointsTable_10Row/MR_2018PointsTable_10Row",
-            "layer": 2,
+            "layer": 1,
             "name": "Standings Table6",
             "parameters": [],
             "rundownname": "",

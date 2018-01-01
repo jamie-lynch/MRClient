@@ -1,6 +1,6 @@
 """
 Match Report CasparCG Client
-Version 2.0
+Version 2.1
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 This file contains the classes required to build the production tab
@@ -298,7 +298,7 @@ class TemplateRow(QtGui.QFrame):
                 channel=self.channel_edit.text(),
                 layer=self.layer_edit.text(),
                 parameters=self.get_parameters(),
-                playonload=1
+                playonload=0
             )
 
             if 'OK' in response:

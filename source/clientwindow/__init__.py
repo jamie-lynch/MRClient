@@ -1,6 +1,6 @@
 """
 Match Report CasparCG Client
-Version 2.0
+Version 2.1
 written by Jamie Lynch & Jack Connor-Richards for LSU Media
 
 This file defines the mainwindow class
@@ -53,6 +53,10 @@ class ClientWindow(QtGui.QMainWindow):
 
         # get client settings
         self.settings = tools.get_settings()
+        self.splash.change_message()
+
+        # get bucs league settings
+        self.bucs_league_settings = tools.get_bucs_league_settings()
         self.splash.change_message()
 
         # call the init_ui function to build the ui elements
