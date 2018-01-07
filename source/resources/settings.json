@@ -23,7 +23,17 @@
                 "logo_left_image",
                 "logo_right_image"
             ],
-            "rundownname": "score"
+            "rundownname": "score_left"
+        },
+        "livelocator": {
+            "channel": 1,
+            "filename": "BigMatch/MR_2018LiveLocator/MR_2018LiveLocator",
+            "layer": 35,
+            "name": "Live Locator",
+            "parameters": [
+                "location_group_text"
+            ],
+            "rundownname": "location_group_text"
         },
         "standingstable10": {
             "channel": 1,
@@ -53,21 +63,23 @@
                 "StrapUpper_text",
                 "StrapLower_text"
             ],
-            "rundownname": "StrapUpper"
+            "rundownname": "StrapUpper_text"
         },
         "topscore": {
             "channel": 1,
-            "filename": "BigMatch/TBM_TopLeft_NoTimer/TBM_TopLeft_NoTimer",
+            "filename": "BigMatch/MR_2018TopLeftRibbon/MR_2018TopLeftRibbon",
             "layer": 25,
-            "name": "Top Left Score",
+            "name": "Top Left Ribbon",
             "parameters": [
-                "topleft_team1",
-                "topleft_team2",
-                "topleft_score",
-                "team1_colour",
-                "team2_colour"
+                "score_group_team1_name",
+                "score_group_team2_name",
+                "score_group_score_text",
+                "score_group_team1_colour",
+                "score_group_team2_colour",
+                "show_clock",
+                "reveal_on_load"
             ],
-            "rundownname": "topleft_score"
+            "rundownname": "score_group_score_text"
         }
     },
     "vt_templates": [

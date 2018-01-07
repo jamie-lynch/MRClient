@@ -375,7 +375,7 @@ class RundownItem(QtGui.QFrame):
                 channel=self.channel_edit.text(),
                 layer=self.layer_edit.text(),
                 parameters=self.settings['parameters'],
-                playonload=1
+                playonload=0
             )
 
             if 'OK' in response:
@@ -568,7 +568,7 @@ class RundownItem(QtGui.QFrame):
                     channel=graphic['channel'],
                     layer=graphic['layer'],
                     parameters=graphic['parameters'],
-                    playonload=1
+                    playonload=0
                 )
                 self.fired_graphics.append(graphic)
 

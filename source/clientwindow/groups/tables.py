@@ -692,6 +692,7 @@ class AddNewStandingsTable(QtGui.QDialog):
         # try getting the table data from the url, check in settings where the data should come from
         if self.main.settings["bucs_data_location"] == "bucs" and settings['sport'] != "Overall" and settings['league'] == "BUCS" and bucs_url:
             table_data = tools.get_bucs_data(bucs_url, settings['sport'], settings['gender'], settings['team'])
+            url = None
         else:
             table_data = tools.get_table_data(url)
 

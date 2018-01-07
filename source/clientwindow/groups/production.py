@@ -50,8 +50,8 @@ class ProductionWidget(QtGui.QWidget):
         # add a graphics dictionary
         self.graphics = {}
 
-        # add the three graphics sections
-        self.sections_list = ['strapleft', 'centrescore', 'topscore']
+        # add the four graphics sections
+        self.sections_list = ['strapleft', 'centrescore', 'topscore', 'livelocator']
         self.sections = []
         for num, section in enumerate(self.sections_list):
             self.graphics[section] = []
@@ -206,7 +206,7 @@ class TemplateRow(QtGui.QFrame):
             # for even numbers
             if not num % 2:
                 heading = tools.QVTLabel(self, key)
-                heading.setFixedWidth(120)
+                heading.setFixedWidth(140)
                 heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
                 parameters_grid.addWidget(heading, num//2, 0)
                 self.parameters[key] = QtGui.QLineEdit()
@@ -215,7 +215,7 @@ class TemplateRow(QtGui.QFrame):
             # for odd numbers
             else:
                 heading = tools.QVTLabel(self, key)
-                heading.setFixedWidth(120)
+                heading.setFixedWidth(140)
                 heading.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
                 parameters_grid.addWidget(heading, num//2, 2)
                 self.parameters[key] = QtGui.QLineEdit()
