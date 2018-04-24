@@ -1,0 +1,932 @@
+{
+    "league_data": [
+        {
+            "href": "League.aspx?id=5877&sport=Badminton",
+            "id": "5877",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Badminton"
+        },
+        {
+            "href": "League.aspx?id=5880&sport=Badminton",
+            "id": "5880",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Badminton"
+        },
+        {
+            "href": "League.aspx?id=6049&sport=Badminton",
+            "id": "6049",
+            "gender": "Mens",
+            "league": "Midlands 2A",
+            "team": [
+                "3"
+            ],
+            "sport": "Badminton"
+        },
+        {
+            "href": "League.aspx?id=6058&sport=Badminton",
+            "id": "6058",
+            "gender": "Mens",
+            "league": "Midlands 3B",
+            "team": [
+                "4"
+            ],
+            "sport": "Badminton"
+        },
+        {
+            "href": "League.aspx?id=5883&sport=Badminton",
+            "id": "5883",
+            "gender": "Womens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Badminton"
+        },
+        {
+            "href": "League.aspx?id=5886&sport=Badminton",
+            "id": "5886",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Badminton"
+        },
+        {
+            "href": "League.aspx?id=6086&sport=Badminton",
+            "id": "6086",
+            "gender": "Womens",
+            "league": "Midlands 3B",
+            "team": [
+                "3"
+            ],
+            "sport": "Badminton"
+        },
+        {
+            "href": "League.aspx?id=5889&sport=Basketball",
+            "id": "5889",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Basketball"
+        },
+        {
+            "href": "League.aspx?id=6096&sport=Basketball",
+            "id": "6096",
+            "gender": "Mens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Basketball"
+        },
+        {
+            "href": "League.aspx?id=6099&sport=Basketball",
+            "id": "6099",
+            "gender": "Mens",
+            "league": "Midlands 3B",
+            "team": [
+                "3"
+            ],
+            "sport": "Basketball"
+        },
+        {
+            "href": "League.aspx?id=6101&sport=Basketball",
+            "id": "6101",
+            "gender": "Mens",
+            "league": "Midlands 4B",
+            "team": [
+                "4"
+            ],
+            "sport": "Basketball"
+        },
+        {
+            "href": "League.aspx?id=5895&sport=Basketball",
+            "id": "5895",
+            "gender": "Womens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Basketball"
+        },
+        {
+            "href": "League.aspx?id=6116&sport=Basketball",
+            "id": "6116",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Basketball"
+        },
+        {
+            "href": "League.aspx?id=6117&sport=Basketball",
+            "id": "6117",
+            "gender": "Womens",
+            "league": "Midlands 2B",
+            "team": [
+                "3"
+            ],
+            "sport": "Basketball"
+        },
+        {
+            "href": "League.aspx?id=6725&sport=Cricket (Indoor)",
+            "id": "6725",
+            "gender": "Mens",
+            "league": "Midlands B",
+            "team": [
+                "1",
+                "2"
+            ],
+            "sport": "Cricket (Indoor)"
+        },
+        {
+            "href": "League.aspx?id=6736&sport=Cricket (Indoor)",
+            "id": "6736",
+            "gender": "Womens",
+            "league": "Midlands",
+            "team": [
+                "1",
+                "2"
+            ],
+            "sport": "Cricket (Indoor)"
+        },
+        {
+            "href": "League.aspx?id=5901&sport=Fencing",
+            "id": "5901",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Fencing"
+        },
+        {
+            "href": "League.aspx?id=6130&sport=Fencing",
+            "id": "6130",
+            "gender": "Mens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Fencing"
+        },
+        {
+            "href": "League.aspx?id=5910&sport=Fencing",
+            "id": "5910",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "1"
+            ],
+            "sport": "Fencing"
+        },
+        {
+            "href": "League.aspx?id=6137&sport=Fencing",
+            "id": "6137",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Fencing"
+        },
+        {
+            "href": "League.aspx?id=5913&sport=Football",
+            "id": "5913",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=5916&sport=Football",
+            "id": "5916",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=6154&sport=Football",
+            "id": "6154",
+            "gender": "Mens",
+            "league": "Midlands 2B",
+            "team": [
+                "3"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=6172&sport=Football",
+            "id": "6172",
+            "gender": "Mens",
+            "league": "Midlands 3A",
+            "team": [
+                "4"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=5919&sport=Football",
+            "id": "5919",
+            "gender": "Womens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=5922&sport=Football",
+            "id": "5922",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=6292&sport=Football",
+            "id": "6292",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "3"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=6346&sport=Football",
+            "id": "6346",
+            "gender": "Womens",
+            "league": "Midlands 3B",
+            "team": [
+                "4"
+            ],
+            "sport": "Football"
+        },
+        {
+            "href": "League.aspx?id=6537&sport=Futsal",
+            "id": "6537",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Futsal"
+        },
+        {
+            "href": "League.aspx?id=6546&sport=Futsal",
+            "id": "6546",
+            "gender": "Mens",
+            "league": "Midlands 2A",
+            "team": [
+                "3"
+            ],
+            "sport": "Futsal"
+        },
+        {
+            "href": "League.aspx?id=6547&sport=Futsal",
+            "id": "6547",
+            "gender": "Mens",
+            "league": "Midlands 2B",
+            "team": [
+                "2"
+            ],
+            "sport": "Futsal"
+        },
+        {
+            "href": "League.aspx?id=6564&sport=Futsal",
+            "id": "6564",
+            "gender": "Mens",
+            "league": "Midlands 4A",
+            "team": [
+                "4"
+            ],
+            "sport": "Futsal"
+        },
+        {
+            "href": "League.aspx?id=6572&sport=Futsal",
+            "id": "6572",
+            "gender": "Womens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Futsal"
+        },
+        {
+            "href": "League.aspx?id=6589&sport=Futsal",
+            "id": "6589",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Futsal"
+        },
+        {
+            "href": "League.aspx?id=5925&sport=Golf",
+            "id": "5925",
+            "gender": "Mixed",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Golf"
+        },
+        {
+            "href": "League.aspx?id=5928&sport=Golf",
+            "id": "5928",
+            "gender": "Mixed",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Golf"
+        },
+        {
+            "href": "League.aspx?id=6144&sport=Golf",
+            "id": "6144",
+            "gender": "Mixed",
+            "league": "Midlands 2B",
+            "team": [
+                "3"
+            ],
+            "sport": "Golf"
+        },
+        {
+            "href": "League.aspx?id=5931&sport=Hockey",
+            "id": "5931",
+            "gender": "Mens",
+            "league": "North A",
+            "team": [
+                "1"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=5933&sport=Hockey",
+            "id": "5933",
+            "gender": "Mens",
+            "league": "North B",
+            "team": [
+                "2"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=5936&sport=Hockey",
+            "id": "5936",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "3",
+                "4"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=6180&sport=Hockey",
+            "id": "6180",
+            "gender": "Mens",
+            "league": "Midlands 4B",
+            "team": [
+                "5"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=5939&sport=Hockey",
+            "id": "5939",
+            "gender": "Womens",
+            "league": "North A",
+            "team": [
+                "1"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=5944&sport=Hockey",
+            "id": "5944",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "2",
+                "3"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=6242&sport=Hockey",
+            "id": "6242",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "5"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=6243&sport=Hockey",
+            "id": "6243",
+            "gender": "Womens",
+            "league": "Midlands 2B",
+            "team": [
+                "4"
+            ],
+            "sport": "Hockey"
+        },
+        {
+            "href": "League.aspx?id=5953&sport=Lacrosse",
+            "id": "5953",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Lacrosse"
+        },
+        {
+            "href": "League.aspx?id=5956&sport=Lacrosse",
+            "id": "5956",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Lacrosse"
+        },
+        {
+            "href": "League.aspx?id=5947&sport=Lacrosse",
+            "id": "5947",
+            "gender": "Womens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Lacrosse"
+        },
+        {
+            "href": "League.aspx?id=6305&sport=Lacrosse",
+            "id": "6305",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Lacrosse"
+        },
+        {
+            "href": "League.aspx?id=6306&sport=Lacrosse",
+            "id": "6306",
+            "gender": "Womens",
+            "league": "Midlands 2B",
+            "team": [
+                "3"
+            ],
+            "sport": "Lacrosse"
+        },
+        {
+            "href": "League.aspx?id=5959&sport=Netball",
+            "id": "5959",
+            "gender": "Womens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Netball"
+        },
+        {
+            "href": "League.aspx?id=5962&sport=Netball",
+            "id": "5962",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "2",
+                "3"
+            ],
+            "sport": "Netball"
+        },
+        {
+            "href": "League.aspx?id=6390&sport=Netball",
+            "id": "6390",
+            "gender": "Womens",
+            "league": "Midlands 3A",
+            "team": [
+                "4"
+            ],
+            "sport": "Netball"
+        },
+        {
+            "href": "League.aspx?id=6436&sport=Netball",
+            "id": "6436",
+            "gender": "Womens",
+            "league": "Midlands 5A",
+            "team": [
+                "5"
+            ],
+            "sport": "Netball"
+        },
+        {
+            "href": "League.aspx?id=5868&sport=Rugby League",
+            "id": "5868",
+            "gender": "Mens",
+            "league": "Premier South",
+            "team": [
+                "1"
+            ],
+            "sport": "Rugby League"
+        },
+        {
+            "href": "League.aspx?id=5870&sport=Rugby League",
+            "id": "5870",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "2"
+            ],
+            "sport": "Rugby League"
+        },
+        {
+            "href": "League.aspx?id=5866&sport=Rugby Union",
+            "id": "5866",
+            "gender": "Mens",
+            "league": "Super Rugby",
+            "team": [
+                "1"
+            ],
+            "sport": "Rugby Union"
+        },
+        {
+            "href": "League.aspx?id=5965&sport=Rugby Union",
+            "id": "5965",
+            "gender": "Mens",
+            "league": "North A",
+            "team": [
+                "2"
+            ],
+            "sport": "Rugby Union"
+        },
+        {
+            "href": "League.aspx?id=5971&sport=Rugby Union",
+            "id": "5971",
+            "gender": "Mens",
+            "league": "North B",
+            "team": [
+                "3"
+            ],
+            "sport": "Rugby Union"
+        },
+        {
+            "href": "League.aspx?id=6524&sport=Rugby Union",
+            "id": "6524",
+            "gender": "Mens",
+            "league": "Midlands 3B",
+            "team": [
+                "4"
+            ],
+            "sport": "Rugby Union"
+        },
+        {
+            "href": "League.aspx?id=5973&sport=Rugby Union",
+            "id": "5973",
+            "gender": "Womens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Rugby Union"
+        },
+        {
+            "href": "League.aspx?id=6497&sport=Rugby Union",
+            "id": "6497",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Rugby Union"
+        },
+        {
+            "href": "League.aspx?id=6773&sport=Squash",
+            "id": "6773",
+            "gender": "Mens",
+            "league": "Premier Crossover North 2nd v South 3rd",
+            "team": [
+                "1"
+            ],
+            "sport": "Squash"
+        },
+        {
+            "href": "League.aspx?id=6778&sport=Squash",
+            "id": "6778",
+            "gender": "Mens",
+            "league": "Premier Stage 2 Upper",
+            "team": [
+                "1"
+            ],
+            "sport": "Squash"
+        },
+        {
+            "href": "League.aspx?id=5979&sport=Squash",
+            "id": "5979",
+            "gender": "Mens",
+            "league": "Premier Stage 1: North",
+            "team": [
+                "1"
+            ],
+            "sport": "Squash"
+        },
+        {
+            "href": "League.aspx?id=6454&sport=Squash",
+            "id": "6454",
+            "gender": "Mens",
+            "league": "Midlands 2A",
+            "team": [
+                "3"
+            ],
+            "sport": "Squash"
+        },
+        {
+            "href": "League.aspx?id=6455&sport=Squash",
+            "id": "6455",
+            "gender": "Mens",
+            "league": "Midlands 2B",
+            "team": [
+                "2"
+            ],
+            "sport": "Squash"
+        },
+        {
+            "href": "League.aspx?id=6479&sport=Squash",
+            "id": "6479",
+            "gender": "Womens",
+            "league": "Midlands 2B",
+            "team": [
+                "1",
+                "2"
+            ],
+            "sport": "Squash"
+        },
+        {
+            "href": "League.aspx?id=5991&sport=Table Tennis",
+            "id": "5991",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Table Tennis"
+        },
+        {
+            "href": "League.aspx?id=6416&sport=Table Tennis",
+            "id": "6416",
+            "gender": "Mens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Table Tennis"
+        },
+        {
+            "href": "League.aspx?id=6417&sport=Table Tennis",
+            "id": "6417",
+            "gender": "Mens",
+            "league": "Midlands 2B",
+            "team": [
+                "3"
+            ],
+            "sport": "Table Tennis"
+        },
+        {
+            "href": "League.aspx?id=5998&sport=Table Tennis",
+            "id": "5998",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "1"
+            ],
+            "sport": "Table Tennis"
+        },
+        {
+            "href": "League.aspx?id=6440&sport=Table Tennis",
+            "id": "6440",
+            "gender": "Womens",
+            "league": "Midlands 2B",
+            "team": [
+                "2"
+            ],
+            "sport": "Table Tennis"
+        },
+        {
+            "href": "League.aspx?id=6004&sport=Tennis",
+            "id": "6004",
+            "gender": "Mens",
+            "league": "National",
+            "team": [
+                "1"
+            ],
+            "sport": "Tennis"
+        },
+        {
+            "href": "League.aspx?id=6005&sport=Tennis",
+            "id": "6005",
+            "gender": "Mens",
+            "league": "North A",
+            "team": [
+                "2"
+            ],
+            "sport": "Tennis"
+        },
+        {
+            "href": "League.aspx?id=6008&sport=Tennis",
+            "id": "6008",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "3"
+            ],
+            "sport": "Tennis"
+        },
+        {
+            "href": "League.aspx?id=6361&sport=Tennis",
+            "id": "6361",
+            "gender": "Mens",
+            "league": "Midlands 4A",
+            "team": [
+                "4"
+            ],
+            "sport": "Tennis"
+        },
+        {
+            "href": "League.aspx?id=6011&sport=Tennis",
+            "id": "6011",
+            "gender": "Womens",
+            "league": "National",
+            "team": [
+                "1"
+            ],
+            "sport": "Tennis"
+        },
+        {
+            "href": "League.aspx?id=6012&sport=Tennis",
+            "id": "6012",
+            "gender": "Womens",
+            "league": "North A",
+            "team": [
+                "2"
+            ],
+            "sport": "Tennis"
+        },
+        {
+            "href": "League.aspx?id=6401&sport=Tennis",
+            "id": "6401",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "3"
+            ],
+            "sport": "Tennis"
+        },
+        {
+            "href": "League.aspx?id=6025&sport=Volleyball",
+            "id": "6025",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "1"
+            ],
+            "sport": "Volleyball"
+        },
+        {
+            "href": "League.aspx?id=6327&sport=Volleyball",
+            "id": "6327",
+            "gender": "Mens",
+            "league": "Midlands 2B",
+            "team": [
+                "2"
+            ],
+            "sport": "Volleyball"
+        },
+        {
+            "href": "League.aspx?id=6031&sport=Volleyball",
+            "id": "6031",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "1"
+            ],
+            "sport": "Volleyball"
+        },
+        {
+            "href": "League.aspx?id=6313&sport=Volleyball",
+            "id": "6313",
+            "gender": "Womens",
+            "league": "Midlands 2A",
+            "team": [
+                "2"
+            ],
+            "sport": "Volleyball"
+        },
+        {
+            "href": "League.aspx?id=6034&sport=Water Polo",
+            "id": "6034",
+            "gender": "Mens",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "Water Polo"
+        },
+        {
+            "href": "League.aspx?id=6043&sport=Water Polo",
+            "id": "6043",
+            "gender": "Womens",
+            "league": "Midlands 1A",
+            "team": [
+                "1"
+            ],
+            "sport": "Water Polo"
+        },
+        {
+            "href": "League.aspx?id=6574&sport=American Football",
+            "id": "6574",
+            "gender": "Mixed",
+            "league": "Premier North",
+            "team": [
+                "1"
+            ],
+            "sport": "American Football"
+        },
+        {
+            "href": "League.aspx?id=6019&sport=Ultimate (Outdoor)",
+            "id": "6019",
+            "gender": "Mens",
+            "league": "Midlands 1A",
+            "team": [
+                "1"
+            ],
+            "sport": "Ultimate (Outdoor)"
+        },
+        {
+            "href": "League.aspx?id=6339&sport=Ultimate (Outdoor)",
+            "id": "6339",
+            "gender": "Mens",
+            "league": "Midlands 2A",
+            "team": [
+                "3"
+            ],
+            "sport": "Ultimate (Outdoor)"
+        },
+        {
+            "href": "League.aspx?id=6338&sport=Ultimate (Outdoor)",
+            "id": "6338",
+            "gender": "Mens",
+            "league": "Midlands 2B",
+            "team": [
+                "2"
+            ],
+            "sport": "Ultimate (Outdoor)"
+        }
+    ],
+    "sport_names": [
+        "Overall",
+        "Badminton",
+        "Basketball",
+        "Cricket (Indoor)",
+        "Fencing",
+        "Football",
+        "Futsal",
+        "Golf",
+        "Hockey",
+        "Lacrosse",
+        "Netball",
+        "Rugby League",
+        "Rugby Union",
+        "Squash",
+        "Table Tennis",
+        "Tennis",
+        "Volleyball",
+        "Water Polo",
+        "American Football",
+        "Ultimate (Outdoor)"
+    ]
+}

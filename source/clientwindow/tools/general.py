@@ -8,6 +8,7 @@ This file contains a number of helper functions
 
 from PySide import QtCore
 from os import path, getcwd
+import sys
 
 
 def convert_checkstate(checkstate):
@@ -19,6 +20,11 @@ def convert_checkstate(checkstate):
 
 
 def get_resources():
-    """Function which returns the path of the resources directory"""
-    resources = path.join(getcwd(), "resources")
+    """Function which returns the path of the datas directory"""
+    resources = resource_path(path.join("datas"))
     return resources
+
+def resource_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return path.join(path.dirname(sys.argv[0]), relative)
+    return path.join(getcwd(), relative)

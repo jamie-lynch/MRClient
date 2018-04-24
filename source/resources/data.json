@@ -1368,7 +1368,7 @@
                 "score_group_team1_name": "LOU",
                 "score_group_team2_colour": "ff0000",
                 "score_group_team2_name": "NBR",
-                "show_clock": "False"
+                "show_clock": "True"
             }
         }
     ],

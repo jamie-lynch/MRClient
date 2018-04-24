@@ -64,7 +64,7 @@ class CasparConnection(QtGui.QDialog):
         # Add a connection button
         connection_button = QtGui.QPushButton("Connect")
         if self.comms.casparcg:
-            self.connection_button.setDisabled(True)
+            connection_button.setDisabled(True)
         connection_button.clicked.connect(self.attempt_connection)
         grid.addWidget(connection_button, 2, 1)
         connection_button.setFocus()

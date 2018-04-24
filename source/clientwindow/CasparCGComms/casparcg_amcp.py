@@ -1,4 +1,4 @@
-# Jack Connor-Richards - 28th December 2017 - v0.7.2_MR
+# Jack Connor-Richards - 10th April 2018 - v0.8_MR
 # CasparCG AMCP communications class to be used with The Match Report CasparCG Custom Client
 # written by Jamie Lynch and Jack Connor-Richards for LSU Media
 
@@ -10,6 +10,12 @@
 #
 # v0.7.2_MR:
 # (JCR) Improved handling of illegal characters in Caspar data
+#
+# v0.8_MR:
+# (JCR) Added support for Caspar parameters to be passed as a dictionary
+# (JCR) Corrected logging mistake in the template() function
+# (JCR) Increased log size from 1MB to 20MB
+# (JCR) Removed unnecessary blank lines from log file
 
 import socket
 import os.path
@@ -24,11 +30,13 @@ class CasparAMCP(object):
     casparcg = None
     connected = False
     playing_templates = {}
+    version = "0.8_MR"
+    date = "10th April 2018"
 
     def __init__(self):
         global logger
         logger = self.init_logging()
-        logger.info("CasparComms | Jack Connor-Richards/Jamie Lynch | Version 0.7.2 - 28th December 2017")
+        logger.info("CasparComms | Jack Connor-Richards/Jamie Lynch | Version {} - {}".format(self.version, self.date))
         logger.info("CasparComms Class initialised")
 
     def init_logging(self):
@@ -44,7 +52,7 @@ class CasparAMCP(object):
         else:
             pass
 
-        handler = handlers.RotatingFileHandler(logging_dir + "\CasparComms.log", maxBytes=1024000, backupCount=5)
+        handler = handlers.RotatingFileHandler(logging_dir + "\CasparComms.log", maxBytes=20480000, backupCount=5)
         handler.setLevel(logging.DEBUG)
 
         log_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s', "%d-%m-%Y %H:%M:%S")
@@ -96,7 +104,7 @@ class CasparAMCP(object):
             logger.info("Sending command: " + command)
             self.casparcg.send((command + "\r\n").encode("UTF-8"))
             received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
+            logger.info("Received from CasparCG: " + received.strip("\r\n"))
             return received
         except socket.error:
             logger.error("Send command failed")
@@ -109,7 +117,7 @@ class CasparAMCP(object):
             logger.info("Sending command: " + command)
             self.casparcg.send((command + '\r\n').encode("UTF-8"))
             received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
+            logger.info("Received from CasparCG: " + received.strip("\r\n"))
             processed_return = self.process_return_data(data=received)
             return processed_return
         except socket.error:
@@ -127,7 +135,7 @@ class CasparAMCP(object):
             logger.info("Sending command: " + command)
             self.casparcg.send((command + '\r\n').encode("UTF-8"))
             received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
+            logger.info("Received from CasparCG: " + received.strip("\r\n"))
             processed_return = self.process_return_data(data=received)
             return 1, processed_return
         except socket.error:
@@ -141,7 +149,7 @@ class CasparAMCP(object):
             logger.info("Sending command: " + command)
             self.casparcg.send((command + '\r\n').encode("UTF-8"))
             received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
+            logger.info("Received from CasparCG: " + received.strip("\r\n"))
             return received
         except socket.error:
             logger.error("Pause command failed")
@@ -154,7 +162,7 @@ class CasparAMCP(object):
             logger.info("Sending command: " + command)
             self.casparcg.send((command + '\r\n').encode("UTF-8"))
             received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
+            logger.info("Received from CasparCG: " + received.strip("\r\n"))
             return received
         except socket.error:
             logger.error("Resume command failed")
@@ -167,33 +175,36 @@ class CasparAMCP(object):
             logger.info("Sending command: " + command)
             self.casparcg.send((command + '\r\n').encode("UTF-8"))
             received = self.casparcg.recv(1024).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
+            logger.info("Received from CasparCG: " + received.strip("\r\n"))
             return received
         except socket.error:
             logger.error("Stop command failed")
             return "Stop command failed"
 
-    def template(self, name, channel, layer, parameters="", playonload=0):
+    def template(self, name, channel, layer, parameters="", playonload=0, parameter_object=None):
         try:
             if self.playing_templates[str(channel) + "-" + str(layer)] == str(name):
                 logger.info("Found a playing template called " + str(name) + " on " + str(channel) + "-" + str(layer) +
                             ", calling template update function")
-                response = self.update_template(channel, layer, parameters)
+                response = self.update_template(channel, layer, parameters, parameter_object)
                 return response
         except KeyError:
-            logger.info("Found a playing template called " + str(name) + " on " + str(channel) + "-" + str(layer) +
+            logger.info("Couldn't find a playing template called " + str(name) + " on " + str(channel) + "-" + str(layer) +
                         ", calling template play function")
-            response = self.play_template(name, channel, layer, parameters, playonload)
+            response = self.play_template(name, channel, layer, parameters, playonload, parameter_object)
             return response
         return "Failed"
 
-    def play_template(self, name, channel, layer, parameters="", playonload=0):
+    def play_template(self, name, channel, layer, parameters="", playonload=0, parameter_object=None):
         command = 'CG ' + str(channel) + '-' + str(layer) + ' ADD 10 ' + name + ' \"{}\" \"<templateData>'.format(playonload)
-        # params,count = self.string_split(parameters)
-        delimited = parameters.split("|")
-        count = len(delimited)
-        for i in range(count):
-            command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
+        if parameter_object:
+            for key, value in parameter_object.items():
+                command += '<componentData id=\\\"' + html.escape(key) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(value) + '\\\" /></componentData>'
+        else:
+            delimited = parameters.split("|")
+            count = len(delimited)
+            for i in range(count):
+                command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
         command += "</templateData>\""
         try:
             logger.info(("Sending command: " + command).encode("UTF-8"))
@@ -202,7 +213,7 @@ class CasparAMCP(object):
                 received = self.casparcg.recv(1024).decode("UTF-8")
                 if self.process_return_data(received) == 1:
                     self.playing_templates[str(channel) + "-" + str(layer)] = str(name)
-                logger.info("Received from CasparCG: " + received)
+                logger.info("Received from CasparCG: " + received.strip("\r\n"))
                 return received
             else:
                 logger.error("Not connected to CasparCG")
@@ -218,7 +229,7 @@ class CasparAMCP(object):
             if self.casparcg:
                 self.casparcg.send((command + '\r\n').encode("UTF-8"))
                 received = self.casparcg.recv(1024).decode("UTF-8")
-                logger.info("Received from CasparCG: " + received)
+                logger.info("Received from CasparCG: " + received.strip("\r\n"))
                 return received
             else:
                 logger.error("Not connected to CasparCG")
@@ -227,20 +238,23 @@ class CasparAMCP(object):
             logger.error("Play template command failed")
             return "Play template command failed"
 
-    def update_template(self, channel, layer, parameters=""):
+    def update_template(self, channel, layer, parameters="", parameter_object=None):
         command = 'CG ' + str(channel) + '-' + str(layer) + ' UPDATE 10 \"<templateData>'
-        # params,count = self.string_split(parameters)
-        delimited = parameters.split("|")
-        count = len(delimited)
-        for i in range(count):
-            command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
+        if parameter_object:
+            for key, value in parameter_object.items():
+                command += '<componentData id=\\\"' + html.escape(key) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(value) + '\\\" /></componentData>'
+        else:
+            delimited = parameters.split("|")
+            count = len(delimited)
+            for i in range(count):
+                command += '<componentData id=\\\"' + html.escape(delimited[i].split("=")[0]) + '\\\"><data id=\\\"text\\\" value=\\\"' + html.escape(delimited[i].split("=")[1]) + '\\\" /></componentData>'
         command += "</templateData>\""
         try:
             logger.info(("Sending command: " + command).encode("UTF-8"))
             if self.casparcg:
                 self.casparcg.send((command + '\r\n').encode("UTF-8"))
                 received = self.casparcg.recv(1024).decode("UTF-8")
-                logger.info("Received from CasparCG: " + received)
+                logger.info("Received from CasparCG: " + received.strip("\r\n"))
                 return received
             else:
                 logger.error("Not connected to CasparCG")
@@ -256,7 +270,7 @@ class CasparAMCP(object):
             if self.casparcg:
                 self.casparcg.send((command + '\r\n').encode("UTF-8"))
                 received = self.casparcg.recv(1024).decode("UTF-8")
-                logger.info("Received from CasparCG: " + received)
+                logger.info("Received from CasparCG: " + received.strip("\r\n"))
                 return received
             else:
                 logger.error("Not connected to CasparCG")
@@ -279,7 +293,7 @@ class CasparAMCP(object):
                 received = self.casparcg.recv(1024).decode("UTF-8")
                 if self.process_return_data(received) == 1:
                     del self.playing_templates[str(channel) + '-' + str(layer)]
-                logger.info("Received from CasparCG: " + received)
+                logger.info("Received from CasparCG: " + received.strip("\r\n"))
                 return received
             else:
                 logger.error("Not connected to CasparCG")
@@ -295,7 +309,7 @@ class CasparAMCP(object):
             logger.info("Sending command: " + command)
             self.casparcg.send((command + '\r\n').encode("UTF-8"))
             received = self.casparcg.recv(65535).decode("UTF-8")
-            logger.info("Received from CasparCG: " + received)
+            logger.info("Received from CasparCG: " + received.strip("\r\n"))
 
             delimited = received.split("\r\n")
             count=len(delimited)
@@ -336,7 +350,7 @@ class CasparAMCP(object):
                 logger.info("Sending command: " + command)
                 self.casparcg.send((command + '\r\n').encode("UTF-8"))
                 received = self.casparcg.recv(1024).decode("UTF-8")
-                logger.info("Received from CasparCG: " + received)
+                logger.info("Received from CasparCG: " + received.strip("\r\n"))
             except socket.error:
                 logger.error("Clear command failed")
             self.playing_templates = {}

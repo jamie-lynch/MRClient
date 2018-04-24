@@ -325,30 +325,30 @@ class StandingsTableDataRow(QtGui.QFrame):
             return
 
         # if BUCS Overall data
-        if "table_table_header_subtitle" not in table_data.keys():
+        if "table_table_group_table_body_header_subtitle" not in table_data.keys():
 
             temp = {}
 
             temp['title'] = self.custom_title_edit.text()
-            temp['table_table_title_title'] = self.custom_title_edit.text()
+            temp['table_table_group_title'] = self.custom_title_edit.text()
 
-            temp['table_table_header_subtitle'] = "Overall Standings"
-            temp['table_table_header_stat_1_title'] = "League"
-            temp['table_table_header_stat_2_title'] = ""
-            temp['table_table_header_stat_3_title'] = "Cup"
-            temp['table_table_header_stat_4_title'] = ""
-            temp['table_table_header_stat_5_title'] = "Indvdl"
-            temp['table_table_header_points_title'] = "Points"
+            temp['table_table_group_table_body_header_subtitle'] = "Overall Standings"
+            temp['table_table_group_table_body_header_stat_1_title'] = ""
+            temp['table_table_group_table_body_header_stat_2_title'] = "League"
+            temp['table_table_group_table_body_header_stat_3_title'] = "Cup"
+            temp['table_table_group_table_body_header_stat_4_title'] = "Indvdl"
+            temp['table_table_group_table_body_header_stat_5_title'] = ""
+            temp['table_table_group_table_body_header_points_title'] = "Points"
 
-            for num in range(1, 11):
-                temp['table_table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
-                temp['table_table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
-                temp['table_table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
-                temp['table_table_row_{}_stat_2'.format(num)] = ""
-                temp['table_table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
-                temp['table_table_row_{}_stat_4'.format(num)] = ""
-                temp['table_table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
-                temp['table_table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
+            for num in range(1, 13):
+                temp['table_table_group_table_body_row_{}_position'.format(num)] = table_data[str(num)]['Position']
+                temp['table_table_group_table_body_row_{}_name'.format(num)] = table_data[str(num)]['University']
+                temp['table_table_group_table_body_row_{}_stat_1'.format(num)] = ""
+                temp['table_table_group_table_body_row_{}_stat_2'.format(num)] = table_data[str(num)]['League']
+                temp['table_table_group_table_body_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_table_group_table_body_row_{}_stat_4'.format(num)] = table_data[str(num)]['Individual']
+                temp['table_table_group_table_body_row_{}_stat_5'.format(num)] = ""
+                temp['table_table_group_table_body_row_{}_points'.format(num)] = table_data[str(num)]['Total']
 
             table_data = temp
 
@@ -357,7 +357,7 @@ class StandingsTableDataRow(QtGui.QFrame):
 
         # Use Customised Title field data for table title data, all title keys set for compatibility with templates
         table_data['title'] = self.custom_title_edit.text()
-        table_data['table_table_title_title'] = self.custom_title_edit.text()
+        table_data['table_table_group_title'] = self.custom_title_edit.text()
         table_data['tableform_table_title_form_title'] = self.custom_title_edit.text()
 
         # Get state of the show form data checkbox
@@ -387,7 +387,7 @@ class StandingsTableDataRow(QtGui.QFrame):
                     channel=self.channel_edit.text(),
                     layer=self.layer_edit.text(),
                     parameters=parameters,
-                    playonload=1
+                    playonload=0
                 )
                 print(response)
 
@@ -711,29 +711,29 @@ class AddNewStandingsTable(QtGui.QDialog):
             return
 
         # if BUCS Overall data
-        if "table_table_header_subtitle" not in table_data.keys():
+        if "table_table_group_table_body_header_subtitle" not in table_data.keys():
 
             temp = {}
 
             temp['title'] = self.main.settings['templates']['standingstable10']['default_table_title']
 
-            temp['table_table_header_subtitle'] = "Overall Standings"
-            temp['table_table_header_stat_1_title'] = "League"
-            temp['table_table_header_stat_2_title'] = ""
-            temp['table_table_header_stat_3_title'] = "Cup"
-            temp['table_table_header_stat_4_title'] = ""
-            temp['table_table_header_stat_5_title'] = "Indvdl"
-            temp['table_table_header_points_title'] = "Points"
+            temp['table_table_group_table_body_header_subtitle'] = "Overall Standings"
+            temp['table_table_group_table_body_header_stat_1_title'] = ""
+            temp['table_table_group_table_body_header_stat_2_title'] = "League"
+            temp['table_table_group_table_body_header_stat_3_title'] = "Cup"
+            temp['table_table_group_table_body_header_stat_4_title'] = "Indvdl"
+            temp['table_table_group_table_body_header_stat_5_title'] = ""
+            temp['table_table_group_table_body_header_points_title'] = "Points"
 
-            for num in range(1, 11):
-                temp['table_table_row_{}_position'.format(num)] = table_data[str(num)]['Position']
-                temp['table_table_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
-                temp['table_table_row_{}_stat_1'.format(num)] = table_data[str(num)]['League']
-                temp['table_table_row_{}_stat_2'.format(num)] = ""
-                temp['table_table_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
-                temp['table_table_row_{}_stat_4'.format(num)] = ""
-                temp['table_table_row_{}_stat_5'.format(num)] = table_data[str(num)]['Individual']
-                temp['table_table_row_{}_points'.format(num)] = table_data[str(num)]['Total']
+            for num in range(1, 13):
+                temp['table_table_group_table_body_row_{}_position'.format(num)] = table_data[str(num)]['Position']
+                temp['table_table_group_table_body_row_{}_team_name'.format(num)] = table_data[str(num)]['University']
+                temp['table_table_group_table_body_row_{}_stat_1'.format(num)] = ""
+                temp['table_table_group_table_body_row_{}_stat_2'.format(num)] = table_data[str(num)]['League']
+                temp['table_table_group_table_body_row_{}_stat_3'.format(num)] = table_data[str(num)]['Cup']
+                temp['table_table_group_table_body_row_{}_stat_4'.format(num)] = table_data[str(num)]['Individual']
+                temp['table_table_group_table_body_row_{}_stat_5'.format(num)] = ""
+                temp['table_table_group_table_body_row_{}_points'.format(num)] = table_data[str(num)]['Total']
 
             # Set overall table to not show form data by default
             temp['show_form'] = False

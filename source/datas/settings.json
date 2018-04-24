@@ -1,14 +1,13 @@
 {
-    "bucs_data_location": "bucs",
-    "bucscore_url": "https://www.bucs.org.uk/bucscore/",
     "available_templates": [
         "strapleft",
         "centrescore",
-        "topscore",
-        "livelocator"
+        "topscore"
     ],
+    "bucs_data_location": "bucs",
+    "bucscore_url": "https://www.bucs.org.uk/bucscore/",
     "caspar": {
-        "address": "127.0.0.1",
+        "address": "suw7casparcg",
         "port": 5250,
         "video_directory": "home"
     },
@@ -44,7 +43,7 @@
         "standingstable10": {
             "channel": 1,
             "default_table_title": "BUCS Championship 2017-18",
-            "filename": "BigMatch/MR_2018PointsTable_10Row/MR_2018PointsTable_10Row",
+            "filename": "BigMatch/MR_2018PointsTable/MR_2018PointsTable",
             "layer": 1,
             "name": "Standings Table10",
             "parameters": [],
@@ -53,7 +52,7 @@
         },
         "standingstable6": {
             "channel": 1,
-            "filename": "BigMatch/MR_2018PointsTable_10Row/MR_2018PointsTable_10Row",
+            "filename": "BigMatch/MR_2018PointsTable/MR_2018PointsTable",
             "layer": 1,
             "name": "Standings Table6",
             "parameters": [],

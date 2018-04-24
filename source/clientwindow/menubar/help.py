@@ -161,7 +161,7 @@ class AboutClient(QtGui.QDialog):
     def paintEvent(self, event):
         """Function which sets the background image of the about window"""
 
-        # get path to the resources directory
+        # get path to the datas directory
         resources = tools.get_resources()
 
         # get the path to the image

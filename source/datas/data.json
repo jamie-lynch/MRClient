@@ -1,0 +1,229 @@
+{
+    "centrescore": [],
+    "livelocator": [],
+    "rundown": {
+        "items": {},
+        "positions": {}
+    },
+    "standingstable": [],
+    "strapleft": [],
+    "topscore": [],
+    "videos": {
+        "1": {
+            "date_modified": "20171115151145",
+            "file_size": "479917299",
+            "frame_rate": 25.0,
+            "frames": 3972.0,
+            "length": "00:02:38:22",
+            "name": "FIREWORKS2017_HD",
+            "type": "MOVIE"
+        },
+        "10": {
+            "date_modified": "20171206152621",
+            "file_size": "383215093",
+            "frame_rate": 25.0,
+            "frames": 4842.0,
+            "length": "00:03:13:17",
+            "name": "MR\\FOLLOWLENS_MR",
+            "type": "MOVIE"
+        },
+        "11": {
+            "date_modified": "20161014220518",
+            "file_size": "25592372",
+            "frame_rate": 1.0,
+            "frames": 145.0,
+            "length": "00:02:25:00",
+            "name": "MR\\INVENTORY\\CHVRCHESEMPTYTHREATINSTRUMENTALLOOP2MIN",
+            "type": "AUDIO"
+        },
+        "12": {
+            "date_modified": "20161014201402",
+            "file_size": "22017204",
+            "frame_rate": 1.0,
+            "frames": 124.0,
+            "length": "00:02:04:00",
+            "name": "MR\\INVENTORY\\HOLD MY HAND INSTRUMENTAL LOOP 2MIN",
+            "type": "AUDIO"
+        },
+        "13": {
+            "date_modified": "20161014195505",
+            "file_size": "21079298",
+            "frame_rate": 1.0,
+            "frames": 119.0,
+            "length": "00:01:59:00",
+            "name": "MR\\INVENTORY\\LUSH LIFE INSTRUMENTAL LOOP 2MIN",
+            "type": "AUDIO"
+        },
+        "14": {
+            "date_modified": "20170219181132",
+            "file_size": "1540334640",
+            "frame_rate": 25.0,
+            "frames": 1635.0,
+            "length": "00:01:05:10",
+            "name": "MR\\INVENTORY\\MR_TITLESEQUENCE_S2",
+            "type": "MOVIE"
+        },
+        "15": {
+            "date_modified": "20161015222859",
+            "file_size": "25876690",
+            "frame_rate": 1.0,
+            "frames": 146.0,
+            "length": "00:02:26:00",
+            "name": "MR\\INVENTORY\\SHUTUPANDDANCEINSTRUMENTALLOOP2MIN",
+            "type": "AUDIO"
+        },
+        "16": {
+            "date_modified": "20171126161556",
+            "file_size": "316137304",
+            "frame_rate": 25.0,
+            "frames": 3864.0,
+            "length": "00:02:34:14",
+            "name": "MR\\LBOROM1VNOTTSM1",
+            "type": "MOVIE"
+        },
+        "17": {
+            "date_modified": "20180130185254",
+            "file_size": "171833161",
+            "frame_rate": 25.0,
+            "frames": 2169.0,
+            "length": "00:01:26:19",
+            "name": "MR\\MONTAGEM",
+            "type": "MOVIE"
+        },
+        "18": {
+            "date_modified": "20180130161700",
+            "file_size": "281375463",
+            "frame_rate": 25.0,
+            "frames": 3619.0,
+            "length": "00:02:24:19",
+            "name": "MR\\MONTAGEW",
+            "type": "MOVIE"
+        },
+        "19": {
+            "date_modified": "20180130185028",
+            "file_size": "193586329",
+            "frame_rate": 25.0,
+            "frames": 2305.0,
+            "length": "00:01:32:05",
+            "name": "MR\\PLAYERINTERVIEWM",
+            "type": "MOVIE"
+        },
+        "2": {
+            "date_modified": "20170224162226",
+            "file_size": "781097440",
+            "frame_rate": 25.0,
+            "frames": 15305.0,
+            "length": "00:10:12:05",
+            "name": "LSUTV_BESTBROADCASTER_PROUDTOBELSUTV",
+            "type": "MOVIE"
+        },
+        "20": {
+            "date_modified": "20180130181348",
+            "file_size": "208677067",
+            "frame_rate": 25.0,
+            "frames": 2544.0,
+            "length": "00:01:41:19",
+            "name": "MR\\PLAYERINTERVIEWW",
+            "type": "MOVIE"
+        },
+        "21": {
+            "date_modified": "20180130181824",
+            "file_size": "172879967",
+            "frame_rate": 25.0,
+            "frames": 2460.0,
+            "length": "00:01:38:10",
+            "name": "MR\\PLAYWITHPRIDE_MR",
+            "type": "MOVIE"
+        },
+        "22": {
+            "date_modified": "20180130134516",
+            "file_size": "511391468",
+            "frame_rate": 25.0,
+            "frames": 6649.0,
+            "length": "00:04:25:24",
+            "name": "MR\\TIM TRIES... KICKBOXING",
+            "type": "MOVIE"
+        },
+        "23": {
+            "date_modified": "20171208214339",
+            "file_size": "443784753",
+            "frame_rate": 25.0,
+            "frames": 5905.0,
+            "length": "00:03:56:05",
+            "name": "MR\\TIMTRIESPOLEFITNESS_MR",
+            "type": "MOVIE"
+        },
+        "24": {
+            "date_modified": "20171208135931",
+            "file_size": "299766362",
+            "frame_rate": 25.0,
+            "frames": 3926.0,
+            "length": "00:02:37:01",
+            "name": "MR\\VOLLEYBALL_MR",
+            "type": "MOVIE"
+        },
+        "3": {
+            "date_modified": "20170223163226",
+            "file_size": "783801605",
+            "frame_rate": 25.0,
+            "frames": 15345.0,
+            "length": "00:10:13:20",
+            "name": "LSUTV_SPORT_MATCHREPORT",
+            "type": "MOVIE"
+        },
+        "4": {
+            "date_modified": "20171210164614",
+            "file_size": "297100833",
+            "frame_rate": 25.0,
+            "frames": 3728.0,
+            "length": "00:02:29:03",
+            "name": "MR\\BADMINTON_MR",
+            "type": "MOVIE"
+        },
+        "5": {
+            "date_modified": "20171210164140",
+            "file_size": "124915736",
+            "frame_rate": 25.0,
+            "frames": 1657.0,
+            "length": "00:01:06:07",
+            "name": "MR\\CLOSING MONTAGE",
+            "type": "MOVIE"
+        },
+        "6": {
+            "date_modified": "20171208131407",
+            "file_size": "363474656",
+            "frame_rate": 25.0,
+            "frames": 4719.0,
+            "length": "00:03:08:19",
+            "name": "MR\\CLUB PROFILE_1",
+            "type": "MOVIE"
+        },
+        "7": {
+            "date_modified": "20180130184636",
+            "file_size": "218407720",
+            "frame_rate": 25.0,
+            "frames": 2640.0,
+            "length": "00:01:45:15",
+            "name": "MR\\COACHINTERVIEWM",
+            "type": "MOVIE"
+        },
+        "8": {
+            "date_modified": "20180130160538",
+            "file_size": "304242109",
+            "frame_rate": 25.0,
+            "frames": 3636.0,
+            "length": "00:02:25:11",
+            "name": "MR\\COACHINTERVIEWW",
+            "type": "MOVIE"
+        },
+        "9": {
+            "date_modified": "20171209133846",
+            "file_size": "48568718",
+            "frame_rate": 25.0,
+            "frames": 609.0,
+            "length": "00:00:24:09",
+            "name": "MR\\COMINGUP17-12-10",
+            "type": "MOVIE"
+        }
+    }
+}

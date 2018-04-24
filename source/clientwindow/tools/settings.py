@@ -14,7 +14,7 @@ from clientwindow.tools.general import get_resources
 def get_settings():
     """Function which returns settings as a python dictionary"""
 
-    # get the resources filepath
+    # get the datas filepath
     resources = get_resources()
 
     # open the settings file
@@ -27,7 +27,7 @@ def get_settings():
 def get_bucs_league_settings():
     """Return BUCS league settings as dictionary"""
 
-    # get the resources filepath
+    # get the datas filepath
     resources = get_resources()
 
     # open the settings file
@@ -40,7 +40,7 @@ def get_bucs_league_settings():
 def store_settings(settings):
     """Function which writes settings to file"""
 
-    # get the resources filepath
+    # get the datas filepath
     resources = get_resources()
 
     # write as a json file

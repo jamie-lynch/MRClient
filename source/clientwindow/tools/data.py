@@ -19,7 +19,7 @@ import traceback
 def get_startup_data():
     """Function to get data on startup"""
 
-    # get the resources directory
+    # get the datas directory
     resources = get_resources()
 
     # open the file
@@ -31,7 +31,7 @@ def get_startup_data():
 def store_data(main):
     """Function to store the data file"""
 
-    # get the path to the resources directory
+    # get the path to the datas directory
     resources = get_resources()
 
     # store the file as data.json
@@ -76,12 +76,12 @@ def get_bucs_data(url, sport, gender, team):
     # Set the keys for the return data
     table_headers_keys[1] = ""
     table_headers_keys[2] = "data_updated"
-    table_headers_keys[3] = "table_table_header_stat_1_title"
-    table_headers_keys[4] = "table_table_header_stat_2_title"
-    table_headers_keys[5] = "table_table_header_stat_3_title"
-    table_headers_keys[6] = "table_table_header_stat_4_title"
-    table_headers_keys[7] = "table_table_header_stat_5_title"
-    table_headers_keys[8] = "table_table_header_points_title"
+    table_headers_keys[3] = "table_table_group_table_body_header_stat_1_title"
+    table_headers_keys[4] = "table_table_group_table_body_header_stat_2_title"
+    table_headers_keys[5] = "table_table_group_table_body_header_stat_3_title"
+    table_headers_keys[6] = "table_table_group_table_body_header_stat_4_title"
+    table_headers_keys[7] = "table_table_group_table_body_header_stat_5_title"
+    table_headers_keys[8] = "table_table_group_table_body_header_points_title"
 
     tableform_headers_keys[1] = ""
     tableform_headers_keys[2] = "data_updated"
@@ -93,7 +93,7 @@ def get_bucs_data(url, sport, gender, team):
     tableform_headers_keys[8] = "tableform_table_header_form_points_title"
 
     table_data_keys[1] = "position"
-    table_data_keys[2] = "team_name"
+    table_data_keys[2] = "name"
     table_data_keys[3] = "stat_1"
     table_data_keys[4] = "stat_2"
     table_data_keys[5] = "stat_3"
@@ -102,7 +102,7 @@ def get_bucs_data(url, sport, gender, team):
     table_data_keys[8] = "points"
 
     tableform_data_keys[1] = "position"
-    tableform_data_keys[2] = "team_name"
+    tableform_data_keys[2] = "name"
     tableform_data_keys[3] = "stat_1"
     tableform_data_keys[4] = "stat_3"
     tableform_data_keys[5] = "stat_4"
@@ -124,7 +124,7 @@ def get_bucs_data(url, sport, gender, team):
         title = soup.find('h2')
         title, subtitle = title.text.split(" - ")
         table_data["title"] = title
-        table_data["table_table_header_subtitle"] = subtitle
+        table_data["table_table_group_table_body_header_subtitle"] = subtitle
         table_data["tableform_table_header_form_subtitle"] = subtitle
         rows = table.findAll('tr')
         for tr in rows:
@@ -143,7 +143,7 @@ def get_bucs_data(url, sport, gender, team):
                     table_data[table_headers_keys[column]] = value
                     table_data[tableform_headers_keys[column]] = value
                 elif th.name == "td" and value:
-                    table_data["table_table_row_{}_{}".format(row, table_data_keys[column])] = value
+                    table_data["table_table_group_table_body_row_{}_{}".format(row, table_data_keys[column])] = value
                     table_data["tableform_table_row_{}_form_{}".format(row, tableform_data_keys[column])] = value
                 column += 1
             column = 1
@@ -163,8 +163,8 @@ def get_bucs_data(url, sport, gender, team):
             column = 1
             row += 1
 
-        # Set league table to show form
-        table_data["show_form"] = True
+        # Set league table not to show form data by default
+        table_data["show_form"] = False
 
     except requests.RequestException:
         table_data = None

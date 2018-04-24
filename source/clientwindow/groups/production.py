@@ -51,7 +51,7 @@ class ProductionWidget(QtGui.QWidget):
         self.graphics = {}
 
         # add the four graphics sections
-        self.sections_list = ['strapleft', 'centrescore', 'topscore', 'livelocator']
+        self.sections_list = self.settings["available_templates"]
         self.sections = []
         for num, section in enumerate(self.sections_list):
             self.graphics[section] = []
